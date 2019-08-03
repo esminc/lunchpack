@@ -1,4 +1,4 @@
-# Lunch Pack
+# Lunchpack
 ## エレベーターピッチ
 Lunchpack（ランチパック）というサービスは、
 
