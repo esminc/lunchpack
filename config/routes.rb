@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :members
+  resources :members, except: :show
   get 'home/index'
   # devise_for :users
   devise_for :users, controllers: {

@@ -1,15 +1,10 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:edit, :update, :destroy]
 
   # GET /members
   # GET /members.json
   def index
     @members = Member.all
-  end
-
-  # GET /members/1
-  # GET /members/1.json
-  def show
   end
 
   # GET /members/new
