@@ -14,3 +14,11 @@
  *= require_self
  *= require select2
  */
+
+.members-list{
+  width: 200px;
+  height: 400px;
+  overflow: scroll;
+  border: solid 2px;
+  padding-left: 5px;
+}
