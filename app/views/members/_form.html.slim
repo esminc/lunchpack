@@ -14,5 +14,5 @@
     = f.text_field :real_name
   .field
     = f.label :project_ids, 'プロジェクト'
-    = f.collection_select :project_ids, Project.all, :id, :name, {prompt: true} ,{multiple: true}
+    = f.collection_select :project_ids, Project.all, :id, :name, {} ,{multiple: true, class: 'js-searchable'}
   .actions = f.submit

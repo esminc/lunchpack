@@ -10,7 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require select2
+//= require select2-full
+
+document.addEventListener('turbolinks:load', function(){
+  $('.js-searchable').select2({
+    width: 200,
+  });
+});
