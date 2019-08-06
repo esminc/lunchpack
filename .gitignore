@@ -27,4 +27,4 @@
 /config/master.key
 
 /.env
-db/member.csv
+db/seed
