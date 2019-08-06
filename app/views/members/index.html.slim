@@ -1,0 +1,22 @@
+h1 Listing members
+
+table
+  thead
+    tr
+      th Hundle name
+      th Real name
+      th
+      th
+      th
+
+  tbody
+    - @members.each do |member|
+      tr
+        td = member.hundle_name
+        td = member.real_name
+        td = link_to 'Edit', edit_member_path(member)
+        td = link_to 'Destroy', member, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Member', new_member_path
