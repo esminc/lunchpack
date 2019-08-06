@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'Project was successfully updated.'
+      redirect_to projects_url, notice: 'Project was successfully updated.'
     else
       render :edit
     end
