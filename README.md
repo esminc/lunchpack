@@ -25,3 +25,13 @@ Lunchpack（ランチパック）というサービスは、
 ※ 3人中ひとりだけ入れ替わる組み合わせのパターンはNG
 
 ![](https://i.imgur.com/y2UaBAx.png)
+
+## テスト
+```
+$ bin/rails test
+```
+
+## ローカルでの立ち上げ方
+```
+$ bin/rails s
+```
