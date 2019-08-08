@@ -1,1 +1,13 @@
 h1 ランチに行けるメンバーを探す
+
+#members-list
+  table
+    - @members.each do |member|
+      tr.member
+        td.member-name = member.real_name
+        td.member-project = member.projects.pluck(:name).join(',')
+
+#selected-members
+  .selected-member-box
+  .selected-member-box
+  .selected-member-box
