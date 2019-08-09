@@ -16,7 +16,7 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
 
     if @member.save
-      redirect_to @member, notice: 'Member was successfully created.'
+      redirect_to members_url, notice: 'Member was successfully created.'
     else
       render :new
     end
