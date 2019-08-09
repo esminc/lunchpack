@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'メンバー管理機能', type: :system do
   before do
+    FactoryBot.create(:project)
     FactoryBot.create(:member)
     sign_in FactoryBot.create(:user)
     visit root_path
@@ -34,6 +35,13 @@ describe 'メンバー管理機能', type: :system do
       click_button 'Update Member'
       expect(page).to have_content 'taro3'
       expect(page).to have_content '山下太郎'
+    end
+
+    it 'プロジェクトを選択できるか' do
+      click_link 'Edit'
+      select 'eiwakun', from: 'プロジェクト'
+      click_button 'Update Member'
+      expect(page).to have_content 'eiwakun'
     end
   end
 
