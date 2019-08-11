@@ -17,6 +17,15 @@
  */
 @import 'materialize';
 
+.signin{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+  transform: translate(-50%, -50%);
+  color: gray;
+	text-align: center;
+}
+
 #members-list{
   width: 400px;
   height: 400px;
