@@ -17,6 +17,7 @@
 //= require_tree .
 //= require select2
 //= require select2-full
+//= require materialize
 
 document.addEventListener('turbolinks:load', function(){
   $('.js-searchable').select2({

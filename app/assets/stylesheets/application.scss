@@ -11,9 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require material_icons
  *= require_self
  *= require select2
  */
+@import 'materialize';
 
 #members-list{
   width: 400px;
