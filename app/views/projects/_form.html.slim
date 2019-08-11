@@ -6,7 +6,8 @@
         - @project.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :name
+  .field.input-field
+    = f.label :name, class: form_active(f.object.name)
     = f.text_field :name
-  .actions = f.submit
+  .input-field
+    .actions = f.submit class: 'btn text-white'

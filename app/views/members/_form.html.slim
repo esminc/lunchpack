@@ -6,13 +6,14 @@
         - @member.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :hundle_name
+  .field.input-field
+    = f.label :hundle_name, class: form_active(f.object.hundle_name)
     = f.text_field :hundle_name
-  .field
-    = f.label :real_name
+  .field.input-field
+    = f.label :real_name, class: form_active(f.object.real_name)
     = f.text_field :real_name
   .field
     = f.label :project_ids, 'プロジェクト'
     = f.collection_select :project_ids, Project.all, :id, :name, {} ,{multiple: true, class: 'js-searchable'}
-  .actions = f.submit
+  .input-field
+    .actions = f.submit class: 'btn text-white'

@@ -5,10 +5,10 @@
         == material_icon.restaurant.md_36
         | Lunchpack
       ul.right.hide-on-med-and-down
-        li class=active(root_path)
+        li class=page_active(root_path)
           = link_to 'ランチに行く', root_path
-        li class=active(members_path)
+        li class=page_active(members_path)
           = link_to 'メンバー', members_path
-        li class=active(projects_path)
+        li class=page_active(projects_path)
           = link_to 'プロジェクト', projects_path
         li = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'waves-effect waves-light btn-small'

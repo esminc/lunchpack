@@ -21,7 +21,7 @@
 
 document.addEventListener('turbolinks:load', function(){
   $('.js-searchable').select2({
-    width: 200,
+    width: '100%'
   });
 
   const members = document.querySelectorAll('.member');

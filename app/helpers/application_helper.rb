@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def active(path)
+  def page_active(path)
     request.path == path ? 'active': ''
   end
 
@@ -9,5 +9,9 @@ module ApplicationHelper
     else
       '-'
     end
+  end
+
+  def form_active(form_value)
+    form_value.present? ? 'active' : ''
   end
 end
