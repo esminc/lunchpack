@@ -16,6 +16,9 @@
  *= require select2
  */
 @import 'materialize';
+body{
+  @extend .brown, .lighten-5;
+}
 
 .signin{
 	position: absolute;
@@ -27,24 +30,16 @@
 }
 
 #members-list{
-  width: 400px;
-  height: 400px;
+  height: 450px;
   overflow: scroll;
-  border: solid 2px;
-  padding-left: 5px;
 }
 
-#selected-members{
-  float: left;
-  display: flex;
+#member-table{
+  cursor: pointer;
 }
 
 .selected-member-box{
-  border: solid 1px;
-  width: 200px;
-  height: 50px;
-  margin: 5px;
-  text-align: center;
+  height: 100px;
 }
 
 .selected-row{
