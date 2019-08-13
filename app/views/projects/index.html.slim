@@ -1,5 +1,5 @@
 h3 プロジェクト
-= link_to new_project_path, class: 'btn right'
+= link_to new_project_path, class: 'btn right new-btn'
   == material_icon.add
   | プロジェクト追加
 
@@ -14,6 +14,6 @@ table
       tr
         td = project.name
         td 
-          = link_to mi.edit, edit_project_path(project), class: 'btn-small z-depth-0'
+          = link_to mi.edit, edit_project_path(project), class: 'btn-small z-depth-0 edit-btn'
           |  
-          = link_to mi.delete, project, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn-small z-depth-0'
+          = link_to mi.delete, project, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
