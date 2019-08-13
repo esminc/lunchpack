@@ -28,7 +28,7 @@ Lunchpack（ランチパック）というサービスは、
 
 ## テスト
 ```
-$ bin/rails test
+$ bin/rspec
 ```
 
 ## ローカルでの立ち上げ方
