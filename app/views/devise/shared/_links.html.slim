@@ -1,4 +1,5 @@
 - if devise_mapping.omniauthable?
   - resource_class.omniauth_providers.each do |provider|
-    = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider)
-    br
+    .signin
+      p @esm.co.jpのアカウントでサインインしてください。
+      = link_to image_tag('btn_google_signin.png', width: 300), omniauth_authorize_path(resource_name, provider)

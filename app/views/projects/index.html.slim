@@ -1,20 +1,19 @@
-h1 Listing projects
+h3 プロジェクト
+= link_to new_project_path, id: 'new-btn', class: 'btn right'
+  == material_icon.add
+  | プロジェクト追加
 
 table
   thead
     tr
       th Name
       th
-      th
-      th
 
   tbody
     - @projects.each do |project|
       tr
         td = project.name
-        td = link_to 'Edit', edit_project_path(project)
-        td = link_to 'Destroy', project, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Project', new_project_path
+        td 
+          = link_to mi.edit, edit_project_path(project), class: 'btn-small z-depth-0 edit-btn'
+          |  
+          = link_to mi.delete, project, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn-small z-depth-0 delete-btn'

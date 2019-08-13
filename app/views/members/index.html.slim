@@ -1,5 +1,7 @@
-h1 Listing members
-
+h3 メンバー
+= link_to new_member_path, id: 'new-btn', class: 'btn right'
+  == material_icon.add
+  | メンバー追加
 table
   thead
     tr
@@ -7,17 +9,14 @@ table
       th Real name
       th プロジェクト
       th
-      th
 
   tbody
     - @members.each do |member|
       tr
         td = member.hundle_name
         td = member.real_name
-        td = member.projects.pluck(:name).join(',')
-        td = link_to 'Edit', edit_member_path(member)
-        td = link_to 'Destroy', member, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Member', new_member_path
+        td = project_list(member)
+        td 
+          = link_to mi.edit, edit_member_path(member), class: 'btn-small z-depth-0 edit-btn'
+          |  
+          = link_to mi.delete , member, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
