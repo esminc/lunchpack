@@ -16,4 +16,4 @@
     = f.label :project_ids, 'プロジェクト'
     = f.collection_select :project_ids, Project.all, :id, :name, {} ,{multiple: true, class: 'js-searchable'}
   .input-field
-    .actions = f.submit class: 'btn text-white submit-btn'
+    .actions = f.submit id: 'submit-btn', class: 'btn text-white'

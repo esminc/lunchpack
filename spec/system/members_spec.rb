@@ -18,10 +18,10 @@ describe 'メンバー管理機能', type: :system do
 
   describe '新規作成機能' do
     it '新規に追加できるか' do
-      find('.new-btn').click
+      find('#new-btn').click
       fill_in 'member[hundle_name]', with: 'hanako'
       fill_in 'member[real_name]', with: '山田花子'
-      find('.submit-btn').click
+      find('#submit-btn').click
       expect(page).to have_content 'hanako'
       expect(page).to have_content '山田花子'
     end
@@ -32,7 +32,7 @@ describe 'メンバー管理機能', type: :system do
       find('.edit-btn').click
       fill_in 'member[hundle_name]', with: 'taro3'
       fill_in 'member[real_name]', with: '山下太郎'
-      find('.submit-btn').click
+      find('#submit-btn').click
       expect(page).to have_content 'taro3'
       expect(page).to have_content '山下太郎'
     end
@@ -41,7 +41,7 @@ describe 'メンバー管理機能', type: :system do
       find('.edit-btn').click
       find('.select2-selection__rendered').click
       find('.select2-results__options:first-child').click
-      find('.submit-btn').click
+      find('#submit-btn').click
       expect(page).to have_content 'eiwakun'
     end
   end

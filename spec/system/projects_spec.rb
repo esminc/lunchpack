@@ -16,9 +16,9 @@ describe 'プロジェクト管理機能' do
 
   describe '新規作成機能' do
     it '新規に追加できるか' do
-      find('.new-btn').click
+      find('#new-btn').click
       fill_in 'project[name]', with: 'プロダクト'
-      find('.submit-btn').click
+      find('#submit-btn').click
       expect(page).to have_content 'プロダクト'
     end
   end
@@ -27,7 +27,7 @@ describe 'プロジェクト管理機能' do
     it '名前が編集できるか' do
       find('.edit-btn').click
       fill_in 'project[name]', with: 'eiwasan'
-      find('.submit-btn').click
+      find('#submit-btn').click
       expect(page).to have_content 'eiwasan'
     end
   end
