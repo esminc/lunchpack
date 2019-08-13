@@ -30,18 +30,18 @@ ActiveRecord::Schema.define(version: 2019_08_13_053510) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lunches_members", id: false, force: :cascade do |t|
+    t.bigint "lunch_id", null: false
+    t.bigint "member_id", null: false
+    t.index ["lunch_id"], name: "index_lunches_members_on_lunch_id"
+    t.index ["member_id"], name: "index_lunches_members_on_member_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "hundle_name"
     t.string "real_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "members_lunches", id: false, force: :cascade do |t|
-    t.bigint "member_id", null: false
-    t.bigint "lunch_id", null: false
-    t.index ["lunch_id"], name: "index_members_lunches_on_lunch_id"
-    t.index ["member_id"], name: "index_members_lunches_on_member_id"
   end
 
   create_table "projects", force: :cascade do |t|
