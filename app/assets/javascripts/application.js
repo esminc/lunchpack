@@ -25,24 +25,24 @@ document.addEventListener('turbolinks:load', function(){
   });
 
   const members = document.querySelectorAll('.member');
-  const boxes = document.querySelectorAll('.selected-member-box');
+  const forms = document.querySelectorAll('.member-form');
 
   for(const member of members) {
     member.addEventListener('click', function(){
-      if (boxes[0].textContent != '' && boxes[1].textContent != '' && boxes[2].textContent != '')
+      if (forms[0].value != '' && forms[1].value != '' && forms[2].value != '')
         return
 
       member.classList.add('selected-row');
 
       noDisplayMember();
 
-      var box = emptyBox();
+      var form = emptyForm();
 
       var name = member.children[0];
-      box.textContent = name.textContent;
+      form.value = name.textContent;
 
-      box.addEventListener('click', function(){
-        box.textContent = '';
+      form.addEventListener('click', function(){
+        form.value = '';
         member.classList.remove('selected-row');
         noDisplayMember();
       });
@@ -72,13 +72,13 @@ document.addEventListener('turbolinks:load', function(){
     return new Set([...set1].filter(e => (set2.has(e))));
   }
 
-  function emptyBox(){
-    if (boxes[0].textContent == ''){
-      return boxes[0];
-    } else if (boxes[1].textContent == '') {
-      return boxes[1];
-    } else if (boxes[2].textContent == '') {
-      return boxes[2];
+  function emptyForm(){
+    if (forms[0].value == ''){
+      return forms[0];
+    } else if (forms[1].value == '') {
+      return forms[1];
+    } else if (forms[2].value == '') {
+      return forms[2];
     }
   }
 });

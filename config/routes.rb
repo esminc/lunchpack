@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   root 'lunches#new'
+  resources :lunches, only: :create
 end
