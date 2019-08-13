@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_095237) do
+ActiveRecord::Schema.define(version: 2019_08_13_053510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,24 @@ ActiveRecord::Schema.define(version: 2019_08_06_095237) do
     t.index ["project_id"], name: "index_assignments_on_project_id"
   end
 
+  create_table "lunches", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "hundle_name"
     t.string "real_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "members_lunches", id: false, force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "lunch_id", null: false
+    t.index ["lunch_id"], name: "index_members_lunches_on_lunch_id"
+    t.index ["member_id"], name: "index_members_lunches_on_member_id"
   end
 
   create_table "projects", force: :cascade do |t|
