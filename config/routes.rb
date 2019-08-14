@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  resources :projects
-  resources :members, except: :show
-  get 'home/index'
-  # devise_for :users
-  devise_for :users, controllers: {
-    omniauth_callbacks: "users/omniauth_callbacks"
-  }
   root 'lunches#new'
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   resources :lunches, only: :create
+  resources :members, except: :show
+  resources :projects, expect: :show
 end
