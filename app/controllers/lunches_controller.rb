@@ -1,6 +1,6 @@
 class LunchesController < ApplicationController
   def new
-    @members = Member.all
+    @members = Member.includes(:projects)
     @lunch = Lunch.new
   end
 
