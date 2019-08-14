@@ -32,10 +32,8 @@ describe '3人組を探す機能' do
     end
 
     it 'ランチに行ったことが登録されるか' do
-      expect { 
-        find('#submit-btn').click
-        sleep 0.5
-      }.to change(Lunch, :count).by(1)
+      find('#submit-btn').click
+      expect(page).to have_content 'Lunch was successfully created.'
     end
   end
 end
