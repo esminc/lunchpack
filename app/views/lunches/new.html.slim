@@ -2,15 +2,21 @@ h3 ランチに行くメンバーを探す
 
 .row
   .col.s6
-    #members-list.card-panel
-      table#member-table.highlight
-        - @members.each do |member|
-          tr.member
-            td.member-name = member.real_name
-            td.member-project = member.projects.pluck(:name).join(',')
+    .card-panel
+      p class='teal-text'リストからメンバーを選んでください。
+      #members-list
+        table#member-table.highlight
+          - @members.each do |member|
+            tr.member
+              td.member-name = member.real_name
+              td.member-project = member.projects.pluck(:name).join(',')
   .col.s6
     = form_with model: @lunch do |f|
-      = f.text_field :members, name: 'lunch[members][]', value: '', class: 'member-form'
-      = f.text_field :members, name: 'lunch[members][]', value: '', class: 'member-form'
-      = f.text_field :members, name: 'lunch[members][]', value: '', class: 'member-form'
-      = f.submit 'ランチに行く'
+      .input-field
+        = f.text_field :member, name: 'lunch[members][]', readonly: true, class: 'member-form center-align white black-text' 
+      .input-field 
+        = f.text_field :member, name: 'lunch[members][]', readonly: true, class: 'member-form center-align white black-text'
+      .input-field  
+        = f.text_field :member, name: 'lunch[members][]', readonly: true, class: 'member-form center-align white black-text'
+      .center-align
+        = f.submit 'ランチに行く', id: 'submit-btn', class: 'btn-large text-white'
