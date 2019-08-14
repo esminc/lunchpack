@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'プロジェクト管理機能' do
   before do
-    FactoryBot.create(:project)
-    sign_in FactoryBot.create(:user)
+    create(:project)
+    sign_in create(:user)
     visit root_path
     click_link 'プロジェクト'
   end

@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe '3人組を探す機能' do
   before do
-    project = FactoryBot.create(:project)
-    FactoryBot.create(:member, projects: [project])
-    FactoryBot.create(:member, real_name: '鈴木一郎', projects: [project])
-    FactoryBot.create(:member, real_name: '鈴木二郎')
-    FactoryBot.create(:member, real_name: '鈴木三郎')
-    sign_in FactoryBot.create(:user)
+    project = create(:project)
+    create(:member, projects: [project])
+    create(:member, real_name: '鈴木一郎', projects: [project])
+    create(:member, real_name: '鈴木二郎')
+    create(:member, real_name: '鈴木三郎')
+    sign_in create(:user)
     visit root_path
   end
 
