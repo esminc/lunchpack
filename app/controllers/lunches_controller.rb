@@ -5,7 +5,7 @@ class LunchesController < ApplicationController
   end
 
   def create
-    members = lunch_params[:members].map { |name| Member.find_by(real_name: name) }
+    members = Member.where(real_name: params[:lunch][:members])
     @lunch = Lunch.new(date: Date.today, members: members)
     if @lunch.save
       redirect_to root_url, notice: 'Lunch was successfully created.'
@@ -13,9 +13,4 @@ class LunchesController < ApplicationController
       render :new
     end
   end
-
-  private
-    def lunch_params
-      params.require(:lunch).permit(members: [])
-    end
 end
