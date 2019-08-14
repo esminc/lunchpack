@@ -12,7 +12,7 @@ describe '3人組を探す機能' do
   describe 'メンバー選択' do
     it '名前をクリックすると枠に移動するか' do
       find('.member-name', text: '山田太郎').click
-      expect(find('.selected-member-box:first-child')).to have_content('山田太郎')
+      expect(first('.member-form').value).to eq '山田太郎'
       expect(find('#members-list')).to_not have_content('山田太郎')
     end
 
