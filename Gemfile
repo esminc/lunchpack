@@ -44,6 +44,7 @@ gem 'jquery-rails'
 gem 'select2-rails'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons' 
+gem 'gon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

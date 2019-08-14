@@ -34,9 +34,22 @@ document.addEventListener('turbolinks:load', function() {
     for(const member of members) {
       member.classList.remove('unselectable-row');
       const arr = member.children[1].textContent.split(',');
-      if (intersection(arr, selected_projects).size !== 0)
+      if (intersection(arr, selected_projects).size !== 0 || isGone(member))
         member.classList.add('unselectable-row');
     }
+  }
+
+  function isGone(member) {
+    const member_name = member.children[0].textContent;
+    const selectedRows = document.querySelectorAll('.selected-row');
+    const selected_names = Array.from(selectedRows).map(row => row.children[0].textContent);
+    const lunches_members = gon.lunches_members;
+    for(const lunch_members of lunches_members) {
+      const names = lunch_members.map(e => e["real_name"]);
+      if (names.some(name => name === member_name) && intersection(names, selected_names).size !== 0)
+        return true;
+    };
+    return false;
   }
 
   function intersection(arr1, arr2){
