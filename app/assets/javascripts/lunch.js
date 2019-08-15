@@ -17,7 +17,7 @@ document.addEventListener('turbolinks:load', function() {
       form.addEventListener('click', function(){
         form.value = '';
         member.classList.remove('selected-row');
-        noDisplayMember();
+        noDisplayMember(members);
       });
     });
   }
