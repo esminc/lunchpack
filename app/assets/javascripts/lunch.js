@@ -24,38 +24,41 @@ document.addEventListener('turbolinks:load', function() {
 
   // どのメンバーを表示しないか
   function noDisplayMember(members){
-    const selectedRows = document.querySelectorAll('.selected-row');
-    const selected_projects = Array
-      .from(selectedRows)
-      .map(row => row.children[1].textContent.split(','))
-      .flat()
-      .filter(n => n !== '');
-
     for(const member of members) {
       member.classList.remove('unselectable-row');
-      const arr = member.children[1].textContent.split(',');
-      if (intersection(arr, selected_projects).size !== 0 || isGone(member))
+      if ( hasSameProjects(member) || isGone(member))
         member.classList.add('unselectable-row');
     }
   }
 
+  function hasSameProjects(member) {
+    const selectedProjects = Array
+      .from(document.querySelectorAll('.selected-row'))
+      .map(row => row.children[1].textContent.split(','))
+      .flat()
+      .filter(n => n !== '');
+    const memberProjects = member.children[1].textContent.split(',');
+    return existsIntersection(memberProjects, selectedProjects);
+  }
+
   function isGone(member) {
-    const member_name = member.children[0].textContent;
-    const selectedRows = document.querySelectorAll('.selected-row');
-    const selected_names = Array.from(selectedRows).map(row => row.children[0].textContent);
-    const lunches_members = gon.lunches_members;
-    for(const lunch_members of lunches_members) {
-      const names = lunch_members.map(e => e["real_name"]);
-      if (names.some(name => name === member_name) && intersection(names, selected_names).size !== 0)
+    const memberName = member.children[0].textContent;
+    const selectedNames = Array
+      .from(document.querySelectorAll('.selected-row'))
+      .map(row => row.children[0].textContent);
+    for(const lunchMembers of gon.lunches_members) {
+      const names = lunchMembers.map(e => e["real_name"]);
+      if (names.some(name => name === memberName) && existsIntersection(names, selectedNames))
         return true;
     };
     return false;
   }
 
-  function intersection(arr1, arr2){
+  function existsIntersection(arr1, arr2){
     const set1 = new Set(arr1);
     const set2 = new Set(arr2);
-    return new Set([...set1].filter(e => (set2.has(e))));
+    const intersection =  new Set([...set1].filter(e => (set2.has(e))));
+    return intersection.size !== 0;
   }
 
   function findEmptyForm(forms) {
