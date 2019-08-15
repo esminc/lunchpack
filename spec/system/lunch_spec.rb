@@ -54,4 +54,15 @@ describe '3人組を探す機能' do
       expect(page).to have_content 'Lunch was successfully created.'
     end
   end
+
+  describe 'ログインしているユーザーが自動でフォームの一人目に入力される機能' do
+    before do
+      create(:member, real_name: 'ろぐいん', email: 'sample@esm.co.jp')
+      visit root_path
+    end
+
+    it 'フォームの一人目にログインユーザーが入力されているか' do
+      expect(first('.member-form').value).to eq 'ろぐいん'
+    end
+  end
 end
