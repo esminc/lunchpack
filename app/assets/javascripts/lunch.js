@@ -22,6 +22,16 @@ document.addEventListener('turbolinks:load', function() {
     });
   }
 
+  clickLoginMember();
+
+  function clickLoginMember() {
+    for(const member of members) {
+      if (member.children[0].textContent === gon.logined_member["real_name"])
+        member.click();
+    }
+  }
+  
+
   // どのメンバーを表示しないか
   function noDisplayMember(members){
     for(const member of members) {
