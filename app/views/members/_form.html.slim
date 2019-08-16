@@ -1,7 +1,6 @@
 = form_for @member do |f|
   - if @member.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@member.errors.count, "error")} prohibited this member from being saved:"
+    #error_explanation.red-text
       ul
         - @member.errors.full_messages.each do |message|
           li = message
