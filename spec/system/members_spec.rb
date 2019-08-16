@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe 'メンバー管理機能', type: :system do
   before do
-    FactoryBot.create(:project)
-    FactoryBot.create(:member)
-    sign_in FactoryBot.create(:user)
+    create(:project)
+    create(:member)
+    sign_in create(:user)
     visit root_path
     click_link 'メンバー'
   end
