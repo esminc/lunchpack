@@ -2,7 +2,7 @@ class LunchesController < ApplicationController
   def new
     @members = Member.includes(:projects)
     @lunch = Lunch.new
-    gon.lunches_members = Lunch.all.map(&:members)
+    gon.lunches_members = Lunch.includes(:members).map(&:members)
   end
 
   def create

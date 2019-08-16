@@ -66,6 +66,7 @@ group :development do
   gem 'binding_of_caller'
 
   gem 'spring-commands-rspec'
+  gem 'bullet'
 end
 
 group :test do
