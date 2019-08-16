@@ -46,8 +46,8 @@ document.addEventListener('turbolinks:load', function() {
     const selectedNames = Array
       .from(document.querySelectorAll('.selected-row'))
       .map(row => row.children[0].textContent);
-    for(const lunchMembers of gon.lunches_members) {
-      const names = lunchMembers.map(e => e["real_name"]);
+    for(const trio of gon.lunch_trios) {
+      const names = trio.map(e => e["real_name"]);
       if (names.some(name => name === memberName) && existsIntersection(names, selectedNames))
         return true;
     };
