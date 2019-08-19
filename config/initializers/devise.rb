@@ -303,6 +303,7 @@ Devise.setup do |config|
                     ENV['GOOGLE_APP_ID'], 
                     ENV['GOOGLE_APP_SECRET'], 
                     name: :google,
-                    scope: %w(email) 
+                    scope: %w(email),
+                    skip_jwt: true
   end
 end
