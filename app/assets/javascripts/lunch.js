@@ -22,9 +22,9 @@ document.addEventListener('turbolinks:load', function() {
     });
   }
 
-  clickLoginMember();
+  fillInFirstMemberWithLoginMember();
 
-  function clickLoginMember() {
+  function fillInFirstMemberWithLoginMember() {
     for(const member of members) {
       if (member.children[0].textContent === gon.logined_member["real_name"])
         member.click();
