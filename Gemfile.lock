@@ -58,6 +58,9 @@ GEM
     bootsnap (1.4.4)
       msgpack (~> 1.0)
     builder (3.2.3)
+    bullet (6.0.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.0.1)
     capybara (3.28.0)
       addressable
@@ -96,6 +99,10 @@ GEM
     ffi (1.11.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.2.1)
+      actionpack (>= 3.0)
+      multi_json
+      request_store (>= 1.0)
     hashie (3.6.0)
     hpricot (0.8.6)
     html2slim (0.2.0)
@@ -193,6 +200,8 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
+    request_store (1.4.1)
+      rack (>= 1.4)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -262,6 +271,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    uniform_notifier (1.12.1)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -286,11 +296,13 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
+  bullet
   byebug
   capybara (>= 2.15)
   devise
   dotenv-rails
   factory_bot_rails (~> 4.11)
+  gon
   html2slim
   jbuilder (~> 2.5)
   jquery-rails
