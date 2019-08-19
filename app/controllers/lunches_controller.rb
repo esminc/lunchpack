@@ -3,7 +3,7 @@ class LunchesController < ApplicationController
     @members = Member.includes(:projects)
     @lunch = Lunch.new
     gon.lunch_trios = Lunch.includes(:members).map(&:members)
-    gon.logined_member = Member.find_by(email: current_user.email)
+    gon.login_member = Member.find_by(email: current_user.email)
   end
 
   def create

@@ -26,7 +26,7 @@ document.addEventListener('turbolinks:load', function() {
 
   function fillInFirstMemberWithLoginMember() {
     for(const member of members) {
-      if (member.children[0].textContent === gon.logined_member["real_name"])
+      if (member.children[0].textContent === gon.login_member["real_name"])
         member.click();
     }
   }
