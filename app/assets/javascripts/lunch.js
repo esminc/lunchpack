@@ -26,7 +26,7 @@ document.addEventListener('turbolinks:load', function() {
   function noDisplayMember(members){
     for(const member of members) {
       member.classList.remove('unselectable-row');
-      if (hasSameProjects(member) || isGone(member))
+      if (hasSameProjects(member) || isUsedBenefitWithSelectedMembers(member))
         member.classList.add('unselectable-row');
     }
   }
@@ -41,7 +41,7 @@ document.addEventListener('turbolinks:load', function() {
     return existsIntersection(memberProjects, selectedProjects);
   }
 
-  function isGone(member) {
+  function isUsedBenefitWithSelectedMembers(member) {
     const memberName = member.children[0].textContent;
     const selectedNames = Array
       .from(document.querySelectorAll('.selected-row'))
