@@ -26,7 +26,7 @@ document.addEventListener('turbolinks:load', function() {
   function noDisplayMember(members){
     for(const member of members) {
       member.classList.remove('unselectable-row');
-      if ( hasSameProjects(member) || isGone(member))
+      if (hasSameProjects(member) || isGone(member))
         member.classList.add('unselectable-row');
     }
   }
