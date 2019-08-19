@@ -4,6 +4,7 @@ describe Member do
   it 'メールアドレスの重複は有効ではないか' do
     create(:member, email: 'sample@esm.co.jp')
     member = Member.new(hundle_name: 'yama', real_name: '山本太郎', email: 'sample@esm.co.jp')
+    expect(member).to_not be_valid
   end
 
   it 'ハンドルネームがないと有効でないこと' do
