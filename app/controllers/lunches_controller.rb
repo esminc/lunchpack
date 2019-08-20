@@ -1,6 +1,6 @@
 class LunchesController < ApplicationController
   def new
-    set_variables
+    set_variables_for_new_lunch_view
     @lunch = Lunch.new
   end
 
@@ -10,14 +10,14 @@ class LunchesController < ApplicationController
     if @lunch.save
       redirect_to root_url, notice: 'Lunch was successfully created.'
     else
-      set_variables
+      set_variables_for_new_lunch_view
       render :new
     end
   end
 
   private
 
-  def set_variables
+  def set_variables_for_new_lunch_view
     @members = Member.includes(:projects)
     gon.lunch_trios = Lunch.includes(:members).map(&:members)
     gon.login_member = Member.find_by(email: current_user.email)
