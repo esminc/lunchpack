@@ -12,3 +12,12 @@ end
 YAML.load_file('db/seed/project.yml').each do |project_name|
   Project.create!(name: project_name)
 end
+
+CSV.foreach('db/seed/lunch-40-1Q.csv') do |row|
+  date = Date.parse(row[0])
+  names = row[1].split('、')
+  Lunch.create!(
+    date: date,
+    members: Member.where(real_name: names),
+  )
+end
