@@ -26,18 +26,35 @@ describe '3人組を探す機能' do
       end
     end
 
-    context 'すでにランチに行っているメンバー同士の組み合わせの場合' do
+    context 'すでにランチに行っているメンバー同士の組み合わせを選択する場合' do
       before do
         create(:lunch, members: [member1, member2, member3])
         visit root_path
       end
 
-      it 'メンバーの表示が消えて選択できない' do
-        expect(find('#members-list')).to have_content('鈴木二郎')
-        expect(find('#members-list')).to have_content('鈴木三郎')
-        find('.member-name', text: '鈴木一郎').click
-        expect(find('#members-list')).to_not have_content('鈴木二郎')
-        expect(find('#members-list')).to_not have_content('鈴木三郎')
+      context 'ランチに行ったクウォーターと同じ期間の場合' do
+        it 'メンバーの表示が消えて選択できないこと' do
+          expect(find('#members-list')).to have_content('鈴木二郎')
+          expect(find('#members-list')).to have_content('鈴木三郎')
+          find('.member-name', text: '鈴木一郎').click
+          expect(find('#members-list')).to_not have_content('鈴木二郎')
+          expect(find('#members-list')).to_not have_content('鈴木三郎')
+        end
+      end
+
+      context 'ランチに行ったクウォーターと違う期間の場合' do
+        before do
+          travel 3.month
+          visit root_path
+        end
+
+        it 'メンバーの選択ができること' do
+          expect(find('#members-list')).to have_content('鈴木二郎')
+          expect(find('#members-list')).to have_content('鈴木三郎')
+          find('.member-name', text: '鈴木一郎').click
+          expect(find('#members-list')).to have_content('鈴木二郎')
+          expect(find('#members-list')).to have_content('鈴木三郎')
+        end
       end
     end
   end
