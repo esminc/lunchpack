@@ -43,15 +43,23 @@ describe '3人組を探す機能' do
   end
 
   describe 'ランチに行ったことの登録機能' do
-    before do
-      find('.member-name', text: '鈴木一郎').click
-      find('.member-name', text: '鈴木二郎').click
-      find('.member-name', text: '鈴木三郎').click
+    context '3人を選ぶ場合' do
+      it 'ランチに行ったことが登録できること' do
+        find('.member-name', text: '鈴木一郎').click
+        find('.member-name', text: '鈴木二郎').click
+        find('.member-name', text: '鈴木三郎').click
+        find('#submit-btn').click
+        expect(page).to have_content 'Lunch was successfully created.'
+      end
     end
 
-    it 'ランチに行ったことが登録されるか' do
-      find('#submit-btn').click
-      expect(page).to have_content 'Lunch was successfully created.'
+    context '3人未満を選ぶ場合' do
+      it 'ランチに行ったことが登録できないこと' do
+        find('.member-name', text: '鈴木一郎').click
+        find('.member-name', text: '鈴木二郎').click
+        find('#submit-btn').click
+        expect(page).to have_content '3人のメンバーを入力してください'
+      end
     end
   end
 

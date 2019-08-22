@@ -12,7 +12,12 @@ h3 ランチに行くメンバーを探す
               td.member-name = member.real_name
               td.member-project = member.projects.pluck(:name).join(',')
   .col.s6
-    = form_with model: @lunch do |f|
+    = form_with model: @lunch, local: true do |f|
+      - if @lunch.errors.any?
+        #error_explanation.red-text
+          ul
+            - @lunch.errors.messages.values.flatten.each do |message|
+              li = message
       .input-field
         = f.text_field :member, name: 'lunch[members][]', readonly: true, class: 'member-form center-align white black-text' 
       .input-field 

@@ -17,13 +17,24 @@ describe 'メンバー管理機能', type: :system do
   end
 
   describe '新規作成機能' do
-    it '新規に追加できるか' do
-      find('#new-btn').click
-      fill_in 'member[hundle_name]', with: 'hanako'
-      fill_in 'member[real_name]', with: '山田花子'
-      find('#submit-btn').click
-      expect(page).to have_content 'hanako'
-      expect(page).to have_content '山田花子'
+    context '名前が入力される場合' do
+      it '新規に追加できること' do
+        find('#new-btn').click
+        fill_in 'member[hundle_name]', with: 'hanako'
+        fill_in 'member[real_name]', with: '山田花子'
+        find('#submit-btn').click
+        expect(page).to have_content 'hanako'
+        expect(page).to have_content '山田花子'
+      end
+    end
+
+    context '名前が入力されない場合' do
+      it '新規に追加できないこと' do
+        find('#new-btn').click
+        find('#submit-btn').click
+        expect(page).to have_content "Hundle name can't be blank"
+        expect(page).to have_content "Real name can't be blank"
+      end
     end
   end
 

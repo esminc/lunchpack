@@ -1,7 +1,6 @@
 = form_for @project do |f|
   - if @project.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+    #error_explanation.red-text
       ul
         - @project.errors.full_messages.each do |message|
           li = message

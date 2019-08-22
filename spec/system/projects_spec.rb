@@ -15,11 +15,21 @@ describe 'プロジェクト管理機能' do
   end
 
   describe '新規作成機能' do
-    it '新規に追加できるか' do
-      find('#new-btn').click
-      fill_in 'project[name]', with: 'プロダクト'
-      find('#submit-btn').click
-      expect(page).to have_content 'プロダクト'
+    context '名前が入力される場合' do
+      it '新規に追加できること' do
+        find('#new-btn').click
+        fill_in 'project[name]', with: 'プロダクト'
+        find('#submit-btn').click
+        expect(page).to have_content 'プロダクト'
+      end
+    end
+
+    context '名前が入力されない場合' do
+      it '新規に追加できないこと' do
+        find('#new-btn').click
+        find('#submit-btn').click
+        expect(page).to have_content "Name can't be blank"
+      end
     end
   end
 
