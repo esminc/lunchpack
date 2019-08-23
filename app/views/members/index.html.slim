@@ -19,4 +19,4 @@ table
         td 
           = link_to mi.edit, edit_member_path(member), class: 'btn-small z-depth-0 edit-btn'
           |  
-          = link_to mi.delete , member, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
+          = link_to mi.delete , member, data: { confirm: t('dictionary.message.destroy.confirm') }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
