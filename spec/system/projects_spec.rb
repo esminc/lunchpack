@@ -28,7 +28,7 @@ describe 'プロジェクト管理機能' do
       it '新規に追加できないこと' do
         find('#new-btn').click
         find('#submit-btn').click
-        expect(page).to have_content "Name can't be blank"
+        expect(page).to have_content "プロジェクト名を入力してください"
       end
     end
   end

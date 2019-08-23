@@ -32,8 +32,8 @@ describe 'メンバー管理機能', type: :system do
       it '新規に追加できないこと' do
         find('#new-btn').click
         find('#submit-btn').click
-        expect(page).to have_content "Hundle name can't be blank"
-        expect(page).to have_content "Real name can't be blank"
+        expect(page).to have_content "ニックネームを入力してください"
+        expect(page).to have_content "氏名を入力してください"
       end
     end
   end
