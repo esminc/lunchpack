@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models: 
+      member: メンバー
+      project: プロジェクト
+    attributes:
+      member:
+        hundle_name: ニックネーム
+        real_name: 氏名
+        projects: 所属プロジェクト
+      project:
+        name: プロジェクト名
+  dictionary:
+    message:
+      create:
+        complete: 登録しました
+      update:
+        complete: 更新しました
+      destroy:
+        confirm: 削除しますか？

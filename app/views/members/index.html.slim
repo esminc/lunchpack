@@ -5,9 +5,9 @@ h3 メンバー
 table
   thead
     tr
-      th Hundle name
-      th Real name
-      th プロジェクト
+      th = Member.human_attribute_name(:hundle_name)
+      th = Member.human_attribute_name(:real_name)
+      th = Member.human_attribute_name(:projects)
       th
 
   tbody
