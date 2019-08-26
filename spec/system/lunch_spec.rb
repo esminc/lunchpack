@@ -49,7 +49,7 @@ describe '3人組を探す機能' do
         find('.member-name', text: '鈴木二郎').click
         find('.member-name', text: '鈴木三郎').click
         find('#submit-btn').click
-        expect(page).to have_content 'Lunch was successfully created.'
+        expect(page).to have_content '鈴木一郎,鈴木二郎,鈴木三郎のランチを登録しました'
       end
     end
 

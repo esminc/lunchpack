@@ -1,6 +1,6 @@
 ja:
   activerecord:
-    models: 
+    models:
       member: メンバー
       project: プロジェクト
     attributes:
@@ -10,11 +10,13 @@ ja:
         projects: 所属プロジェクト
       project:
         name: プロジェクト名
+
   dictionary:
     message:
       create:
-        complete: 登録しました
+        complete: "%{record}を登録しました"
       update:
-        complete: 更新しました
+        complete: "%{record}を更新しました"
       destroy:
-        confirm: 削除しますか？
+        complete: "%{record}を削除しました"
+        confirm: "%{record}を削除しますか？"

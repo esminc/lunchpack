@@ -19,10 +19,10 @@ h3 ランチに行くメンバーを探す
             - @lunch.errors.messages.values.flatten.each do |message|
               li = message
       .input-field
-        = f.text_field :member, name: 'lunch[members][]', readonly: true, class: 'member-form center-align white black-text' 
-      .input-field 
         = f.text_field :member, name: 'lunch[members][]', readonly: true, class: 'member-form center-align white black-text'
-      .input-field  
+      .input-field
+        = f.text_field :member, name: 'lunch[members][]', readonly: true, class: 'member-form center-align white black-text'
+      .input-field
         = f.text_field :member, name: 'lunch[members][]', readonly: true, class: 'member-form center-align white black-text'
       .center-align
         = f.submit 'ランチに行く', id: 'submit-btn', class: 'btn-large text-white'
