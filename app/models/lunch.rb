@@ -5,15 +5,15 @@ class Lunch < ApplicationRecord
   scope :in_current_quarter, -> { where(date: current_quarter) }
 
   BENEFITS_AVAILABLE_MEMBERS_COUNT = 3
-  TERM_START_MONTH = 8
+  DIFF_BETWEEN_JANUARY_AND_TERM_START_MOMTH = 7
 
   def self.current_quarter
-    today = Date.today
-    current_term_start_year = today.month >= TERM_START_MONTH ? today.year : today.year - 1
-    current_term_start_date = Date.new(current_term_start_year, TERM_START_MONTH)
-    3.step(12, 3)
-      .map { |n| current_term_start_date.next_month(n - 3) ... current_term_start_date.next_month(n) }
-      .detect { |quarter| quarter.cover?(today) }
+    beginning_of_current_quarter = Date.today
+      .prev_month(DIFF_BETWEEN_JANUARY_AND_TERM_START_MOMTH)
+      .beginning_of_quarter
+      .next_month(DIFF_BETWEEN_JANUARY_AND_TERM_START_MOMTH)
+    beginning_of_next_quarter = beginning_of_current_quarter.next_month(3)
+    beginning_of_current_quarter ... beginning_of_next_quarter
   end
 
   private
