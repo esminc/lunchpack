@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      member: メンバー
+      project: プロジェクト
+    attributes:
+      member:
+        hundle_name: ニックネーム
+        real_name: 氏名
+        projects: 所属プロジェクト
+      project:
+        name: プロジェクト名
+
+  dictionary:
+    message:
+      create:
+        complete: "%{record}を登録しました"
+      update:
+        complete: "%{record}を更新しました"
+      destroy:
+        complete: "%{record}を削除しました"
+        confirm: "%{record}を削除しますか？"

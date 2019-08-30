@@ -23,8 +23,7 @@ describe 'メンバー管理機能', type: :system do
         fill_in 'member[hundle_name]', with: 'hanako'
         fill_in 'member[real_name]', with: '山田花子'
         find('#submit-btn').click
-        expect(page).to have_content 'hanako'
-        expect(page).to have_content '山田花子'
+        expect(page).to have_content '山田花子を登録しました'
       end
     end
 
@@ -32,8 +31,8 @@ describe 'メンバー管理機能', type: :system do
       it '新規に追加できないこと' do
         find('#new-btn').click
         find('#submit-btn').click
-        expect(page).to have_content "Hundle name can't be blank"
-        expect(page).to have_content "Real name can't be blank"
+        expect(page).to have_content 'ニックネームを入力してください'
+        expect(page).to have_content '氏名を入力してください'
       end
     end
   end
@@ -44,8 +43,8 @@ describe 'メンバー管理機能', type: :system do
       fill_in 'member[hundle_name]', with: 'taro3'
       fill_in 'member[real_name]', with: '山下太郎'
       find('#submit-btn').click
+      expect(page).to have_content '山下太郎を更新しました'
       expect(page).to have_content 'taro3'
-      expect(page).to have_content '山下太郎'
     end
 
     it 'プロジェクトを選択できるか' do
@@ -61,8 +60,7 @@ describe 'メンバー管理機能', type: :system do
     it '削除できるか' do
       find('.delete-btn').click
       page.driver.browser.switch_to.alert.accept
-      expect(page).to_not have_content 'taro'
-      expect(page).to_not have_content '山田太郎'
+      expect(page).to have_content '山田太郎を削除しました'
     end
   end
 end

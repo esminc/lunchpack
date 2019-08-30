@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to projects_url, notice: 'Project was successfully created.'
+      redirect_to projects_url, notice: t('dictionary.message.create.complete', record: @project.name)
     else
       render :new
     end
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to projects_url, notice: 'Project was successfully updated.'
+      redirect_to projects_url, notice: t('dictionary.message.update.complete', record: @project.name)
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to projects_url, notice: 'Project was successfully destroyed.'
+    redirect_to projects_url, notice: t('dictionary.message.destroy.complete', record: @project.name)
   end
 
   private

@@ -1,3 +1,4 @@
+= render 'layouts/flash_messages'
 h3 プロジェクト
 = link_to new_project_path, id: 'new-btn', class: 'btn right'
   == material_icon.add
@@ -6,14 +7,14 @@ h3 プロジェクト
 table
   thead
     tr
-      th Name
+      th = Project.human_attribute_name(:name)
       th
 
   tbody
     - @projects.each do |project|
       tr
         td = project.name
-        td 
+        td
           = link_to mi.edit, edit_project_path(project), class: 'btn-small z-depth-0 edit-btn'
           |  
-          = link_to mi.delete, project, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
+          = link_to mi.delete, project, data: { confirm: t('dictionary.message.destroy.confirm', record: project.name) }, method: :delete, class: 'btn-small z-depth-0 delete-btn'

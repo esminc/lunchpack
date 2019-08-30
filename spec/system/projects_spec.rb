@@ -20,7 +20,7 @@ describe 'プロジェクト管理機能' do
         find('#new-btn').click
         fill_in 'project[name]', with: 'プロダクト'
         find('#submit-btn').click
-        expect(page).to have_content 'プロダクト'
+        expect(page).to have_content 'プロダクトを登録しました'
       end
     end
 
@@ -28,7 +28,7 @@ describe 'プロジェクト管理機能' do
       it '新規に追加できないこと' do
         find('#new-btn').click
         find('#submit-btn').click
-        expect(page).to have_content "Name can't be blank"
+        expect(page).to have_content 'プロジェクト名を入力してください'
       end
     end
   end
@@ -38,7 +38,7 @@ describe 'プロジェクト管理機能' do
       find('.edit-btn').click
       fill_in 'project[name]', with: 'eiwasan'
       find('#submit-btn').click
-      expect(page).to have_content 'eiwasan'
+      expect(page).to have_content 'eiwasanを更新しました'
     end
   end
 
@@ -46,7 +46,7 @@ describe 'プロジェクト管理機能' do
     it '削除できるか' do
       find('.delete-btn').click
       page.driver.browser.switch_to.alert.accept
-      expect(page).to_not have_content 'eiwakun'
+      expect(page).to have_content 'eiwakunを削除しました'
     end
   end
 end
