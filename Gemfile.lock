@@ -104,6 +104,7 @@ GEM
       multi_json
       request_store (>= 1.0)
     hashie (3.6.0)
+    high_voltage (3.1.2)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -308,6 +309,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails (~> 4.11)
   gon
+  high_voltage
   html2slim
   jbuilder (~> 2.5)
   jquery-rails

@@ -11,4 +11,6 @@
           = link_to 'メンバー', members_path
         li class=page_active(projects_path)
           = link_to 'プロジェクト', projects_path
+        li class=page_active(page_path('help'))
+          = link_to 'ヘルプ', page_path('help')
         li = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'waves-effect waves-light btn-small'

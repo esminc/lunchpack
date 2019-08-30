@@ -1,0 +1,25 @@
+@import 'materialize';
+#help-page-wrapper {
+  padding: 0 40px 20px 0;
+}
+
+.help-content {
+  margin-bottom: 50px;
+}
+
+.help-index {
+  @extend .teal-text;
+  font-weight: bold;
+}
+
+ul.default-list {
+  padding-left: 20px !important;
+
+  > li {
+    list-style-type: initial !important;
+  }
+}
+
+ol.default-list {
+  padding-left: 20px !important;
+}
