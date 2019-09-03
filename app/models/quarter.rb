@@ -1,0 +1,2 @@
+class Quarter < ApplicationRecord
+end
