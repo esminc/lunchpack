@@ -1,4 +1,8 @@
 class LunchesController < ApplicationController
+  def index
+    @lunches = Lunch.all
+  end
+
   def new
     set_variables_for_new_lunch_view
     @lunch = Lunch.new
