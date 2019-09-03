@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_065501) do
+ActiveRecord::Schema.define(version: 2019_09_03_043711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_065501) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "quarter_id"
+    t.index ["quarter_id"], name: "index_lunches_on_quarter_id"
   end
 
   create_table "lunches_members", id: false, force: :cascade do |t|
@@ -48,6 +50,15 @@ ActiveRecord::Schema.define(version: 2019_08_19_065501) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quarters", force: :cascade do |t|
+    t.integer "period"
+    t.integer "ordinal"
+    t.date "start_date"
+    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,4 +86,5 @@ ActiveRecord::Schema.define(version: 2019_08_19_065501) do
 
   add_foreign_key "assignments", "members"
   add_foreign_key "assignments", "projects"
+  add_foreign_key "lunches", "quarters"
 end
