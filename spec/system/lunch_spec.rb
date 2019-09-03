@@ -1,5 +1,27 @@
 require 'rails_helper'
 
+describe 'ランチ履歴の表示機能' do
+  let!(:project) { create(:project) }
+  let!(:member1) { create(:member, real_name: '鈴木一郎') }
+  let!(:member2) { create(:member, real_name: '鈴木二郎') }
+  let!(:member3) { create(:member, real_name: '鈴木三郎') }
+
+  before do
+    create(:member)
+    sign_in create(:user)
+    visit root_path
+    create(:lunch, members: [member1, member2, member3], date: Date.new(2019,9,15))
+    create(:lunch, members: [member1, member2, member3], date: Date.new(2019,12,15))
+  end
+
+  it 'クオーターごとに履歴が表示される' do
+    visit lunches_path
+    expect(page).to have_content('2019-09-15')
+    find('li.tab:nth-of-type(2)').click
+    expect(page).to have_content('2019-12-15')
+  end
+end
+
 describe '3人組を探す機能' do
   let!(:project) { create(:project) }
   let!(:member1) { create(:member, real_name: '鈴木一郎', projects: [project]) }
