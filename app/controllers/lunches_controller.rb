@@ -1,6 +1,7 @@
 class LunchesController < ApplicationController
   def index
     @lunches = Lunch.all
+    @quarters = Quarter.all
   end
 
   def new
@@ -9,7 +10,7 @@ class LunchesController < ApplicationController
   end
 
   def create
-    today = Date.today.next_month(3)
+    today = Date.today
     members = Member.where(real_name: params[:lunch][:members])
     @lunch = Lunch.new(date: today, members: members)
     if @lunch.save
