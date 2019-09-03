@@ -3,6 +3,7 @@ ja:
     models:
       member: メンバー
       project: プロジェクト
+      lunch: ランチ
     attributes:
       member:
         hundle_name: ニックネーム
@@ -10,6 +11,9 @@ ja:
         projects: 所属プロジェクト
       project:
         name: プロジェクト名
+      lunch:
+        date: 日付
+        members: 利用者
 
   dictionary:
     message:

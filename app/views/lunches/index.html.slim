@@ -3,11 +3,11 @@ h3 ランチ給付金利用履歴
 table
   thead
     tr
-      th = Member.human_attribute_name(:date)
-      th = Member.human_attribute_name(:members)
+      th = Lunch.human_attribute_name(:date)
+      th = Lunch.human_attribute_name(:members)
 
   tbody
-    - @lunches.each do |lunches|
+    - @lunches.latest.each do |lunches|
       tr
         td = lunches.date
         td = lunches.members.pluck(:real_name).join(',')
