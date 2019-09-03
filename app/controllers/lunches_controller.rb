@@ -14,7 +14,7 @@ class LunchesController < ApplicationController
     members = Member.where(real_name: params[:lunch][:members])
     @lunch = Lunch.new(date: today, members: members)
     if @lunch.save
-      redirect_to root_url, notice: t('dictionary.message.create.complete', record: "#{@lunch.members.pluck(:real_name).join(',')}のランチ")
+      redirect_to lunches_url, notice: t('dictionary.message.create.complete', record: "#{@lunch.members.pluck(:real_name).join(',')}のランチ")
     else
       set_variables_for_new_lunch_view
       render :new
