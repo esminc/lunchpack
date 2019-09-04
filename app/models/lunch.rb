@@ -5,6 +5,10 @@ class Lunch < ApplicationRecord
 
   BENEFITS_AVAILABLE_MEMBERS_COUNT = 3
 
+  def record_text
+    "#{members.pluck(:real_name).join(',')}の給付金利用履歴"
+  end
+
   private
 
   def must_have_benefits_available_count_members

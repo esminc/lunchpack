@@ -14,11 +14,18 @@ class LunchesController < ApplicationController
     quarter = Quarter.find_or_create_quarter(today)
     @lunch = quarter.lunches.build(date: today, members: members)
     if @lunch.save
-      redirect_to lunches_url, notice: t('dictionary.message.create.complete', record: "#{@lunch.members.pluck(:real_name).join(',')}のランチ")
+      redirect_to lunches_url, notice: t('dictionary.message.create.complete', record: @lunch.record_text)
     else
       set_variables_for_new_lunch_view
       render :new
     end
+  end
+
+  def destroy
+    @lunch = Lunch.find(params[:id])
+    record_text = @lunch.record_text
+    @lunch.destroy
+    redirect_to lunches_url, notice: t('dictionary.message.destroy.complete', record: record_text)
   end
 
   private

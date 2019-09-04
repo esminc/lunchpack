@@ -14,8 +14,11 @@ ul.tabs
         tr
           th = Lunch.human_attribute_name(:date)
           th = Lunch.human_attribute_name(:members)
+          th
       tbody
         - quarter.lunches.each do |lunch|
           tr
             td = lunch.date
             td = lunch.members.pluck(:real_name).join(',')
+            td
+              = link_to mi.delete, lunch, data: { confirm: t('dictionary.message.destroy.confirm', record: lunch.record_text) }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
