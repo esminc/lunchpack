@@ -3,8 +3,6 @@ class Lunch < ApplicationRecord
   has_and_belongs_to_many :members
   validate :must_have_benefits_available_count_members
 
-  scope :latest, -> { order('date DESC') }
-
   BENEFITS_AVAILABLE_MEMBERS_COUNT = 3
 
   before_validation :associate_quarter
