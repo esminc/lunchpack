@@ -24,7 +24,7 @@ class LunchesController < ApplicationController
 
   def set_variables_for_new_lunch_view
     @members = Member.includes(:projects)
-    gon.lunch_trios = Lunch.in_current_quarter.includes(:members).map(&:members)
+    gon.lunch_trios = Quarter.current_quarter.lunches.includes(:members).map(&:members)
     gon.login_member = Member.find_by(email: current_user.email)
   end
 end
