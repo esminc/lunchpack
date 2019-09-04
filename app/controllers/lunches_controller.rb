@@ -1,6 +1,5 @@
 class LunchesController < ApplicationController
   def index
-    @lunches = Lunch.all
     @quarters = Quarter.all
   end
 
