@@ -4,8 +4,8 @@ class Quarter < ApplicationRecord
   DIFF_BETWEEN_JANUARY_AND_TERM_START_MOMTH = 7
 
   class << self
-    def current_quarter
-      find_or_create_quarter(Date.today)
+    def current_quarter(today = Date.today)
+      find_or_create_quarter(today)
     end
 
     def find_or_create_quarter(date)
