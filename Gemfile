@@ -55,6 +55,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.8.0'
   gem 'factory_bot_rails', '~> 4.11'
+  gem 'bullet'
 end
 
 group :development do
@@ -69,7 +70,6 @@ group :development do
   gem 'binding_of_caller'
 
   gem 'spring-commands-rspec'
-  gem 'bullet'
 end
 
 group :test do
