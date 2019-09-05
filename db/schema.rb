@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_043711) do
+ActiveRecord::Schema.define(version: 2019_09_05_043337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 2019_09_03_043711) do
   end
 
   create_table "quarters", force: :cascade do |t|
-    t.integer "period"
-    t.integer "ordinal"
-    t.date "start_date"
-    t.date "end_date"
+    t.integer "period", null: false
+    t.integer "ordinal", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
