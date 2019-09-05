@@ -28,6 +28,29 @@ describe 'ランチ履歴の表示機能' do
   end
 end
 
+describe 'ランチ履歴の削除機能' do
+  before do
+    members = [
+      create(:member, real_name: '鈴木一郎'),
+      create(:member, real_name: '鈴木二郎'),
+      create(:member, real_name: '鈴木三郎')
+    ]
+    sign_in create(:user)
+    visit root_path
+    create_lunch(members, date: Date.new(2019,9,15))
+  end
+
+  it '削除ボタンを押すと履歴が削除できること' do
+    visit lunches_path
+    expect(page).to have_content('2019-09-15')
+    within('tr', text: '2019-09-15 鈴木一郎,鈴木二郎,鈴木三郎') do
+      click_on('delete')
+    end
+    page.driver.browser.switch_to.alert.accept
+    expect(page).to_not have_content('2019-09-15')
+  end
+end
+
 describe '3人組を探す機能' do
   let!(:project) { create(:project) }
   let!(:member1) { create(:member, real_name: '鈴木一郎', projects: [project]) }
