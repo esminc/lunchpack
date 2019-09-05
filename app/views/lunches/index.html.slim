@@ -15,7 +15,7 @@ ul.tabs
           th = Lunch.human_attribute_name(:date)
           th = Lunch.human_attribute_name(:members)
       tbody
-        - quarter.lunches.order(date: :desc).each do |lunch|
+        - quarter.lunches.each do |lunch|
           tr
             td = lunch.date
             td = lunch.members.pluck(:real_name).join(',')
