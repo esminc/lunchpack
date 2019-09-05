@@ -121,7 +121,7 @@ describe '3人組を探す機能' do
         find('.member-name', text: '鈴木二郎').click
         find('.member-name', text: '鈴木三郎').click
         find('#submit-btn').click
-        expect(page).to have_content '鈴木一郎,鈴木二郎,鈴木三郎のランチを登録しました'
+        expect(page).to have_content '鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました'
       end
     end
 
