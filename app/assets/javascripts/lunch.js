@@ -9,18 +9,21 @@ document.addEventListener('turbolinks:load', function() {
       if (Array.from(forms).every(form => form.value !==''))
         return;
 
-      member.classList.add('selected-row');
+      if (!member.classList.contains('unselectable-row')){
+        member.classList.add('selected-row');
 
-      noDisplayMember(members);
+        noDisplayMember();
 
-      const form = findEmptyForm(forms);
-      form.value = member.children[0].textContent;
+        const form = findEmptyForm(forms);
+        form.value = member.children[0].textContent;
 
-      form.addEventListener('click', function(){
-        form.value = '';
-        member.classList.remove('selected-row');
-        noDisplayMember(members);
-      });
+        form.addEventListener('click', function(){
+          form.value = '';
+          member.classList.remove('selected-row');
+          noDisplayMember(members);
+        });
+      }
+
     });
   }
 
@@ -35,11 +38,12 @@ document.addEventListener('turbolinks:load', function() {
   
 
   // どのメンバーを表示しないか
-  function noDisplayMember(members){
+  function noDisplayMember(){
     for(const member of members) {
       member.classList.remove('unselectable-row');
-      if (hasSameProjects(member) || isUsedBenefitWithSelectedMembers(member))
+      if (hasSameProjects(member) || isUsedBenefitWithSelectedMembers(member)){
         member.classList.add('unselectable-row');
+      }
     }
   }
 

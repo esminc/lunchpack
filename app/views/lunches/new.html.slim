@@ -6,7 +6,7 @@ h3 ランチに行くメンバーを探す
     .card-panel
       p class='teal-text'リストからメンバーを選んでください。
       #members-list
-        table#member-table.highlight
+        table#member-table
           - @members.each do |member|
             tr.member-row
               td.member-name = member.real_name
