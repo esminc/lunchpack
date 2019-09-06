@@ -21,6 +21,8 @@ class Quarter < ApplicationRecord
       quarter
     end
 
+    private
+
     def current_period(date)
       # 例えば2019年は40期なので、西暦から期に変換する差が1979
       date.prev_month(DIFF_BETWEEN_JANUARY_AND_TERM_START_MOMTH).year - 1979
