@@ -17,4 +17,4 @@ table
         td
           = link_to mi.edit, edit_project_path(project), class: 'btn-small z-depth-0 edit-btn'
           |  
-          = link_to mi.delete, project, data: { confirm: t('dictionary.message.destroy.confirm', record: project.name) }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
+          = link_to mi.delete, project, data: { confirm: t('dictionary.message.destroy.confirm', record_label: project.name) }, method: :delete, class: 'btn-small z-depth-0 delete-btn'

@@ -18,9 +18,9 @@ ja:
   dictionary:
     message:
       create:
-        complete: "%{record}を登録しました"
+        complete: "%{record_label}を登録しました"
       update:
-        complete: "%{record}を更新しました"
+        complete: "%{record_label}を更新しました"
       destroy:
-        complete: "%{record}を削除しました"
-        confirm: "%{record}を削除しますか？"
+        complete: "%{record_label}を削除しました"
+        confirm: "%{record_label}を削除しますか？"
