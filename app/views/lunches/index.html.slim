@@ -1,0 +1,21 @@
+= render 'layouts/flash_messages'
+h3 ランチ給付金利用履歴
+
+ul.tabs
+  - @quarters.each do |quarter|
+    li.tab.col.s3
+      a href="##{quarter.period}-#{quarter.ordinal}"
+        = "#{quarter.period}期-#{quarter.ordinal}Q"
+
+- @quarters.each do |quarter|
+  div id="#{quarter.period}-#{quarter.ordinal}"
+    table
+      thead
+        tr
+          th = Lunch.human_attribute_name(:date)
+          th = Lunch.human_attribute_name(:members)
+      tbody
+        - quarter.lunches.each do |lunch|
+          tr
+            td = lunch.date
+            td = lunch.members.pluck(:real_name).join(',')

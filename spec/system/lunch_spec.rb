@@ -1,5 +1,33 @@
 require 'rails_helper'
 
+def create_lunch(members, date: Date.today)
+  quarter = Quarter.find_or_create_quarter(date)
+  create(:lunch, members: members, date: date, quarter: quarter)
+end
+
+describe 'ランチ履歴の表示機能' do
+  before do
+    members = [
+      create(:member, real_name: '鈴木一郎'),
+      create(:member, real_name: '鈴木二郎'),
+      create(:member, real_name: '鈴木三郎')
+    ]
+    sign_in create(:user)
+    visit root_path
+    create_lunch(members, date: Date.new(2019,9,15))
+    create_lunch(members, date: Date.new(2019,9,16))
+    create_lunch(members, date: Date.new(2019,12,15))
+  end
+
+  it 'クオーターごとに履歴が表示される' do
+    visit lunches_path
+    expect(page).to have_content('2019-09-15')
+    expect(page).to have_content('2019-09-16')
+    click_on('40期-2Q')
+    expect(page).to have_content('2019-12-15')
+  end
+end
+
 describe '3人組を探す機能' do
   let!(:project) { create(:project) }
   let!(:member1) { create(:member, real_name: '鈴木一郎', projects: [project]) }
@@ -36,7 +64,7 @@ describe '3人組を探す機能' do
 
     context 'すでにランチに行っているメンバー同士の組み合わせを選択する場合' do
       before do
-        create(:lunch, members: [member1, member2, member3])
+        create_lunch([member1, member2, member3])
         visit root_path
       end
 

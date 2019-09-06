@@ -16,8 +16,9 @@ end
 CSV.foreach('db/seed/lunch-40-1Q.csv') do |row|
   date = Date.parse(row[0])
   names = row[1].split('、')
-  Lunch.create!(
+  quarter = Quarter.find_or_create_quarter(date)
+  quarter.lunches.create!(
     date: date,
-    members: Member.where(real_name: names),
+    members: Member.where(real_name: names)
   )
 end

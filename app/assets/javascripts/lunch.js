@@ -1,4 +1,6 @@
 document.addEventListener('turbolinks:load', function() {
+  $('.tabs').tabs();
+
   const members = document.querySelectorAll('.member');
 
   for(const member of members) {
