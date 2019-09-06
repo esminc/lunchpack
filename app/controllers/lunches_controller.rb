@@ -14,7 +14,7 @@ class LunchesController < ApplicationController
     quarter = Quarter.find_or_create_quarter(today)
     @lunch = quarter.lunches.build(date: today, members: members)
     if @lunch.save
-      redirect_to lunches_url, notice: t('dictionary.message.create.complete', record_label: @lunch.record_label)
+      redirect_to lunches_url, notice: t('dictionary.message.create.complete', record_label: @lunch.label_with_member_names)
     else
       set_variables_for_new_lunch_view
       render :new
@@ -23,7 +23,7 @@ class LunchesController < ApplicationController
 
   def destroy
     @lunch = Lunch.find(params[:id])
-    record_label = @lunch.record_label
+    record_label = @lunch.label_with_member_names
     @lunch.destroy
     redirect_to lunches_url, notice: t('dictionary.message.destroy.complete', record_label: record_label)
   end
