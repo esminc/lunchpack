@@ -42,12 +42,14 @@ describe 'ランチ履歴の削除機能' do
 
   it '削除ボタンを押すと履歴が削除できること' do
     visit lunches_path
-    expect(page).to have_content('2019-09-15')
     within('tr', text: '2019-09-15 鈴木一郎,鈴木二郎,鈴木三郎') do
       click_on('delete')
     end
     page.driver.browser.switch_to.alert.accept
-    expect(page).to_not have_content('2019-09-15')
+    expect(page).to have_content('2019-09-15 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を削除しました')
+    within('table') do
+      expect(page).to_not have_content('2019-09-15 鈴木一郎,鈴木二郎,鈴木三郎')
+    end
   end
 end
 

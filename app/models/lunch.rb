@@ -5,8 +5,8 @@ class Lunch < ApplicationRecord
 
   BENEFITS_AVAILABLE_MEMBERS_COUNT = 3
 
-  def label_with_member_names
-    "#{members.pluck(:real_name).join(',')}の給付金利用履歴"
+  def label_with_date_and_member_names
+    "#{date} #{members.pluck(:real_name).join(',')}の給付金利用履歴"
   end
 
   private
