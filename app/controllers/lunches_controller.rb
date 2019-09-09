@@ -12,7 +12,7 @@ class LunchesController < ApplicationController
     today = Date.today
     members = Member.where(real_name: params[:lunch][:members])
     quarter = Quarter.find_or_create_quarter(today)
-    @lunch = quarter.lunches.build(date: today, members: members)
+    @lunch = quarter.lunches.build(date: today, members: members, user: current_user)
     if @lunch.save
       redirect_to lunches_url, notice: t('dictionary.message.create.complete', record_label: @lunch.label_with_date_and_member_names)
     else
