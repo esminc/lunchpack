@@ -15,7 +15,7 @@ document.addEventListener('turbolinks:load', function() {
         noDisplayMember();
 
         const form = findEmptyForm(forms);
-        form.value = member.children[0].textContent;
+        form.value = member.children[1].textContent;
 
         form.addEventListener('click', function(){
           form.value = '';
@@ -23,7 +23,6 @@ document.addEventListener('turbolinks:load', function() {
           noDisplayMember(members);
         });
       }
-
     });
   }
 
@@ -31,7 +30,7 @@ document.addEventListener('turbolinks:load', function() {
 
   function fillInFirstMemberWithLoginMember() {
     for(const member of members) {
-      if (member.children[0].textContent === gon.login_member["real_name"])
+      if (member.children[1].textContent === gon.login_member["real_name"])
         member.click();
     }
   }
@@ -41,6 +40,8 @@ document.addEventListener('turbolinks:load', function() {
   function noDisplayMember(){
     for(const member of members) {
       member.classList.remove('unselectable-row');
+      member.children[0].textContent = '';
+
       if (hasSameProjects(member) || isUsedBenefitWithSelectedMembers(member)){
         member.classList.add('unselectable-row');
       }
@@ -50,24 +51,32 @@ document.addEventListener('turbolinks:load', function() {
   function hasSameProjects(member) {
     const selectedProjects = Array
       .from(document.querySelectorAll('.selected-row'))
-      .map(row => row.children[1].textContent.split(','))
+      .map(row => row.children[2].textContent.split(','))
       .flat()
       .filter(n => n !== '');
-    const memberProjects = member.children[1].textContent.split(',');
+    const memberProjects = member.children[2].textContent.split(',');
     return existsIntersection(memberProjects, selectedProjects);
   }
 
   function isUsedBenefitWithSelectedMembers(member) {
-    const memberName = member.children[0].textContent;
+    const memberName = member.children[1].textContent;
     const selectedNames = Array
       .from(document.querySelectorAll('.selected-row'))
-      .map(row => row.children[0].textContent);
+      .map(row => row.children[1].textContent);
+    const ns = [];
     for(const trio of gon.lunch_trios) {
       const names = trio.map(e => e["real_name"]);
-      if (names.some(name => name === memberName) && existsIntersection(names, selectedNames))
-        return true;
+      for(selectedName of selectedNames) {
+        if ((names.includes(memberName)) && (names.includes(selectedName)))
+          ns.push(selectedName);
+      }
     };
-    return false;
+    if (ns.length > 0){
+      member.children[0].textContent = `${ns.flat().join(',')}と行ったことがあります。`;
+      return true;
+    } else {
+      return false;
+    };
   }
 
   function existsIntersection(arr1, arr2){

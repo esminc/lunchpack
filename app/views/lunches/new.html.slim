@@ -9,6 +9,7 @@ h3 ランチに行くメンバーを探す
         table#member-table
           - @members.each do |member|
             tr.member-row
+              td.unselectable-reason
               td.member-name = member.real_name
               td.member-project = member.projects.pluck(:name).join(',')
   .col.s6
