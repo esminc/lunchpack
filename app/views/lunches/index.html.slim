@@ -22,4 +22,4 @@ ul.tabs
             td = lunch.members.pluck(:real_name).join(',')
             td
               - if lunch.created_by == current_user
-                = link_to mi.delete, lunch, data: { confirm: t('dictionary.message.destroy.confirm', record_label: lunch.label_with_date_and_member_names) }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
+                = link_to mi.delete, lunch, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: lunch.label_with_date_and_member_names) }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
