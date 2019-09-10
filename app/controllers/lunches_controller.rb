@@ -23,9 +23,14 @@ class LunchesController < ApplicationController
 
   def destroy
     @lunch = Lunch.find(params[:id])
-    record_label = @lunch.label_with_date_and_member_names
-    @lunch.destroy
-    redirect_to lunches_url, notice: t('dictionary.message.destroy.complete', record_label: record_label)
+
+    if @lunch.created_by == current_user
+      record_label = @lunch.label_with_date_and_member_names
+      @lunch.destroy
+      redirect_to lunches_url, notice: t('dictionary.message.destroy.complete', record_label: record_label)
+    else
+      redirect_to lunches_url, notice: '削除対象となったランチはあなたが作成したものではないので削除できませんでした'
+    end
   end
 
   private
