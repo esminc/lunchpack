@@ -97,11 +97,10 @@ describe '3人組を探す機能' do
   end
 
   describe 'メンバーを選択する' do
-    it '名前をクリックすると枠に移動するか' do
+    it '名前をクリックすると枠に名前が移動すること' do
       find('.member-name', text: '山田太郎').click
 
       expect(first('.member-form').value).to eq '山田太郎'
-      expect(find('#members-list')).to_not have_content('山田太郎')
     end
 
     context '同じプロジェクトに所属するメンバー同士の組み合わせの場合' do
