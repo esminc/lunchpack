@@ -13,18 +13,22 @@ describe 'ランチ履歴の表示機能' do
       create(:member, real_name: '鈴木三郎')
     ]
     login_user = create(:user)
-    sign_in login_user
-    visit root_path
     create_lunch(members, login_user, date: Date.new(2019,9,15))
     create_lunch(members, login_user, date: Date.new(2019,9,16))
     create_lunch(members, login_user, date: Date.new(2019,12,15))
+
+    sign_in login_user
+    visit root_path
   end
 
   it 'クオーターごとに履歴が表示される' do
     visit lunches_path
+
     expect(page).to have_content('2019-09-15')
     expect(page).to have_content('2019-09-16')
+
     click_on('40期-2Q')
+
     expect(page).to have_content('2019-12-15')
   end
 end
@@ -34,14 +38,17 @@ describe 'ランチ履歴を登録したユーザーだけその履歴を削除�
     create(:member, real_name: '鈴木一郎')
     create(:member, real_name: '鈴木二郎')
     create(:member, real_name: '鈴木三郎')
+
     sign_in create(:user)
     visit root_path
+
     find('.member-name', text: '鈴木一郎').click
     find('.member-name', text: '鈴木二郎').click
     find('.member-name', text: '鈴木三郎').click
     within('.lunch-form') do
       click_on('ランチに行く')
     end
+
     visit lunches_path
   end
 
@@ -50,6 +57,7 @@ describe 'ランチ履歴を登録したユーザーだけその履歴を削除�
       click_on('delete')
     end
     page.driver.browser.switch_to.alert.accept
+
     expect(page).to have_content('鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を削除しました')
     within('table') do
       expect(page).to_not have_content('鈴木一郎,鈴木二郎,鈴木三郎')
@@ -59,6 +67,7 @@ describe 'ランチ履歴を登録したユーザーだけその履歴を削除�
   it '他人が登録した履歴には削除ボタンが無いこと' do
     sign_in create(:user, email: 'other@esm.co.jp')
     visit lunches_path
+
     within('tr', text: '鈴木一郎,鈴木二郎,鈴木三郎') do
       expect(page).to_not have_content('delete')
     end
@@ -74,6 +83,7 @@ describe '3人組を探す機能' do
 
   before do
     create(:member, projects: [project])
+
     sign_in login_user
     visit root_path
   end
@@ -89,6 +99,7 @@ describe '3人組を探す機能' do
   describe 'メンバーを選択する' do
     it '名前をクリックすると枠に移動するか' do
       find('.member-name', text: '山田太郎').click
+
       expect(first('.member-form').value).to eq '山田太郎'
       expect(find('#members-list')).to_not have_content('山田太郎')
     end
@@ -96,6 +107,7 @@ describe '3人組を探す機能' do
     context '同じプロジェクトに所属するメンバー同士の組み合わせの場合' do
       it 'メンバーの表示が消えて選択できない' do
         find('.member-name', text: '山田太郎').click
+
         expect(find('#members-list')).to_not have_content('鈴木一郎')
       end
     end
@@ -103,12 +115,14 @@ describe '3人組を探す機能' do
     context 'すでにランチに行っているメンバー同士の組み合わせを選択する場合' do
       before do
         create_lunch([member1, member2, member3], login_user)
+
         visit root_path
       end
 
       context 'ランチに行ったクウォーターと同じ期間の場合' do
         it 'すでにランチに行ったメンバーの表示が消えること' do
           find('.member-name', text: '鈴木一郎').click
+
           expect(find('#members-list')).to_not have_content('鈴木二郎')
           expect(find('#members-list')).to_not have_content('鈴木三郎')
         end
@@ -122,6 +136,7 @@ describe '3人組を探す機能' do
 
         it 'すでにランチに行ったメンバーが表示があること' do
           find('.member-name', text: '鈴木一郎').click
+
           expect(find('#members-list')).to have_content('鈴木二郎')
           expect(find('#members-list')).to have_content('鈴木三郎')
         end
@@ -136,6 +151,7 @@ describe '3人組を探す機能' do
         find('.member-name', text: '鈴木二郎').click
         find('.member-name', text: '鈴木三郎').click
         find('#submit-btn').click
+
         expect(page).to have_content '鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました'
       end
     end
@@ -145,6 +161,7 @@ describe '3人組を探す機能' do
         find('.member-name', text: '鈴木一郎').click
         find('.member-name', text: '鈴木二郎').click
         find('#submit-btn').click
+
         expect(page).to have_content '3人のメンバーを入力してください'
       end
     end
@@ -153,6 +170,7 @@ describe '3人組を探す機能' do
   describe 'ログインしているユーザーが自動でフォームの一人目に入力される機能' do
     before do
       create(:member, real_name: 'ろぐいん', email: 'sample@esm.co.jp')
+
       visit root_path
     end
 
