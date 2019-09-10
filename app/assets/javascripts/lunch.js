@@ -41,21 +41,35 @@ document.addEventListener('turbolinks:load', function() {
     for(const member of members) {
       member.classList.remove('unselectable-row');
       member.children[0].textContent = '';
-
-      if (hasSameProjects(member) || isUsedBenefitWithSelectedMembers(member)){
+      const bool1 = hasSameProjects(member);
+      const bool2 = isUsedBenefitWithSelectedMembers(member);
+      if (bool1 || bool2){
         member.classList.add('unselectable-row');
       }
     }
   }
 
   function hasSameProjects(member) {
+    const ns = [];
     const selectedProjects = Array
       .from(document.querySelectorAll('.selected-row'))
       .map(row => row.children[2].textContent.split(','))
       .flat()
       .filter(n => n !== '');
-    const memberProjects = member.children[2].textContent.split(',');
-    return existsIntersection(memberProjects, selectedProjects);
+    const selectedMemberRows = document.querySelectorAll('.selected-row');
+    const memberProjects = member.children[2].textContent.split(',').filter(n => n !== '');
+    for(const selectedMemberRow of selectedMemberRows) {
+      const selectedMemberProjects = selectedMemberRow.children[2].textContent.split(',').filter(n => n !== '');
+      if (existsIntersection(memberProjects, selectedMemberProjects)){
+        ns.push(selectedMemberRow.children[1].textContent);
+      }
+    }
+    if (ns.length > 0){
+      member.children[0].textContent += `${ns.flat().join(',')}と同じプロジェクトです。`;
+      return true;
+    } else {
+      return false;
+    };
   }
 
   function isUsedBenefitWithSelectedMembers(member) {
@@ -72,7 +86,7 @@ document.addEventListener('turbolinks:load', function() {
       }
     };
     if (ns.length > 0){
-      member.children[0].textContent = `${ns.flat().join(',')}と行ったことがあります。`;
+      member.children[0].textContent += `${ns.flat().join(',')}と行ったことがあります。`;
       return true;
     } else {
       return false;
