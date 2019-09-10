@@ -1,5 +1,5 @@
 class Lunch < ApplicationRecord
-  belongs_to :user
+  belongs_to :created_by,  foreign_key: :user_id, class_name: 'User'
   belongs_to :quarter
   has_and_belongs_to_many :members
   validate :must_have_benefits_available_count_members

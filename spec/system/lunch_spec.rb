@@ -2,7 +2,7 @@ require 'rails_helper'
 
 def create_lunch(members, user, date: Date.today)
   quarter = Quarter.find_or_create_quarter(date)
-  create(:lunch, members: members, date: date, quarter: quarter, user: user)
+  create(:lunch, members: members, date: date, quarter: quarter, created_by: user)
 end
 
 describe 'ランチ履歴の表示機能' do
