@@ -105,10 +105,22 @@ describe '3人組を探す機能' do
     end
 
     context '同じプロジェクトに所属するメンバー同士の組み合わせの場合' do
-      it 'メンバーの表示が消えて選択できない' do
+      before do
         find('.member-name', text: '山田太郎').click
+      end
 
-        expect(find('#members-list')).to_not have_content('鈴木一郎')
+      it '〜と同じプロジェクトのためという理由が表示がされること' do
+        within('.member-row', text: '鈴木一郎') do
+          expect(page).to have_content('山田太郎と同じプロジェクトです')
+        end
+      end
+
+      it 'クリックしても名前がフォームに移動しないこと' do
+        find('.member-row', text: '鈴木一郎').click
+
+        within('.lunch-form') do
+          expect(page).to_not have_content('鈴木一郎')
+        end
       end
     end
 
