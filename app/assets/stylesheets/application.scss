@@ -47,6 +47,6 @@ body{
 }
 
 .unselectable-row{
-  background-color: gray;
+  @extend .grey, .lighten-2;
   cursor: not-allowed;
 }
