@@ -36,7 +36,7 @@ class LunchesController < ApplicationController
   private
 
   def set_variables_for_new_lunch_view
-    @members = Member.includes(:projects).where(retired: false)
+    @members = Member.includes(:projects).where(retired: false).order(:created_at)
     gon.lunch_trios = Quarter.current_quarter.lunches.includes(:members).map(&:members)
     gon.login_member = Member.find_by(email: current_user.email)
   end
