@@ -108,9 +108,9 @@ describe '3人組を探す機能' do
         find('.member-name', text: '山田太郎').click
       end
 
-      it '〜と同じプロジェクトのためという理由が表示がされること' do
+      it '〜と同じプロジェクトという理由が表示がされること' do
         within('.member-row', text: '鈴木一郎') do
-          expect(page).to have_content('山田太郎と同じプロジェクトです')
+          expect(page).to have_content('山田太郎と同じプロジェクト')
         end
       end
 
@@ -131,14 +131,14 @@ describe '3人組を探す機能' do
       end
 
       context 'ランチに行ったクウォーターと同じ期間の場合' do
-        it '〜と行ったことがあるという理由が表示がされること' do
+        it '〜とランチ済みという理由が表示がされること' do
           find('.member-name', text: '鈴木一郎').click
 
           within('.member-row', text: '鈴木二郎') do
-            expect(page).to have_content('鈴木一郎と行ったことがあります')
+            expect(page).to have_content('鈴木一郎とランチ済み')
           end
           within('.member-row', text: '鈴木三郎') do
-            expect(page).to have_content('鈴木一郎と行ったことがあります')
+            expect(page).to have_content('鈴木一郎とランチ済み')
           end
         end
 
@@ -163,14 +163,14 @@ describe '3人組を探す機能' do
           visit root_path
         end
 
-        it '〜と行ったことがあるという理由が表示がないこと' do
+        it '〜とランチ済みという理由が表示がないこと' do
           find('.member-name', text: '鈴木一郎').click
 
           within('.member-row', text: '鈴木二郎') do
-            expect(page).to_not have_content('鈴木一郎と行ったことがあります')
+            expect(page).to_not have_content('鈴木一郎とランチ済み')
           end
           within('.member-row', text: '鈴木三郎') do
-            expect(page).to_not have_content('鈴木一郎と行ったことがあります')
+            expect(page).to_not have_content('鈴木一郎とランチ済み')
           end
         end
       end
