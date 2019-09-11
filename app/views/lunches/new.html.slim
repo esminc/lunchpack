@@ -7,6 +7,10 @@ h3 ランチに行くメンバーを探す
       p class='teal-text'リストからメンバーを選んでください。
       #members-list
         table#member-table
+          tr
+            th 選べない理由
+            th = Member.human_attribute_name(:real_name)
+            th = Member.human_attribute_name(:projects)
           - @members.each do |member|
             tr.member-row
               td.unselectable-reason
