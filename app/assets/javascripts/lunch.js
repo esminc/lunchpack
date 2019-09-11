@@ -15,7 +15,7 @@ document.addEventListener('turbolinks:load', function() {
         noDisplayMember();
 
         const form = findEmptyForm(forms);
-        form.value = member.children[1].textContent;
+        form.value = member.querySelector('.member-name').textContent;
 
         form.addEventListener('click', function(){
           form.value = '';
@@ -30,7 +30,7 @@ document.addEventListener('turbolinks:load', function() {
 
   function fillInFirstMemberWithLoginMember() {
     for(const member of members) {
-      if (member.children[1].textContent === gon.login_member["real_name"])
+      if (member.querySelector('.member-name').textContent === gon.login_member["real_name"])
         member.click();
     }
   }
@@ -40,7 +40,7 @@ document.addEventListener('turbolinks:load', function() {
   function noDisplayMember(){
     for(const member of members) {
       member.classList.remove('unselectable-row');
-      member.children[0].textContent = '';
+      member.querySelector('.unselectable-reason').textContent = '';
       const bool1 = hasSameProjects(member);
       const bool2 = isUsedBenefitWithSelectedMembers(member);
       if (bool1 || bool2){
@@ -53,19 +53,19 @@ document.addEventListener('turbolinks:load', function() {
     const ns = [];
     const selectedProjects = Array
       .from(document.querySelectorAll('.selected-row'))
-      .map(row => row.children[2].textContent.split(','))
+      .map(row => row.querySelector('.member-project').textContent.split(','))
       .flat()
       .filter(n => n !== '');
     const selectedMemberRows = document.querySelectorAll('.selected-row');
-    const memberProjects = member.children[2].textContent.split(',').filter(n => n !== '');
+    const memberProjects = member.querySelector('.member-project').textContent.split(',').filter(n => n !== '');
     for(const selectedMemberRow of selectedMemberRows) {
-      const selectedMemberProjects = selectedMemberRow.children[2].textContent.split(',').filter(n => n !== '');
+      const selectedMemberProjects = selectedMemberRow.querySelector('.member-project').textContent.split(',').filter(n => n !== '');
       if (existsIntersection(memberProjects, selectedMemberProjects)){
-        ns.push(selectedMemberRow.children[1].textContent);
+        ns.push(selectedMemberRow.querySelector('.member-name').textContent);
       }
     }
     if (ns.length > 0){
-      member.children[0].textContent += `${ns.flat().join(',')}と同じプロジェクトです。`;
+      member.querySelector('.unselectable-reason').textContent += `${ns.flat().join(',')}と同じプロジェクトです。`;
       return true;
     } else {
       return false;
@@ -73,10 +73,10 @@ document.addEventListener('turbolinks:load', function() {
   }
 
   function isUsedBenefitWithSelectedMembers(member) {
-    const memberName = member.children[1].textContent;
+    const memberName = member.querySelector('.member-name').textContent;
     const selectedNames = Array
       .from(document.querySelectorAll('.selected-row'))
-      .map(row => row.children[1].textContent);
+      .map(row => row.querySelector('.member-name').textContent);
     const ns = [];
     for(const trio of gon.lunch_trios) {
       const names = trio.map(e => e["real_name"]);
@@ -86,7 +86,7 @@ document.addEventListener('turbolinks:load', function() {
       }
     };
     if (ns.length > 0){
-      member.children[0].textContent += `${ns.flat().join(',')}と行ったことがあります。`;
+      member.querySelector('.unselectable-reason').textContent += `${ns.flat().join(',')}と行ったことがあります。`;
       return true;
     } else {
       return false;
