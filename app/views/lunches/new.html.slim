@@ -8,14 +8,14 @@ h3 ランチに行くメンバーを探す
       #members-list
         table#member-table
           tr
-            th 選べない理由
             th = Member.human_attribute_name(:real_name)
             th = Member.human_attribute_name(:projects)
+            th 選べない理由
           - @members.each do |member|
             tr.member-row
-              td.unselectable-reason
               td.member-name = member.real_name
               td.member-project = member.projects.pluck(:name).join(',')
+              td.unselectable-reason
   .col.s3
     = form_with model: @lunch, local: true, class: 'lunch-form' do |f|
       - if @lunch.errors.any?
