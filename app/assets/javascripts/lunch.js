@@ -1,26 +1,26 @@
 document.addEventListener('turbolinks:load', function() {
   $('.tabs').tabs();
 
-  const members = document.querySelectorAll('.member-row');
+  const memberRows = document.querySelectorAll('.member-row');
 
-  for(const member of members) {
-    member.addEventListener('click', function(){
+  for(const memberRow of memberRows) {
+    memberRow.addEventListener('click', function(){
       const forms = document.querySelectorAll('.member-form');
       if (Array.from(forms).every(form => form.value !==''))
         return;
 
-      if (!member.classList.contains('unselectable-row')){
-        member.classList.add('selected-row');
+      if (!memberRow.classList.contains('unselectable-row')){
+        memberRow.classList.add('selected-row');
 
         noDisplayMember();
 
         const form = findEmptyForm(forms);
-        form.value = member.querySelector('.member-name').textContent;
+        form.value = memberRow.querySelector('.member-name').textContent;
 
         form.addEventListener('click', function(){
           form.value = '';
-          member.classList.remove('selected-row');
-          noDisplayMember(members);
+          memberRow.classList.remove('selected-row');
+          noDisplayMember();
         });
       }
     });
@@ -29,27 +29,27 @@ document.addEventListener('turbolinks:load', function() {
   fillInFirstMemberWithLoginMember();
 
   function fillInFirstMemberWithLoginMember() {
-    for(const member of members) {
-      if (member.querySelector('.member-name').textContent === gon.login_member["real_name"])
-        member.click();
+    for(const memberRow of memberRows) {
+      if (memberRow.querySelector('.member-name').textContent === gon.login_member["real_name"])
+        memberRow.click();
     }
   }
   
 
   // どのメンバーを表示しないか
   function noDisplayMember(){
-    for(const member of members) {
-      member.classList.remove('unselectable-row');
-      member.querySelector('.unselectable-reason').textContent = '';
-      const bool1 = hasSameProjects(member);
-      const bool2 = isUsedBenefitWithSelectedMembers(member);
+    for(const memberRow of memberRows) {
+      memberRow.classList.remove('unselectable-row');
+      memberRow.querySelector('.unselectable-reason').textContent = '';
+      const bool1 = hasSameProjects(memberRow);
+      const bool2 = isUsedBenefitWithSelectedMembers(memberRow);
       if (bool1 || bool2){
-        member.classList.add('unselectable-row');
+        memberRow.classList.add('unselectable-row');
       }
     }
   }
 
-  function hasSameProjects(member) {
+  function hasSameProjects(memberRow) {
     const ns = [];
     const selectedProjects = Array
       .from(document.querySelectorAll('.selected-row'))
@@ -57,7 +57,7 @@ document.addEventListener('turbolinks:load', function() {
       .flat()
       .filter(n => n !== '');
     const selectedMemberRows = document.querySelectorAll('.selected-row');
-    const memberProjects = member.querySelector('.member-project').textContent.split(',').filter(n => n !== '');
+    const memberProjects = memberRow.querySelector('.member-project').textContent.split(',').filter(n => n !== '');
     for(const selectedMemberRow of selectedMemberRows) {
       const selectedMemberProjects = selectedMemberRow.querySelector('.member-project').textContent.split(',').filter(n => n !== '');
       if (existsIntersection(memberProjects, selectedMemberProjects)){
@@ -65,15 +65,15 @@ document.addEventListener('turbolinks:load', function() {
       }
     }
     if (ns.length > 0){
-      member.querySelector('.unselectable-reason').textContent += `${ns.flat().join(',')}と同じプロジェクトです。`;
+      memberRow.querySelector('.unselectable-reason').textContent += `${ns.flat().join(',')}と同じプロジェクトです。`;
       return true;
     } else {
       return false;
     };
   }
 
-  function isUsedBenefitWithSelectedMembers(member) {
-    const memberName = member.querySelector('.member-name').textContent;
+  function isUsedBenefitWithSelectedMembers(memberRow) {
+    const memberName = memberRow.querySelector('.member-name').textContent;
     const selectedNames = Array
       .from(document.querySelectorAll('.selected-row'))
       .map(row => row.querySelector('.member-name').textContent);
@@ -86,7 +86,7 @@ document.addEventListener('turbolinks:load', function() {
       }
     };
     if (ns.length > 0){
-      member.querySelector('.unselectable-reason').textContent += `${ns.flat().join(',')}と行ったことがあります。`;
+      memberRow.querySelector('.unselectable-reason').textContent += `${ns.flat().join(',')}と行ったことがあります。`;
       return true;
     } else {
       return false;
