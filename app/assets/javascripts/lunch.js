@@ -65,7 +65,7 @@ document.addEventListener('turbolinks:load', function() {
       }
     }
     if (ns.length > 0){
-      memberRow.querySelector('.unselectable-reason').textContent += `${ns.flat().join(',')}と同じプロジェクトです。`;
+      memberRow.querySelector('.unselectable-reason').textContent += `${ns.flat().join(',')}と同じプロジェクト`;
       return true;
     } else {
       return false;
@@ -86,7 +86,7 @@ document.addEventListener('turbolinks:load', function() {
       }
     };
     if (ns.length > 0){
-      memberRow.querySelector('.unselectable-reason').textContent += `${ns.flat().join(',')}と行ったことがあります。`;
+      memberRow.querySelector('.unselectable-reason').textContent += `\n${ns.flat().join(',')}とランチ済み`;
       return true;
     } else {
       return false;
