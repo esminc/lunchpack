@@ -12,7 +12,7 @@ document.addEventListener('turbolinks:load', function() {
       if (!memberRow.classList.contains('unselectable-row')){
         memberRow.classList.add('selected-row');
 
-        noDisplayMember();
+        ProcessUnselectableMemberRows();
 
         const form = findEmptyForm(forms);
         form.value = memberRow.querySelector('.member-name').textContent;
@@ -20,7 +20,7 @@ document.addEventListener('turbolinks:load', function() {
         form.addEventListener('click', function(){
           form.value = '';
           memberRow.classList.remove('selected-row');
-          noDisplayMember();
+          ProcessUnselectableMemberRows();
         });
       }
     });
@@ -35,9 +35,8 @@ document.addEventListener('turbolinks:load', function() {
     }
   }
 
-
-  // どのメンバーを表示しないか
-  function noDisplayMember(){
+  // 選択できないメンバーに関する処理
+  function ProcessUnselectableMemberRows(){
     for(const memberRow of memberRows) {
       memberRow.classList.remove('unselectable-row');
       memberRow.querySelector('.unselectable-reason').textContent = '';
