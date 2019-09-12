@@ -3,6 +3,7 @@ class Lunch < ApplicationRecord
   belongs_to :quarter
   has_and_belongs_to_many :members
   validate :must_have_benefits_available_count_members
+  validate :must_has_unique_trio_in_current_quarter
 
   BENEFITS_AVAILABLE_MEMBERS_COUNT = 3
 
@@ -16,5 +17,16 @@ class Lunch < ApplicationRecord
     return if members.size == BENEFITS_AVAILABLE_MEMBERS_COUNT
 
     errors.add(:members, "#{BENEFITS_AVAILABLE_MEMBERS_COUNT}人のメンバーを入力してください")
+  end
+
+  # 現在のクォーター内で同じメンバーの組み合わせでランチに行ってないことを検証
+  def must_has_unique_trio_in_current_quarter
+    lunches_in_current_quarter = Quarter.current_quarter.lunches.includes(:members)
+    lunches_in_current_quarter.each do |lunch|
+      lunched_members = lunch.members & self.members
+      if lunched_members.size >= 2
+        errors.add(:members, "#{lunched_members.map(&:real_name).join(',')}は#{lunch.date}にランチ済みです")
+      end
+    end
   end
 end
