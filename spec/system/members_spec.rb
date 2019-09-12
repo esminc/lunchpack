@@ -56,6 +56,35 @@ describe 'メンバー管理機能', type: :system do
     end
   end
 
+  describe 'メンバーを退職済みにする機能' do
+    before do
+      create(:member, real_name: '退職太郎')
+
+      visit members_path
+      within('tr', text: '退職太郎') do
+        click_on 'edit'
+      end
+
+      # 退職済みをチェックする
+      find('span', text: '退職済み').click
+
+      click_on('更新する')
+    end
+
+    it '退職メンバーに退職済みのラベルが表示されること' do
+      within('tr', text: '退職太郎') do
+        expect(find('span')['data-badge-caption']).to eq '退職済み'
+      end
+    end
+
+    it '選択リストには退職メンバーの名前が無いこと' do
+      visit root_path
+      within('#members-list') do
+        expect(page).to_not have_content '退職太郎'
+      end
+    end
+  end
+
   describe '削除機能' do
     it '削除できるか' do
       find('.delete-btn').click
