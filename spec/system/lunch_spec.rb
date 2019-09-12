@@ -82,7 +82,7 @@ describe '3人組を探す機能' do
   let!(:login_user) { create(:user) }
 
   before do
-    create(:member, projects: [project])
+    create(:member, real_name: '山田太郎', projects: [project])
 
     sign_in login_user
     visit root_path
