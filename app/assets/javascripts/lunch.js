@@ -12,7 +12,7 @@ document.addEventListener('turbolinks:load', function() {
       if (!memberRow.classList.contains('unselectable-row')){
         memberRow.classList.add('selected-row');
 
-        ProcessUnselectableMemberRows();
+        addUnselectableReasonAndClassToUnselectableMemberRows();
 
         const form = findEmptyForm(forms);
         form.value = memberRow.querySelector('.member-name').textContent;
@@ -20,7 +20,7 @@ document.addEventListener('turbolinks:load', function() {
         form.addEventListener('click', function(){
           form.value = '';
           memberRow.classList.remove('selected-row');
-          ProcessUnselectableMemberRows();
+          addUnselectableReasonAndClassToUnselectableMemberRows();
         });
       }
     });
@@ -36,18 +36,16 @@ document.addEventListener('turbolinks:load', function() {
   }
 
   // 選択できないメンバーに関する処理
-  function ProcessUnselectableMemberRows(){
+  function addUnselectableReasonAndClassToUnselectableMemberRows(){
     for(const memberRow of memberRows) {
       memberRow.classList.remove('unselectable-row');
       memberRow.querySelector('.unselectable-reason').textContent = '';
-      fillUnselectableReason(memberRow);
-      if (memberRow.querySelector('.unselectable-reason').textContent !== ''){
-        memberRow.classList.add('unselectable-row');
-      }
+      addUnselectableReasonIfMemberRowIsUnselectable(memberRow);
+      addClassIfUnselectableReasonIsFilled(memberRow)
     }
   }
 
-  function fillUnselectableReason(memberRow){
+  function addUnselectableReasonIfMemberRowIsUnselectable(memberRow){
     const selectedMemberRows = document.querySelectorAll('.selected-row');
     const memberProjects = memberRow.querySelector('.member-project').textContent.split(',').filter(n => n !== '');
     const memberName = memberRow.querySelector('.member-name').textContent;
@@ -77,6 +75,12 @@ document.addEventListener('turbolinks:load', function() {
     if (usedBenefitMemberNamesInSelectedMembers.length > 0) {
       if (unselectableReason.textContent !== '') {unselectableReason.innerHTML += '<br>';}
       unselectableReason.innerHTML += `${usedBenefitMemberNamesInSelectedMembers.flat().join(',')}とランチ済み`;
+    }
+  }
+
+  function addClassIfUnselectableReasonIsFilled(memberRow) {
+    if (memberRow.querySelector('.unselectable-reason').textContent !== ''){
+      memberRow.classList.add('unselectable-row');
     }
   }
 
