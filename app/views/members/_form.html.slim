@@ -11,10 +11,11 @@
   .field.input-field
     = f.label :real_name, class: form_active(f.object.real_name)
     = f.text_field :real_name
-  .field
-    = f.label :retired do
-      = f.check_box :retired, class: 'filled-in'
-      span 退職済み
+  - if @member.persisted?
+    .field
+      = f.label :retired do
+        = f.check_box :retired, class: 'filled-in'
+        span 退職済み
   .field
     = f.label :project_ids, 'プロジェクト'
     = f.collection_select :project_ids, Project.all, :id, :name, {} ,{multiple: true, class: 'js-searchable'}
