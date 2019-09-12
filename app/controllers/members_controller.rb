@@ -23,14 +23,7 @@ class MembersController < ApplicationController
   end
 
   def update
-    updated_member_params =
-      if member_params[:retired] == '1'
-        member_params.merge(project_ids: [])
-      else
-        member_params
-      end
-
-    if @member.update(updated_member_params)
+    if @member.update(member_params)
       redirect_to members_url, notice: t('dictionary.message.update.complete', resource_name: @member.real_name)
     else
       render :edit
