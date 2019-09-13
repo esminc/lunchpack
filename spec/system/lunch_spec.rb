@@ -27,12 +27,12 @@ describe 'ランチ履歴の表示機能' do
   it 'クオーターごとに履歴が表示される' do
     visit lunches_path
 
-    expect(page).to have_content('2019-09-15')
-    expect(page).to have_content('2019-09-16')
+    expect(page).to have_content('2019-09-15 鈴木一郎,鈴木二郎,鈴木三郎')
+    expect(page).to have_content('2019-09-16 鈴木一郎,鈴木四郎,鈴木五郎')
 
     click_on('40期-2Q')
 
-    expect(page).to have_content('2019-12-15')
+    expect(page).to have_content('2019-12-15 鈴木一郎,鈴木二郎,鈴木三郎')
   end
 end
 
