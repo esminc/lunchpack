@@ -19,10 +19,10 @@ class Lunch < ApplicationRecord
     errors.add(:members, "#{BENEFITS_AVAILABLE_MEMBERS_COUNT}人のメンバーを入力してください")
   end
 
-  # 現在のクォーター内で同じメンバーの組み合わせでランチに行ってないことを検証
+  # 同じクォーター内で同じメンバーの組み合わせでランチに行ってないことを検証
   def must_has_unique_trio_in_current_quarter
-    lunches_in_current_quarter = Quarter.current_quarter.lunches.includes(:members)
-    lunches_in_current_quarter.each do |lunch|
+    lunches_in_same_quarter = Lunch.includes(:members).where(quarter: quarter)
+    lunches_in_same_quarter.each do |lunch|
       lunched_members = lunch.members & self.members
       if lunched_members.size >= 2
         errors.add(:members, "#{lunched_members.map(&:real_name).join(',')}は#{lunch.date}にランチ済みです")
