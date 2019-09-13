@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_11_075805) do
+ActiveRecord::Schema.define(version: 2019_09_13_012432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_075805) do
     t.string "email"
     t.boolean "retired", default: false, null: false
     t.index ["email"], name: "index_members_on_email", unique: true
+    t.index ["retired"], name: "index_members_on_retired"
   end
 
   create_table "projects", force: :cascade do |t|
