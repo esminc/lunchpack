@@ -7,15 +7,18 @@ end
 
 describe 'ランチ履歴の表示機能' do
   before do
-    members = [
-      create(:member, real_name: '鈴木一郎'),
-      create(:member, real_name: '鈴木二郎'),
-      create(:member, real_name: '鈴木三郎')
-    ]
+    member1 = create(:member, real_name: '鈴木一郎')
+    member2 = create(:member, real_name: '鈴木二郎')
+    member3 = create(:member, real_name: '鈴木三郎')
+    member4 = create(:member, real_name: '鈴木四郎')
+    member5 = create(:member, real_name: '鈴木五郎')
+    trio1 = [member1, member2, member3]
+    trio2 = [member1, member4, member5]
+
     login_user = create(:user)
-    create_lunch(members, login_user, date: Date.new(2019,9,15))
-    create_lunch(members, login_user, date: Date.new(2019,9,16))
-    create_lunch(members, login_user, date: Date.new(2019,12,15))
+    create_lunch(trio1, login_user, date: Date.new(2019,9,15))
+    create_lunch(trio2, login_user, date: Date.new(2019,9,16))
+    create_lunch(trio1, login_user, date: Date.new(2019,12,15))
 
     sign_in login_user
     visit root_path
