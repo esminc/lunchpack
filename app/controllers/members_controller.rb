@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   before_action :set_member, only: [:edit, :update, :destroy]
 
   def index
-    @members = Member.includes(:projects)
+    @members = Member.includes(:projects).order(:created_at)
   end
 
   def new
@@ -41,6 +41,6 @@ class MembersController < ApplicationController
     end
 
     def member_params
-      params.require(:member).permit(:hundle_name, :real_name, project_ids: [])
+      params.require(:member).permit(:hundle_name, :real_name, :retired, project_ids: [])
     end
 end
