@@ -25,7 +25,7 @@ class Lunch < ApplicationRecord
     lunches_in_same_quarter.each do |lunch|
       lunched_members = lunch.members & self.members
       if lunched_members.size >= 2
-        errors.add(:members, "#{lunched_members.map(&:real_name).join(',')}は#{lunch.date}にランチ済みです")
+        errors.add(:went_to_lunch_in_same_quarter_and_members, "#{lunched_members.map(&:real_name).join(',')}は#{lunch.date}にランチ済みです")
       end
     end
   end
