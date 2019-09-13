@@ -47,5 +47,6 @@ body{
 }
 
 .unselectable-row{
-  display: none;
+  @extend .grey, .lighten-2;
+  cursor: not-allowed;
 }

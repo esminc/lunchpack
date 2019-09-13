@@ -1,69 +1,87 @@
 document.addEventListener('turbolinks:load', function() {
   $('.tabs').tabs();
 
-  const members = document.querySelectorAll('.member');
+  const memberRows = document.querySelectorAll('.member-row');
 
-  for(const member of members) {
-    member.addEventListener('click', function(){
+  for(const memberRow of memberRows) {
+    memberRow.addEventListener('click', function(){
       const forms = document.querySelectorAll('.member-form');
       if (Array.from(forms).every(form => form.value !==''))
         return;
 
-      member.classList.add('selected-row');
+      if (!memberRow.classList.contains('unselectable-row')){
+        memberRow.classList.add('selected-row');
 
-      noDisplayMember(members);
+        makeUnselectableRows();
 
-      const form = findEmptyForm(forms);
-      form.value = member.children[0].textContent;
+        const form = findEmptyForm(forms);
+        form.value = memberRow.querySelector('.member-name').textContent;
 
-      form.addEventListener('click', function(){
-        form.value = '';
-        member.classList.remove('selected-row');
-        noDisplayMember(members);
-      });
+        form.addEventListener('click', function(){
+          form.value = '';
+          memberRow.classList.remove('selected-row');
+          makeUnselectableRows();
+        });
+      }
     });
   }
 
   fillInFirstMemberWithLoginMember();
 
   function fillInFirstMemberWithLoginMember() {
-    for(const member of members) {
-      if (member.children[0].textContent === gon.login_member["real_name"])
-        member.click();
-    }
-  }
-  
-
-  // どのメンバーを表示しないか
-  function noDisplayMember(members){
-    for(const member of members) {
-      member.classList.remove('unselectable-row');
-      if (hasSameProjects(member) || isUsedBenefitWithSelectedMembers(member))
-        member.classList.add('unselectable-row');
+    for(const memberRow of memberRows) {
+      if (memberRow.querySelector('.member-name').textContent === gon.login_member["real_name"])
+        memberRow.click();
     }
   }
 
-  function hasSameProjects(member) {
-    const selectedProjects = Array
-      .from(document.querySelectorAll('.selected-row'))
-      .map(row => row.children[1].textContent.split(','))
-      .flat()
-      .filter(n => n !== '');
-    const memberProjects = member.children[1].textContent.split(',');
-    return existsIntersection(memberProjects, selectedProjects);
+  // 選択できないメンバーに関する処理
+  function makeUnselectableRows(){
+    for(const memberRow of memberRows) {
+      memberRow.classList.remove('unselectable-row');
+      memberRow.querySelector('.unselectable-reason').textContent = '';
+      addUnselectableReason(memberRow);
+      if (memberRow.querySelector('.unselectable-reason').textContent !== ''){
+        visualizeUnselectable(memberRow);
+      }
+    }
   }
 
-  function isUsedBenefitWithSelectedMembers(member) {
-    const memberName = member.children[0].textContent;
-    const selectedNames = Array
-      .from(document.querySelectorAll('.selected-row'))
-      .map(row => row.children[0].textContent);
-    for(const trio of gon.lunch_trios) {
-      const names = trio.map(e => e["real_name"]);
-      if (names.some(name => name === memberName) && existsIntersection(names, selectedNames))
-        return true;
-    };
-    return false;
+  function addUnselectableReason(memberRow){
+    const selectedMemberRows = document.querySelectorAll('.selected-row');
+    const memberProjects = memberRow.querySelector('.member-project').textContent.split(',').filter(n => n !== '');
+    const memberName = memberRow.querySelector('.member-name').textContent;
+    const unselectableReason = memberRow.querySelector('.unselectable-reason');
+    const sameProjectMemberNamesInSelectedMembers = [];
+    const usedBenefitMemberNamesInSelectedMembers = [];
+
+    for (const selectedMemberRow of selectedMemberRows) {
+      const selectedMemberProjects = selectedMemberRow.querySelector('.member-project').textContent.split(',').filter(n => n !== '');
+      if (existsIntersection(memberProjects, selectedMemberProjects)) {
+        sameProjectMemberNamesInSelectedMembers.push(selectedMemberRow.querySelector('.member-name').textContent);
+      }
+
+      const selectedMemberName = selectedMemberRow.querySelector('.member-name').textContent
+      for (const trio of gon.lunch_trios) {
+        const names = trio.map(e => e["real_name"]);
+        if ((names.includes(memberName)) && (names.includes(selectedMemberName))) {
+          usedBenefitMemberNamesInSelectedMembers.push(selectedMemberName);
+        }
+      }
+    }
+
+    if (sameProjectMemberNamesInSelectedMembers.length > 0) {
+      unselectableReason.innerHTML += `${sameProjectMemberNamesInSelectedMembers.flat().join(',')}と同じプロジェクト`;
+    }
+
+    if (usedBenefitMemberNamesInSelectedMembers.length > 0) {
+      if (unselectableReason.textContent !== '') {unselectableReason.innerHTML += '<br>';}
+      unselectableReason.innerHTML += `${usedBenefitMemberNamesInSelectedMembers.flat().join(',')}とランチ済み`;
+    }
+  }
+
+  function visualizeUnselectable(memberRow) {
+    memberRow.classList.add('unselectable-row');
   }
 
   function existsIntersection(arr1, arr2){

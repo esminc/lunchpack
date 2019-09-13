@@ -82,7 +82,7 @@ describe '3人組を探す機能' do
   let!(:login_user) { create(:user) }
 
   before do
-    create(:member, projects: [project])
+    create(:member, real_name: '山田太郎', projects: [project])
 
     sign_in login_user
     visit root_path
@@ -97,18 +97,29 @@ describe '3人組を探す機能' do
   end
 
   describe 'メンバーを選択する' do
-    it '名前をクリックすると枠に移動するか' do
+    it '名前をクリックすると枠に名前が移動すること' do
       find('.member-name', text: '山田太郎').click
 
       expect(first('.member-form').value).to eq '山田太郎'
-      expect(find('#members-list')).to_not have_content('山田太郎')
     end
 
     context '同じプロジェクトに所属するメンバー同士の組み合わせの場合' do
-      it 'メンバーの表示が消えて選択できない' do
+      before do
         find('.member-name', text: '山田太郎').click
+      end
 
-        expect(find('#members-list')).to_not have_content('鈴木一郎')
+      it '〜と同じプロジェクトという理由が表示がされること' do
+        within('.member-row', text: '鈴木一郎') do
+          expect(page).to have_content('山田太郎と同じプロジェクト')
+        end
+      end
+
+      it 'クリックしても名前がフォームに移動しないこと' do
+        find('.member-row', text: '鈴木一郎').click
+
+        within('.lunch-form') do
+          expect(page).to_not have_content('鈴木一郎')
+        end
       end
     end
 
@@ -120,11 +131,29 @@ describe '3人組を探す機能' do
       end
 
       context 'ランチに行ったクウォーターと同じ期間の場合' do
-        it 'すでにランチに行ったメンバーの表示が消えること' do
+        it '〜とランチ済みという理由が表示がされること' do
           find('.member-name', text: '鈴木一郎').click
 
-          expect(find('#members-list')).to_not have_content('鈴木二郎')
-          expect(find('#members-list')).to_not have_content('鈴木三郎')
+          within('.member-row', text: '鈴木二郎') do
+            expect(page).to have_content('鈴木一郎とランチ済み')
+          end
+          within('.member-row', text: '鈴木三郎') do
+            expect(page).to have_content('鈴木一郎とランチ済み')
+          end
+        end
+
+        it 'クリックしても名前がフォームに移動しないこと' do
+          find('.member-row', text: '鈴木二郎').click
+
+          within('.lunch-form') do
+            expect(page).to_not have_content('鈴木二郎')
+          end
+
+          find('.member-row', text: '鈴木三郎').click
+
+          within('.lunch-form') do
+            expect(page).to_not have_content('鈴木三郎')
+          end
         end
       end
 
@@ -134,11 +163,15 @@ describe '3人組を探す機能' do
           visit root_path
         end
 
-        it 'すでにランチに行ったメンバーが表示があること' do
+        it '〜とランチ済みという理由が表示がないこと' do
           find('.member-name', text: '鈴木一郎').click
 
-          expect(find('#members-list')).to have_content('鈴木二郎')
-          expect(find('#members-list')).to have_content('鈴木三郎')
+          within('.member-row', text: '鈴木二郎') do
+            expect(page).to_not have_content('鈴木一郎とランチ済み')
+          end
+          within('.member-row', text: '鈴木三郎') do
+            expect(page).to_not have_content('鈴木一郎とランチ済み')
+          end
         end
       end
     end
