@@ -12,7 +12,7 @@ document.addEventListener('turbolinks:load', function() {
       if (!memberRow.classList.contains('unselectable-row')){
         memberRow.classList.add('selected-row');
 
-        addUnselectableReasonAndClassToUnselectableMemberRows();
+        makeUnselectableRows();
 
         const form = findEmptyForm(forms);
         form.value = memberRow.querySelector('.member-name').textContent;
@@ -20,7 +20,7 @@ document.addEventListener('turbolinks:load', function() {
         form.addEventListener('click', function(){
           form.value = '';
           memberRow.classList.remove('selected-row');
-          addUnselectableReasonAndClassToUnselectableMemberRows();
+          makeUnselectableRows();
         });
       }
     });
@@ -36,16 +36,18 @@ document.addEventListener('turbolinks:load', function() {
   }
 
   // 選択できないメンバーに関する処理
-  function addUnselectableReasonAndClassToUnselectableMemberRows(){
+  function makeUnselectableRows(){
     for(const memberRow of memberRows) {
       memberRow.classList.remove('unselectable-row');
       memberRow.querySelector('.unselectable-reason').textContent = '';
-      addUnselectableReasonIfMemberRowIsUnselectable(memberRow);
-      addClassIfUnselectableReasonIsFilled(memberRow)
+      addUnselectableReason(memberRow);
+      if (memberRow.querySelector('.unselectable-reason').textContent !== ''){
+        visualizeUnselectable(memberRow);
+      }
     }
   }
 
-  function addUnselectableReasonIfMemberRowIsUnselectable(memberRow){
+  function addUnselectableReason(memberRow){
     const selectedMemberRows = document.querySelectorAll('.selected-row');
     const memberProjects = memberRow.querySelector('.member-project').textContent.split(',').filter(n => n !== '');
     const memberName = memberRow.querySelector('.member-name').textContent;
@@ -78,10 +80,8 @@ document.addEventListener('turbolinks:load', function() {
     }
   }
 
-  function addClassIfUnselectableReasonIsFilled(memberRow) {
-    if (memberRow.querySelector('.unselectable-reason').textContent !== ''){
-      memberRow.classList.add('unselectable-row');
-    }
+  function visualizeUnselectable(memberRow) {
+    memberRow.classList.add('unselectable-row');
   }
 
   function existsIntersection(arr1, arr2){
