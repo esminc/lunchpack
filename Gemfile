@@ -5,28 +5,28 @@ ruby '2.6.3'
 
 gem 'rails', '~> 5.2.3'
 
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails'
 gem 'gon'
 gem 'high_voltage'
 gem 'html2slim'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 gem 'jquery-rails'
-gem 'materialize-sass', '~> 1.0.0'
+gem 'materialize-sass'
 gem 'material_icons'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'pg'
+gem 'puma'
 gem 'rails-i18n'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 gem 'select2-rails'
 gem 'slim-rails'
-gem 'turbolinks', '~> 5'
+gem 'turbolinks'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 
 group :development, :test do
