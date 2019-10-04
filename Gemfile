@@ -32,25 +32,25 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'bullet'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot_rails', '~> 4.11'
-  gem 'rspec-rails', '~> 3.8.0'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
   gem 'pry-rails'
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'spring-watcher-listen'
+  gem 'web-console'
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
-  gem "webdrivers", "~> 3.0"
+  gem 'webdrivers'
 end
 
