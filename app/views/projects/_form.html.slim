@@ -10,3 +10,5 @@
     = f.text_field :name
   .input-field
     .actions = f.submit id: 'submit-btn', class: 'btn text-white'
+- if @project.persisted?
+  = link_to '削除する', @project, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: @project.name) }, method: :delete, class: 'btn red delete-btn'

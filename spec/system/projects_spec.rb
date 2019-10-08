@@ -44,8 +44,10 @@ describe 'プロジェクト管理機能' do
 
   describe '削除機能' do
     it '削除できるか' do
-      find('.delete-btn').click
+      find('.edit-btn').click
+      click_on('削除する')
       page.driver.browser.switch_to.alert.accept
+
       expect(page).to have_content 'eiwakunを削除しました'
     end
   end

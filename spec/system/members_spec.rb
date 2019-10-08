@@ -87,8 +87,10 @@ describe 'メンバー管理機能', type: :system do
 
   describe '削除機能' do
     it '削除できるか' do
-      find('.delete-btn').click
+      find('.edit-btn').click
+      click_on('削除する')
       page.driver.browser.switch_to.alert.accept
+
       expect(page).to have_content '山田太郎を削除しました'
     end
   end

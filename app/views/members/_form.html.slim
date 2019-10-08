@@ -21,3 +21,5 @@
     = f.collection_select :project_ids, Project.all, :id, :name, {} ,{multiple: true, class: 'js-searchable'}
   .input-field
     .actions = f.submit id: 'submit-btn', class: 'btn text-white'
+- if @member.persisted?
+  = link_to '削除する' , @member, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: @member.real_name) }, method: :delete, class: 'btn red delete-btn'

@@ -23,5 +23,3 @@ table
         td = project_list(member)
         td
           = link_to mi.edit, edit_member_path(member), class: 'btn-small z-depth-0 edit-btn'
-          |  
-          = link_to mi.delete , member, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: member.real_name) }, method: :delete, class: 'btn-small z-depth-0 delete-btn'
