@@ -52,7 +52,7 @@ describe 'ランチ履歴を登録したユーザーだけその履歴を削除�
 
   it '自分の登録した履歴は削除ボタンから削除できること' do
     within('tr', text: '鈴木一郎,鈴木二郎,鈴木三郎') do
-      click_on('delete')
+      click_on('削除する')
     end
     page.driver.browser.switch_to.alert.accept
 
@@ -67,7 +67,7 @@ describe 'ランチ履歴を登録したユーザーだけその履歴を削除�
     visit lunches_path
 
     within('tr', text: '鈴木一郎,鈴木二郎,鈴木三郎') do
-      expect(page).to_not have_content('delete')
+      expect(page).to_not have_content('削除する')
     end
   end
 end
