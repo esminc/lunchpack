@@ -37,6 +37,7 @@ $ bin/rails s
 ```
 
 ## ER図を生成
+先に`$ brew install graphviz`でGraphvizをインストールしておく。
 ```
 $ bin/rake erd
 
