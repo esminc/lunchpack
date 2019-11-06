@@ -9,6 +9,7 @@ ja:
         hundle_name: ニックネーム
         real_name: 氏名
         projects: 所属プロジェクト
+        email: メールアドレス
       project:
         name: プロジェクト名
       lunch:

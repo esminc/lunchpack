@@ -11,6 +11,9 @@
   .form-group
     = f.label :real_name
     = f.text_field :real_name, class: 'form-control'
+  .field.input-field
+    = f.label :email
+    = f.email_field :email, class: 'form-control'
   .form-group
     = f.label :project_ids, 'プロジェクト'
     = f.collection_select :project_ids, Project.all, :id, :name, {} ,{multiple: true, class: 'form-control js-searchable'}
