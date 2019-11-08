@@ -35,3 +35,15 @@ $ bin/rspec
 ```
 $ bin/rails s
 ```
+
+## ER図を生成
+先に`$ brew install graphviz`でGraphvizをインストールしておく。
+```
+$ bin/rake erd
+
+# UML形式で表示（エラーは無視していい）
+$ bin/rake erd notation=uml
+```
+デフォルトでは`erd.pdf`が生成されます。詳しくは[voormedia/rails-erd](https://github.com/voormedia/rails-erd)を参照。
+
+ちなみに、Rails6で動作するようにしているので、`bundle exec erd`では正しく生成されません。
