@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'メンバー管理機能', type: :system do
   before do
     create(:project)
-    create(:member, hundle_name: 'taro', real_name: '山田太郎')
+    create(:member, hundle_name: 'taro', real_name: '山田太郎', email: '')
     sign_in create(:user)
     visit root_path
     click_link 'メンバー'
@@ -25,6 +25,16 @@ describe 'メンバー管理機能', type: :system do
         fill_in 'member[email]', with: 'hanako-yamada@example.com'
         click_on '登録する'
         expect(page).to have_content '山田花子を登録しました'
+
+        within('tbody') do
+          tr = all('tr').last
+
+          within(tr) do
+            expect(find('.hundle_name')).to have_content 'hanako'
+            expect(find('.real_name')).to have_content '山田花子'
+            expect(find('.email')).to have_content 'hanako-yamada@example.com'
+          end
+        end
       end
     end
 
@@ -43,9 +53,20 @@ describe 'メンバー管理機能', type: :system do
       click_on '編集'
       fill_in 'member[hundle_name]', with: 'taro3'
       fill_in 'member[real_name]', with: '山下太郎'
+      fill_in 'member[email]', with: 'taro@example.com'
       click_on '更新する'
       expect(page).to have_content '山下太郎を更新しました'
       expect(page).to have_content 'taro3'
+
+      within('tbody') do
+        tr = all('tr').last
+
+        within(tr) do
+          expect(find('.hundle_name')).to have_content 'taro3'
+          expect(find('.real_name')).to have_content '山下太郎'
+          expect(find('.email')).to have_content 'taro@example.com'
+        end
+      end
     end
 
     it 'プロジェクトを選択できるか' do

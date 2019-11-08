@@ -8,6 +8,7 @@ table.table
       th
       th = Member.human_attribute_name(:hundle_name)
       th = Member.human_attribute_name(:real_name)
+      th = Member.human_attribute_name(:email)
       th = Member.human_attribute_name(:projects)
       th
 
@@ -19,6 +20,7 @@ table.table
             span.badge.badge-dark 退職済み
         td = member.hundle_name
         td = member.real_name
+        td.email = member.email
         td = project_list(member)
         td
           = link_to '編集', edit_member_path(member), class: 'btn btn-light'
