@@ -11,6 +11,10 @@ module ApplicationHelper
     end
   end
 
+  def tab_active(idx)
+    idx.zero? ? 'active' : ''
+  end
+
   def form_active(form_value)
     form_value.present? ? 'active' : ''
   end
