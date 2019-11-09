@@ -1,10 +1,10 @@
 = render 'layouts/flash_messages'
 h3 メンバー
-= link_to new_member_path, id: 'new-btn', class: 'btn right'
-  == material_icon.add
+= link_to new_member_path, id: 'new-btn', class: 'btn btn-success float-right'
   | メンバー追加
-table
-  thead
+
+table.table
+  thead.thead-dark
     tr
       th
       th = Member.human_attribute_name(:hundle_name)
@@ -17,9 +17,9 @@ table
       tr
         td
           - if member.retired
-            span class='new badge grey lighten-1' data-badge-caption='退職済み'
+            span.badge.badge-dark 退職済み
         td = member.hundle_name
         td = member.real_name
         td = project_list(member)
         td
-          = link_to mi.edit, edit_member_path(member), class: 'btn-small z-depth-0 edit-btn'
+          = link_to '編集', edit_member_path(member), class: 'btn btn-light'
