@@ -10,15 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require material_icons
  *= require_self
  *= require select2
  */
-@import 'materialize';
-body{
-  @extend .brown, .lighten-5;
-}
+// @import 'materialize';
+@import 'bootstrap';
+// body{
+//   @extend .brown, .lighten-5;
+// }
 
 .signin{
 	position: absolute;
@@ -47,6 +46,6 @@ body{
 }
 
 .unselectable-row{
-  @extend .grey, .lighten-2;
+  // @extend .grey, .lighten-2;
   cursor: not-allowed;
 }
