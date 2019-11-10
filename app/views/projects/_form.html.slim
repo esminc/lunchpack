@@ -1,14 +1,14 @@
 = form_for @project do |f|
   - if @project.errors.any?
-    #error_explanation.red-text
+    .text-danger
       ul
         - @project.errors.full_messages.each do |message|
           li = message
 
-  .field.input-field
-    = f.label :name, class: form_active(f.object.name)
-    = f.text_field :name
-  .input-field
-    .actions = f.submit id: 'submit-btn', class: 'btn text-white'
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', required: true
+  = f.submit id: 'submit-btn', class: 'btn btn-primary'
+
 - if @project.persisted?
-  = link_to '削除する', @project, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: @project.name) }, method: :delete, class: 'btn red delete-btn'
+  = link_to '削除する', @project, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: @project.name) }, method: :delete, class: 'btn btn-danger'

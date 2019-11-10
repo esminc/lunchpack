@@ -1,25 +1,25 @@
 = form_for @member do |f|
   - if @member.errors.any?
-    #error_explanation.red-text
+    .text-danger
       ul
         - @member.errors.full_messages.each do |message|
           li = message
 
-  .field.input-field
-    = f.label :hundle_name, class: form_active(f.object.hundle_name)
-    = f.text_field :hundle_name
-  .field.input-field
-    = f.label :real_name, class: form_active(f.object.real_name)
-    = f.text_field :real_name
-  - if @member.persisted?
-    .field
-      = f.label :retired do
-        = f.check_box :retired, class: 'filled-in'
-        span 退職済み
-  .field
+  .form-group
+    = f.label :hundle_name
+    = f.text_field :hundle_name, class: 'form-control', required: true
+  .form-group
+    = f.label :real_name
+    = f.text_field :real_name, class: 'form-control', required: true
+  .form-group
     = f.label :project_ids, 'プロジェクト'
-    = f.collection_select :project_ids, Project.all, :id, :name, {} ,{multiple: true, class: 'js-searchable'}
-  .input-field
-    .actions = f.submit id: 'submit-btn', class: 'btn text-white'
+    = f.collection_select :project_ids, Project.all, :id, :name, {} ,{multiple: true, class: 'form-control js-searchable'}
+  - if @member.persisted?
+    .form-group.form-check
+      = f.check_box :retired, class: 'form-check-input filled-in'
+      = f.label :retired, '退職済み', class: 'form-check-label'
+
+  = f.submit id: 'submit-btn', class: 'btn btn-primary'
+
 - if @member.persisted?
-  = link_to '削除する' , @member, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: @member.real_name) }, method: :delete, class: 'btn red delete-btn'
+  = link_to '削除する' , @member, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: @member.real_name) }, method: :delete, class: 'btn btn-danger'
