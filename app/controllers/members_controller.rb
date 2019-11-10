@@ -16,7 +16,8 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
 
     if @member.save
-      redirect_to members_url, notice: t('dictionary.message.create.complete', resource_name: @member.real_name)
+      flash[:success] = t('dictionary.message.create.complete', resource_name: @member.real_name)
+      redirect_to members_url
     else
       render :new
     end
@@ -24,7 +25,8 @@ class MembersController < ApplicationController
 
   def update
     if @member.update(member_params)
-      redirect_to members_url, notice: t('dictionary.message.update.complete', resource_name: @member.real_name)
+      flash[:success] = t('dictionary.message.update.complete', resource_name: @member.real_name)
+      redirect_to members_url
     else
       render :edit
     end
@@ -32,7 +34,8 @@ class MembersController < ApplicationController
 
   def destroy
     @member.destroy
-    redirect_to members_url, notice: t('dictionary.message.destroy.complete', resource_name: @member.real_name)
+    flash[:danger] = t('dictionary.message.destroy.complete', resource_name: @member.real_name)
+    redirect_to members_url
   end
 
   private
