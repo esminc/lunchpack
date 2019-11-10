@@ -1,6 +1,4 @@
 document.addEventListener('turbolinks:load', function() {
-  $('.tabs').tabs();
-
   const memberRows = document.querySelectorAll('.member-row');
 
   for(const memberRow of memberRows) {
