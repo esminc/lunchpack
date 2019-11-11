@@ -18,8 +18,8 @@ table.table
         td
           - if member.retired
             span.badge.badge-dark 退職済み
-        td = member.hundle_name
-        td = member.real_name
+        td.hundle_name = member.hundle_name
+        td.real_name = member.real_name
         td.email = member.email
         td = project_list(member)
         td

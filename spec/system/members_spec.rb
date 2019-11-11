@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'メンバー管理機能', type: :system do
   before do
     create(:project)
-    create(:member, hundle_name: 'taro', real_name: '山田太郎', email: '')
+    create(:member, hundle_name: 'taro', real_name: '山田太郎')
     sign_in create(:user)
     visit root_path
     click_link 'メンバー'
