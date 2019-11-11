@@ -1,18 +1,18 @@
 - if user_signed_in?
-  nav
-    .nav-wrapper.container
-      = link_to root_path, class: 'brand-logo'
-        == material_icon.restaurant.md_36
-        | Lunchpack
-      ul.right.hide-on-med-and-down
-        li class=page_active(root_path)
-          = link_to 'ランチに行く', root_path
-        li class=page_active(lunches_path)
-          = link_to '給付金利用履歴', lunches_path
-        li class=page_active(members_path)
-          = link_to 'メンバー', members_path
-        li class=page_active(projects_path)
-          = link_to 'プロジェクト', projects_path
-        li class=page_active(page_path('help'))
-          = link_to 'ヘルプ', page_path('help')
-        li = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'waves-effect waves-light btn-small'
+  nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
+    = link_to root_path, class: 'navbar-brand'
+      | Lunchpack
+
+    ul.navbar-nav
+      li.nav-item class=page_active(root_path)
+        = link_to 'ランチに行く', root_path, class: 'nav-link'
+      li.nav-item class=page_active(lunches_path)
+        = link_to '給付金利用履歴', lunches_path, class: 'nav-link'
+      li.nav-item class=page_active(members_path)
+        = link_to 'メンバー', members_path, class: 'nav-link'
+      li.nav-item class=page_active(projects_path)
+        = link_to 'プロジェクト', projects_path, class: 'nav-link'
+      li.nav-item class=page_active(page_path('help'))
+        = link_to 'ヘルプ', page_path('help'), class: 'nav-link'
+      li.nav-item
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'

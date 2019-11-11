@@ -1,11 +1,9 @@
-= render 'layouts/flash_messages'
-h3 プロジェクト
-= link_to new_project_path, id: 'new-btn', class: 'btn right'
-  == material_icon.add
+h3.my-3 プロジェクト
+= link_to new_project_path, id: 'new-btn', class: 'btn btn-success float-right'
   | プロジェクト追加
 
-table
-  thead
+table.table
+  thead.thead-dark
     tr
       th = Project.human_attribute_name(:name)
       th
@@ -15,4 +13,4 @@ table
       tr
         td = project.name
         td
-          = link_to mi.edit, edit_project_path(project), class: 'btn-small z-depth-0 edit-btn'
+          = link_to '編集', edit_project_path(project), class: 'btn btn-light'

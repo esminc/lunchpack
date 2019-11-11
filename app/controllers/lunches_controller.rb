@@ -14,7 +14,8 @@ class LunchesController < ApplicationController
     quarter = Quarter.find_or_create_quarter(today)
     @lunch = quarter.lunches.build(date: today, members: members, created_by: current_user)
     if @lunch.save
-      redirect_to lunches_url, notice: t('dictionary.message.create.complete', resource_name: @lunch.label_with_date_and_member_names)
+      flash[:success] = t('dictionary.message.create.complete', resource_name: @lunch.label_with_date_and_member_names)
+      redirect_to lunches_url
     else
       set_variables_for_new_lunch_view
       render :new
@@ -27,9 +28,11 @@ class LunchesController < ApplicationController
     if @lunch.created_by == current_user
       resource_name = @lunch.label_with_date_and_member_names
       @lunch.destroy
-      redirect_to lunches_url, notice: t('dictionary.message.destroy.complete', resource_name: resource_name)
+      flash[:danger] = t('dictionary.message.destroy.complete', resource_name: resource_name)
+      redirect_to lunches_url
     else
-      redirect_to lunches_url, notice: '削除対象となったランチはあなたが作成したものではないので削除できませんでした'
+      flash[:warning] = '削除対象となったランチはあなたが作成したものではないので削除できませんでした'
+      redirect_to lunches_url
     end
   end
 

@@ -6,6 +6,7 @@ ruby '2.6.5'
 gem 'rails', '6.0.0'
 
 gem 'bootsnap', require: false
+gem 'bootstrap'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails'
