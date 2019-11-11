@@ -14,11 +14,7 @@
  *= require_self
  *= require select2
  */
-// @import 'materialize';
 @import 'bootstrap';
-// body{
-//   @extend .brown, .lighten-5;
-// }
 
 .signin{
 	position: absolute;
@@ -47,6 +43,6 @@
 }
 
 .unselectable-row{
-  // @extend .grey, .lighten-2;
+  background-color: gray;
   cursor: not-allowed;
 }
