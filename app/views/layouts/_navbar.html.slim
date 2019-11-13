@@ -14,5 +14,10 @@
         = link_to 'プロジェクト', projects_path, class: 'nav-link'
       li.nav-item class=page_active(page_path('help'))
         = link_to 'ヘルプ', page_path('help'), class: 'nav-link'
-      li.nav-item
-        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle data-toggle="dropdown"
+          | その他
+        .dropdown-menu
+          a.dropdown-item href="https://github.com/esminc/lunchpack" target="_blank" GitHub
+          a.dropdown-item href="https://idobata.io/#/organization/esm/room/lunchpack" target="_blank" Idobata
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item'
