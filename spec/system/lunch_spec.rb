@@ -196,6 +196,18 @@ describe '3人組を探す機能' do
         expect(page).to have_content '3人のメンバーを入力してください'
       end
     end
+
+    describe '後日にランチに行った履歴を登録できる機能' do
+      it '昨日の日付で登録できること' do
+        find('.member-name', text: '鈴木一郎').click
+        find('.member-name', text: '鈴木二郎').click
+        find('.member-name', text: '鈴木三郎').click
+        fill_in '行った日', with: Date.yesterday
+        find('#submit-btn').click
+
+        expect(page).to have_content "#{Date.yesterday} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
+      end
+    end
   end
 
   describe 'ログインしているユーザーが自動でフォームの一人目に入力される機能' do
