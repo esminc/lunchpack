@@ -9,10 +9,10 @@ class LunchesController < ApplicationController
   end
 
   def create
-    today = Date.today
+    date = params[:lunch][:date]
     members = Member.where(real_name: params[:lunch][:members])
-    quarter = Quarter.find_or_create_quarter(today)
-    @lunch = quarter.lunches.build(date: today, members: members, created_by: current_user)
+    quarter = Quarter.find_or_create_quarter(date)
+    @lunch = quarter.lunches.build(date: date, members: members, created_by: current_user)
     if @lunch.save
       flash[:success] = t('dictionary.message.create.complete', resource_name: @lunch.label_with_date_and_member_names)
       redirect_to lunches_url
