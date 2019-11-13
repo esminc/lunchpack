@@ -33,6 +33,6 @@ h3.my-3 ランチに行くメンバーを探す
           = f.text_field :member, name: 'lunch[members][]', readonly: true, class: 'form-control form-control-lg member-form'
         .form-group
           = f.label :date, '行った日'
-          = f.date_field :date, value: Date.today, class: 'form-control'
+          = f.date_field :date, value: Date.today, max: Date.today, class: 'form-control'
         .text-center
           = f.submit 'ランチに行く', id: 'submit-btn', class: 'btn btn-primary btn-lg'
