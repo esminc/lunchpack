@@ -42,6 +42,33 @@ describe Quarter do
       let(:quarter) { build(:quarter, period: 40, ordinal: 1, start_date: Date.new(2019, 8, 1), end_date: Date.new(2019, 10, 31)) }
 
       it { is_expected.to be false }
+
+  describe '.find_or_create_quarter' do
+    subject { Quarter.find_or_create_quarter('2019-11-14') }
+
+    context 'すでにQuarterがある場合' do
+      before do
+        create(:quarter, period: 40, ordinal: 2, start_date: Date.new(2019, 11, 1), end_date: Date.new(2020, 1, 31))
+      end
+
+      it 'すでにあるQuarterが返されること' do
+        expect(subject).to have_attributes(
+          period: 40,
+          ordinal: 2,
+          start_date: Date.new(2019, 11, 1),
+          end_date: Date.new(2020, 1, 31)
+        )
+      end
+
+      it 'Quarterのレコード数が増えないこと' do
+        expect { subject }.not_to change { Quarter.count }
+      end
+    end
+
+    context 'まだQuarterがない場合' do
+      it '新しくQuarterがつくられて返されること' do
+
+      end
     end
   end
 end
