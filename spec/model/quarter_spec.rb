@@ -7,7 +7,7 @@ describe Quarter do
       expect(current_quarter.start_date .. current_quarter.end_date).to cover(Date.today)
     end
 
-    it 'すでに今日のクォーターがDBにある場合、レコードが増えないこと' do
+    xit 'すでに今日のクォーターがDBにある場合、レコードが増えないこと' do
       today = Date.new(2019, 9, 4)
       Quarter.create!(
         period: 40,
@@ -18,7 +18,7 @@ describe Quarter do
       expect { Quarter.current_quarter(today) }.to_not change(Quarter, :count)
     end
 
-    it 'すでに今日のクォーターがDBにない場合、レコードが増えること' do
+    xit 'すでに今日のクォーターがDBにない場合、レコードが増えること' do
       today = Date.new(2019, 9, 4)
       expect { Quarter.current_quarter(today) }.to change(Quarter, :count).by(1)
     end
@@ -66,7 +66,7 @@ describe Quarter do
     end
 
     context 'まだQuarterがない場合' do
-      it '新しくQuarterがつくられて返されること' do
+      xit '新しくQuarterがつくられて返されること' do
 
       end
     end
