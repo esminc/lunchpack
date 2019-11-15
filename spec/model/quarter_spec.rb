@@ -44,20 +44,20 @@ describe Quarter do
       it { is_expected.to be false }
 
   describe '.find_or_create_quarter' do
-    subject { Quarter.find_or_create_quarter('2019-11-14') }
+    subject { Quarter.find_or_create_quarter(Date.new(2019, 11, 14)) }
 
     context 'すでにQuarterがある場合' do
       before do
         create(:quarter, period: 40, ordinal: 2, start_date: Date.new(2019, 11, 1), end_date: Date.new(2020, 1, 31))
       end
 
-      it 'すでにあるQuarterが返されること' do
+      it '引数の日付に該当するQuarterが返されること' do
         expect(subject).to have_attributes(
           period: 40,
           ordinal: 2,
           start_date: Date.new(2019, 11, 1),
           end_date: Date.new(2020, 1, 31)
-        )
+        ).and be_an_instance_of(Quarter)
       end
 
       it 'Quarterのレコード数が増えないこと' do
@@ -66,8 +66,17 @@ describe Quarter do
     end
 
     context 'まだQuarterがない場合' do
-      xit '新しくQuarterがつくられて返されること' do
+      it '引数の日付に該当するQuarterが返されること' do
+        expect(subject).to have_attributes(
+          period: 40,
+          ordinal: 2,
+          start_date: Date.new(2019, 11, 1),
+          end_date: Date.new(2020, 1, 31)
+        ).and be_an_instance_of(Quarter)
+      end
 
+      it 'Quarterのレコード数が増えること' do
+        expect { subject }.to change { Quarter.count }.by(1)
       end
     end
   end
