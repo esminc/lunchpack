@@ -20,10 +20,11 @@ ul.nav.nav-tabs role="tablist"
           - quarter.lunches.each do |lunch|
             tr
               td = lunch.date
-              td = lunch.members.pluck(:real_name).join(',')
+              td
+                button.mx-3.btn.border-0.btn-outline-secondary.clipboard-btn data-clipboard-text="#{lunch.members.pluck(:real_name).join(',')}"
+                  = icon('far', 'copy')
+                .d-inline
+                  = lunch.members.pluck(:real_name).join(',')
               td
                 - if lunch.created_by == current_user
                   = link_to '削除', lunch, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: lunch.label_with_date_and_member_names) }, method: :delete, class: 'btn btn-danger'
-
-
-
