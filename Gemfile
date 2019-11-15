@@ -7,6 +7,7 @@ gem 'rails', '6.0.0'
 
 gem 'bootsnap', require: false
 gem 'bootstrap'
+gem 'clipboard-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails'

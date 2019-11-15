@@ -15,6 +15,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require clipboard
 //= require select2
 //= require select2-full
 //= require popper
