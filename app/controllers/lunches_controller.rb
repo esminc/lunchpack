@@ -9,7 +9,7 @@ class LunchesController < ApplicationController
   end
 
   def create
-    date = params[:lunch][:date]
+    date = Date.parse(params[:lunch][:date])
     members = Member.where(real_name: params[:lunch][:members])
     quarter = Quarter.find_or_create_quarter(date)
     @lunch = quarter.lunches.build(date: date, members: members, created_by: current_user)
