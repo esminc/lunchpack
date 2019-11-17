@@ -4,8 +4,8 @@ ul.nav.nav-tabs role="tablist"
   - @quarters.each_with_index do |quarter, idx|
     li.nav-item
       a.nav-link class=tab_active(idx) data-toggle="tab" href="#period#{quarter.period}-#{quarter.ordinal}"
-        = "#{quarter.period}期-#{quarter.ordinal}Q"
-
+        div data-toggle="tooltip" title="#{quarter.start_date} ~ #{quarter.end_date}"
+          = "#{quarter.period}期-#{quarter.ordinal}Q"
 
 .tab-content
   - @quarters.each_with_index do |quarter, idx|
