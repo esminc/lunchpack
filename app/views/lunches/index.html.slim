@@ -1,15 +1,15 @@
 h3.my-3 ランチ給付金利用履歴
 
 ul.nav.nav-tabs role="tablist"
-  - @quarters.each_with_index do |quarter, idx|
+  - @quarters.each do |quarter|
     li.nav-item
-      a.nav-link class=tab_active(idx) data-toggle="tab" href="#period#{quarter.period}-#{quarter.ordinal}"
+      a.nav-link class=current_quarter_active(quarter) data-toggle="tab" href="#period#{quarter.period}-#{quarter.ordinal}"
         div data-toggle="tooltip" title="#{quarter.start_date} ~ #{quarter.end_date}"
           = "#{quarter.period}期-#{quarter.ordinal}Q"
 
 .tab-content
-  - @quarters.each_with_index do |quarter, idx|
-    .tab-pane class=tab_active(idx) id="period#{quarter.period}-#{quarter.ordinal}"
+  - @quarters.each do |quarter|
+    .tab-pane class=current_quarter_active(quarter) id="period#{quarter.period}-#{quarter.ordinal}"
       table.table
         thead.thead-dark
           tr
