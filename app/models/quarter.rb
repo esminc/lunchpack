@@ -48,4 +48,8 @@ class Quarter < ApplicationRecord
       start_date_of_quarter(date).next_month(3).yesterday
     end
   end
+
+  def cover_today?
+    Date.current.between?(start_date, end_date)
+  end
 end

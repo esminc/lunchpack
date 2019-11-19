@@ -11,8 +11,8 @@ module ApplicationHelper
     end
   end
 
-  def tab_active(idx)
-    idx.zero? ? 'active' : ''
+  def current_quarter_active(quarter)
+    quarter.cover_today? ? 'active' : ''
   end
 
   def form_active(form_value)
