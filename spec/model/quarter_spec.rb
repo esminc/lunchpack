@@ -9,25 +9,6 @@ describe Quarter do
     end
   end
 
-  describe '#cover_today?' do
-    before '40期第2Qのときに実行する' do
-      # 現在日時を固定
-      travel_to Date.new(2019, 11, 1)
-    end
-
-    subject { quarter.cover_today? }
-
-    context '40期第2Qの場合' do
-      let(:quarter) { build(:quarter, period: 40, ordinal: 2, start_date: Date.new(2019, 11, 1), end_date: Date.new(2020, 1, 31)) }
-
-      it { is_expected.to be true }
-    end
-
-    context '40期第1Qの場合' do
-      let(:quarter) { build(:quarter, period: 40, ordinal: 1, start_date: Date.new(2019, 8, 1), end_date: Date.new(2019, 10, 31)) }
-
-      it { is_expected.to be false }
-
   describe '.find_or_create_quarter' do
     subject { Quarter.find_or_create_quarter(Date.new(2019, 11, 14)) }
 
@@ -63,6 +44,27 @@ describe Quarter do
       it 'Quarterのレコード数が増えること' do
         expect { subject }.to change { Quarter.count }.by(1)
       end
+    end
+  end
+
+  describe '#cover_today?' do
+    before '40期第2Qのときに実行する' do
+      # 現在日時を固定
+      travel_to Date.new(2019, 11, 1)
+    end
+
+    subject { quarter.cover_today? }
+
+    context '40期第2Qの場合' do
+      let(:quarter) { build(:quarter, period: 40, ordinal: 2, start_date: Date.new(2019, 11, 1), end_date: Date.new(2020, 1, 31)) }
+
+      it { is_expected.to be true }
+    end
+
+    context '40期第1Qの場合' do
+      let(:quarter) { build(:quarter, period: 40, ordinal: 1, start_date: Date.new(2019, 8, 1), end_date: Date.new(2019, 10, 31)) }
+
+      it { is_expected.to be false }
     end
   end
 end
