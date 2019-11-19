@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def current_quarter_active(quarter)
-    Date.current.between?(quarter.start_date, quarter.end_date) ? 'active' : ''
+    quarter.cover_today? ? 'active' : ''
   end
 
   def form_active(form_value)
