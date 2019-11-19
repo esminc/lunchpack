@@ -5,7 +5,7 @@ class Quarter < ApplicationRecord
 
   class << self
     def current_quarter
-      find_or_create_quarter(Date.today)
+      find_or_create_quarter(Date.current)
     end
 
     def find_or_create_quarter(date)

@@ -5,7 +5,7 @@ describe Quarter do
     subject(:current_quarter) { Quarter.current_quarter }
 
     it '今日が含まれるクォーターが返されること' do
-      expect(current_quarter.start_date..current_quarter.end_date).to cover(Date.today)
+      expect(current_quarter.start_date..current_quarter.end_date).to cover(Date.current)
     end
   end
 

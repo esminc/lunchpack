@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :lunch do
-    date { Date.today }
+    date { Date.current }
   end
 end
