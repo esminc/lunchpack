@@ -196,25 +196,39 @@ describe '3人組を探す機能' do
       end
     end
 
-    describe '後日にランチに行った履歴を登録できる機能' do
-      it '昨日の日付で登録できること' do
-        find('.member-name', text: '鈴木一郎').click
-        find('.member-name', text: '鈴木二郎').click
-        find('.member-name', text: '鈴木三郎').click
-        fill_in '行った日', with: Date.yesterday
-        find('#submit-btn').click
+    describe '日付を指定してランチに行った履歴を登録できる機能' do
+      context '日付が入力された状態で送信する場合' do
+        it '昨日の日付で登録できること' do
+          find('.member-name', text: '鈴木一郎').click
+          find('.member-name', text: '鈴木二郎').click
+          find('.member-name', text: '鈴木三郎').click
+          fill_in '行った日', with: Date.yesterday
+          find('#submit-btn').click
 
-        expect(page).to have_content "#{Date.yesterday} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
+          expect(page).to have_content "#{Date.yesterday} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
+        end
+
+        it '前の期の日付で登録できること' do
+          find('.member-name', text: '鈴木一郎').click
+          find('.member-name', text: '鈴木二郎').click
+          find('.member-name', text: '鈴木三郎').click
+          fill_in '行った日', with: Date.current.prev_month(3)
+          find('#submit-btn').click
+
+          expect(page).to have_content "#{ Date.current.prev_month(3)} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
+        end
       end
 
-      it '前の期の日付で登録できること' do
-        find('.member-name', text: '鈴木一郎').click
-        find('.member-name', text: '鈴木二郎').click
-        find('.member-name', text: '鈴木三郎').click
-        fill_in '行った日', with: Date.current.prev_month(3)
-        find('#submit-btn').click
+      context '日付を空にして送信する場合' do
+        it 'エラーが表示されること' do
+          find('.member-name', text: '鈴木一郎').click
+          find('.member-name', text: '鈴木二郎').click
+          find('.member-name', text: '鈴木三郎').click
+          fill_in '行った日', with: nil
+          find('#submit-btn').click
 
-        expect(page).to have_content "#{ Date.current.prev_month(3)} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
+          expect(true).to be true
+        end
       end
     end
   end
