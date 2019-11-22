@@ -2,6 +2,8 @@ class Lunch < ApplicationRecord
   belongs_to :created_by,  foreign_key: :user_id, class_name: 'User'
   belongs_to :quarter
   has_and_belongs_to_many :members
+
+  validates :date, presence: true
   validate :must_have_benefits_available_count_members
   validate :must_go_to_lunch_with_members_who_did_not_go_together_during_same_quarter
 
