@@ -6,7 +6,7 @@ ja:
       lunch: ランチ
     attributes:
       member:
-        hundle_name: ニックネーム
+        handle_name: ニックネーム
         real_name: 氏名
         projects: 所属プロジェクト
         email: メールアドレス

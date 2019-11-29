@@ -6,7 +6,7 @@ table.table
   thead.thead-dark
     tr
       th
-      th = Member.human_attribute_name(:hundle_name)
+      th = Member.human_attribute_name(:handle_name)
       th = Member.human_attribute_name(:real_name)
       th = Member.human_attribute_name(:email)
       th = Member.human_attribute_name(:projects)
@@ -18,7 +18,7 @@ table.table
         td
           - if member.retired
             span.badge.badge-dark 退職済み
-        td.hundle_name = member.hundle_name
+        td.handle_name = member.handle_name
         td.real_name = member.real_name
         td.email = member.email
         td = project_list(member)
