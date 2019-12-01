@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'メンバー管理機能', type: :system do
   before do
     create(:project)
-    create(:member, hundle_name: 'taro', real_name: '山田太郎')
+    create(:member, handle_name: 'taro', real_name: '山田太郎')
     sign_in create(:user)
     visit root_path
     click_link 'メンバー'
@@ -20,7 +20,7 @@ describe 'メンバー管理機能', type: :system do
     context '名前が入力される場合' do
       it '新規に追加できること' do
         click_on 'メンバー追加'
-        fill_in 'member[hundle_name]', with: 'hanako'
+        fill_in 'member[handle_name]', with: 'hanako'
         fill_in 'member[real_name]', with: '山田花子'
         fill_in 'member[email]', with: 'hanako-yamada@example.com'
         click_on '登録する'
@@ -30,7 +30,7 @@ describe 'メンバー管理機能', type: :system do
           tr = all('tr').last
 
           within(tr) do
-            expect(find('.hundle_name')).to have_content 'hanako'
+            expect(find('.handle_name')).to have_content 'hanako'
             expect(find('.real_name')).to have_content '山田花子'
             expect(find('.email')).to have_content 'hanako-yamada@example.com'
           end
@@ -51,7 +51,7 @@ describe 'メンバー管理機能', type: :system do
   describe '編集機能' do
     it 'ハンドルネームと氏名を編集できるか' do
       click_on '編集'
-      fill_in 'member[hundle_name]', with: 'taro3'
+      fill_in 'member[handle_name]', with: 'taro3'
       fill_in 'member[real_name]', with: '山下太郎'
       fill_in 'member[email]', with: 'taro@example.com'
       click_on '更新する'
@@ -62,7 +62,7 @@ describe 'メンバー管理機能', type: :system do
         tr = all('tr').last
 
         within(tr) do
-          expect(find('.hundle_name')).to have_content 'taro3'
+          expect(find('.handle_name')).to have_content 'taro3'
           expect(find('.real_name')).to have_content '山下太郎'
           expect(find('.email')).to have_content 'taro@example.com'
         end
