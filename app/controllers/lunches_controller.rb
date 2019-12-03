@@ -9,10 +9,10 @@ class LunchesController < ApplicationController
   end
 
   def create
-    @lunch_form = LunchForm.new(date: params[:lunch_form][:date])
+    @lunch_form = LunchForm.new(lunch_form_params)
 
     if @lunch_form.valid?
-      members = Member.where(real_name: params[:lunch_form][:members])
+      members = Member.where(real_name: @lunch_form.members)
       date = Date.parse(@lunch_form.date)
       quarter = Quarter.find_or_create_quarter(date)
       lunch = quarter.lunches.create!(date: date, members: members, created_by: current_user)
@@ -39,6 +39,10 @@ class LunchesController < ApplicationController
   end
 
   private
+
+  def lunch_form_params
+    params.require(:lunch_form).permit(:date, members: [])
+  end
 
   def set_variables_for_new_lunch_view
     @members = Member.includes(:projects).where(retired: false).order(:created_at)
