@@ -25,7 +25,7 @@ RSpec.describe LunchForm do
 
       it '「3人のメンバーを入力してください」のエラーメッセージになること' do
         subject.valid?
-        expect(subject.errors.messages[:members_count]).to eq ['3人のメンバーを入力してください']
+        expect(subject.errors.messages).to eq({members_count: ['3人のメンバーを入力してください']})
       end
     end
 
@@ -36,7 +36,7 @@ RSpec.describe LunchForm do
 
       it '「存在する名前を入力してください」のエラーメッセージになること' do
         subject.valid?
-        expect(subject.errors.messages[:members_exist]).to eq ['存在する名前を入力してください']
+        expect(subject.errors.messages).to eq({members_exist: ['存在する名前を入力してください']})
       end
     end
 
