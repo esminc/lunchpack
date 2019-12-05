@@ -29,7 +29,7 @@ RSpec.describe LunchForm do
       end
     end
 
-    context '存在しない３人がmembersに指定された場合' do
+    context '人数は満たしているが、存在しないmembersが指定された場合' do
       let(:members) { ['鈴木存在しない一郎', '鈴木二郎', '鈴木三郎'] }
 
       it { is_expected.not_to be_valid }
