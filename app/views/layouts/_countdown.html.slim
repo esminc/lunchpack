@@ -1,0 +1,6 @@
+.countdown
+  | 次のクォーターまで
+  br
+  | 残り
+  span.countdown-days= (Quarter.current_quarter.end_date - Date.current).to_i + 1
+  | 日
