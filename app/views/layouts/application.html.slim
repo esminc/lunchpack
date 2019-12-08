@@ -10,7 +10,9 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = render 'layouts/navbar'
-    = render 'layouts/flash_messages'
+    - if user_signed_in?
+      = render 'layouts/navbar'
+      = render 'layouts/flash_messages'
+      = render 'layouts/countdown'
     .container
       = yield
