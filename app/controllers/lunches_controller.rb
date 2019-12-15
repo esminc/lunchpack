@@ -13,7 +13,7 @@ class LunchesController < ApplicationController
 
     if @lunch_form.valid?
       members = Member.where(real_name: @lunch_form.members)
-      date = Date.parse(@lunch_form.date)
+      date = @lunch_form.date.to_date
       quarter = Quarter.find_or_create_quarter(date)
       lunch = quarter.lunches.create!(date: date, members: members, created_by: current_user)
       flash[:success] = t('dictionary.message.create.complete', resource_name: lunch.label_with_date_and_member_names)
