@@ -4,10 +4,16 @@ class LunchForm
   attr_accessor :date, :members
 
   validates :date, presence: {message: '日付を入力してください'}
+  validate :date_must_be_in_the_past, if: -> { date.present? }
   validate :must_have_benefits_available_count_members
   validate :members_should_exist
 
   BENEFITS_AVAILABLE_MEMBERS_COUNT = 3
+
+  def date_must_be_in_the_past
+    return if date.to_date <= Date.current
+    errors.add(:date, "今日までの日付を入力してください")
+  end
 
   # 規定人数が満たされていること
   def must_have_benefits_available_count_members
