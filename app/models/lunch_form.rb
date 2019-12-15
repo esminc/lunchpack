@@ -3,7 +3,7 @@ class LunchForm
 
   attr_accessor :date, :members
 
-  validates :date, presence: true
+  validates :date, presence: {message: '日付を入力してください'}
   validate :must_have_benefits_available_count_members
   validate :members_should_exist
 
