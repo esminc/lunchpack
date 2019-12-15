@@ -23,8 +23,8 @@ h3.my-3 ランチに行くメンバーを探す
         - if @lunch_form.errors.any?
           .text-danger
             ul
-              - @lunch_form.errors.messages.values.flatten.each do |message|
-                li = message
+              - @lunch_form.errors.messages.each do |attr, messages|
+                li = messages.first
         .form-group
           = f.text_field :member, name: 'lunch_form[members][]', readonly: true, class: 'form-control form-control-lg member-form'
         .form-group
