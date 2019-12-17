@@ -15,3 +15,5 @@ Style/AsciiComments:
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
+Style/RedundantSelf:
+  Enabled: false

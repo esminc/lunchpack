@@ -79,12 +79,6 @@ Style/RedundantBegin:
   Exclude:
     - 'bin/yarn'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/RedundantSelf:
-  Exclude:
-    - 'app/models/lunch.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/StderrPuts:
