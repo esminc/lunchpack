@@ -200,7 +200,7 @@ describe '3人組を探す機能' do
           fill_in '行った日', with: date
           find('#submit-btn').click
 
-          expect(page).to have_content "#{ Date.current.prev_month(3)} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
+          expect(page).to have_content "#{Date.current.prev_month(3)} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
         end
       end
     end

@@ -17,14 +17,6 @@ Layout/EmptyLinesAroundBlockBody:
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
-# SupportedStyles: space, no_space
-Layout/SpaceInsideStringInterpolation:
-  Exclude:
-    - 'spec/system/lunch_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
 # SupportedStyles: final_newline, final_blank_line
 Layout/TrailingEmptyLines:
   Exclude:
