@@ -14,11 +14,6 @@ Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - 'db/schema.rb'
 
-# Offense count: 1
-Lint/IneffectiveAccessModifier:
-  Exclude:
-    - 'app/models/user.rb'
-
 # Offense count: 2
 Lint/ShadowingOuterLocalVariable:
   Exclude:
