@@ -2,8 +2,9 @@ namespace :delete_db_data do
   desc '同じクォーターの中で同じ日に同じメンバーと行ったランチ履歴を削除する'
   task delete_duplicate_lunch: :environment do
     puts '同じクォーターの中で同じ日に同じメンバーと行ったランチ履歴を削除します'
-    quarter = Quarter.includes(lunches: [:lunches_members, :members]).order("quarters.start_date", "lunches.date", "lunches.created_at", "members.created_at")
-    quarter.each do |quarter|
+    quarters = Quarter.includes(lunches: [:lunches_members, :members])
+                      .order("quarters.start_date", "lunches.date", "lunches.created_at", "members.created_at")
+    quarters.each do |quarter|
       finish_iterate_lunches = []
       quarter.lunches.each do |lunch|
         finish_iterate_lunches.each do |finish_iterate_lunch|
