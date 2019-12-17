@@ -10,11 +10,11 @@ namespace :delete_db_data do
         finish_iterate_lunches.each do |finish_iterate_lunch|
           next unless (finish_iterate_lunch.date == lunch.date) && (finish_iterate_lunch.members == lunch.members)
 
-          puts <<~EOS
+          puts <<~TEXT
             #{finish_iterate_lunch.inspect} #{finish_iterate_lunch.members.map(&:real_name).join(',')}のランチと
             #{lunch.inspect} #{lunch.members.map(&:real_name).join(',')}のランチが重複してます。
             #{lunch.inspect} #{lunch.members.map(&:real_name).join(',')}のランチを削除します
-          EOS
+          TEXT
 
           lunch.delete
           puts '削除しました'
