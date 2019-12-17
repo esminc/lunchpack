@@ -14,14 +14,6 @@ Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - 'db/schema.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: final_newline, final_blank_line
-Layout/TrailingEmptyLines:
-  Exclude:
-    - 'Gemfile'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowInHeredoc.
