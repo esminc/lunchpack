@@ -11,3 +11,7 @@ Lint/AmbiguousBlockAssociation:
 
 Style/AsciiComments:
   Enabled: false
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+

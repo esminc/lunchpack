@@ -33,15 +33,6 @@ Metrics/MethodLength:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/members_controller.rb'
-    - 'app/controllers/projects_controller.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
