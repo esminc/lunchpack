@@ -40,11 +40,11 @@ class MembersController < ApplicationController
 
   private
 
-    def set_member
-      @member = Member.find(params[:id])
-    end
+  def set_member
+    @member = Member.find(params[:id])
+  end
 
-    def member_params
-      params.require(:member).permit(:handle_name, :real_name, :retired, :email, project_ids: [])
-    end
+  def member_params
+    params.require(:member).permit(:handle_name, :real_name, :retired, :email, project_ids: [])
+  end
 end

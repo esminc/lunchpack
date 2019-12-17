@@ -16,15 +16,6 @@ Layout/EmptyLinesAroundBlockBody:
 
 # Offense count: 4
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: normal, indented_internal_methods
-Layout/IndentationConsistency:
-  Exclude:
-    - 'app/controllers/members_controller.rb'
-    - 'app/controllers/projects_controller.rb'
-
-# Offense count: 4
-# Cop supports --auto-correct.
 # Configuration parameters: Width, IgnoredPatterns.
 Layout/IndentationWidth:
   Exclude:
