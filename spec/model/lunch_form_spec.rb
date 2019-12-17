@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe LunchForm do
   describe 'dateのバリデーション' do
-    let(:lunch_form_params) { {date: date , members: ['鈴木一郎', '鈴木二郎', '鈴木三郎']} }
+    let(:lunch_form_params) { {date: date, members: ['鈴木一郎', '鈴木二郎', '鈴木三郎']} }
 
     before do
       create(:member, real_name: '鈴木一郎')
