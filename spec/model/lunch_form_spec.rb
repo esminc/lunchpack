@@ -25,7 +25,7 @@ RSpec.describe LunchForm do
 
       it '「今日までの日付を入力してください」のエラーメッセージになること' do
         subject.valid?
-        expect(subject.errors.messages).to eq({date: ['今日までの日付を入力してください']})
+        expect(subject.errors.messages).to eq(date: ['今日までの日付を入力してください'])
       end
     end
   end
@@ -54,7 +54,7 @@ RSpec.describe LunchForm do
 
       it '「3人のメンバーを入力してください」のエラーメッセージになること' do
         subject.valid?
-        expect(subject.errors.messages).to eq({members: ['3人のメンバーを入力してください']})
+        expect(subject.errors.messages).to eq(members: ['3人のメンバーを入力してください'])
       end
     end
 
@@ -65,7 +65,7 @@ RSpec.describe LunchForm do
 
       it '「存在する名前を入力してください」のエラーメッセージになること' do
         subject.valid?
-        expect(subject.errors.messages).to eq({members: ['存在する名前を入力してください']})
+        expect(subject.errors.messages).to eq(members: ['存在する名前を入力してください'])
       end
     end
 
@@ -76,7 +76,7 @@ RSpec.describe LunchForm do
 
       it 'それぞれのエラーメッセージが返されること' do
         subject.valid?
-        expect(subject.errors.messages).to eq({members: ['3人のメンバーを入力してください', '存在する名前を入力してください']})
+        expect(subject.errors.messages).to eq(members: ['3人のメンバーを入力してください', '存在する名前を入力してください'])
       end
     end
   end
