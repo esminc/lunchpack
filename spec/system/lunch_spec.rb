@@ -11,9 +11,9 @@ describe 'ランチ履歴の表示機能' do
     trio2 = [member1, member4, member5]
 
     login_user = create(:user)
-    create_lunch(trio1, login_user, date: Date.new(2019,9,15))
-    create_lunch(trio2, login_user, date: Date.new(2019,9,16))
-    create_lunch(trio1, login_user, date: Date.new(2019,12,15))
+    create_lunch(trio1, login_user, date: Date.new(2019, 9, 15))
+    create_lunch(trio2, login_user, date: Date.new(2019, 9, 16))
+    create_lunch(trio1, login_user, date: Date.new(2019, 12, 15))
 
     sign_in login_user
     visit root_path

@@ -9,9 +9,9 @@ describe Lunch do
     ]
 
     login_user = create(:user)
-    create_lunch(members, login_user, date: Date.new(2019,9,15))
+    create_lunch(members, login_user, date: Date.new(2019, 9, 15))
 
-    lunch = build_lunch(members, login_user, date: Date.new(2019,9,16))
+    lunch = build_lunch(members, login_user, date: Date.new(2019, 9, 16))
 
     expect(lunch).to_not be_valid
     expect(lunch.errors.messages[:went_to_lunch_with_same_members]).to eq ['鈴木一郎,鈴木二郎,鈴木三郎は2019-09-15にランチ済みです']
