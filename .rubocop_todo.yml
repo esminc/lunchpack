@@ -14,14 +14,6 @@ Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - 'db/schema.rb'
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: Width, IgnoredPatterns.
-Layout/IndentationWidth:
-  Exclude:
-    - 'app/controllers/members_controller.rb'
-    - 'app/controllers/projects_controller.rb'
-
 # Offense count: 11
 # Cop supports --auto-correct.
 Layout/SpaceAfterComma:
