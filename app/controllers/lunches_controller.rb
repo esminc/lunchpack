@@ -31,11 +31,10 @@ class LunchesController < ApplicationController
       resource_name = @lunch.label_with_date_and_member_names
       @lunch.destroy
       flash[:danger] = t('dictionary.message.destroy.complete', resource_name: resource_name)
-      redirect_to lunches_url
     else
       flash[:warning] = '削除対象となったランチはあなたが作成したものではないので削除できませんでした'
-      redirect_to lunches_url
     end
+    redirect_to lunches_url
   end
 
   private

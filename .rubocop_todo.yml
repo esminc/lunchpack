@@ -47,11 +47,6 @@ Style/ExpandPathArguments:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Offense count: 2
-Style/IdenticalConditionalBranches:
-  Exclude:
-    - 'app/controllers/lunches_controller.rb'
-
 # Offense count: 1
 Style/MixinUsage:
   Exclude:
