@@ -16,15 +16,6 @@ Layout/EmptyLinesAroundBlockBody:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces.
-# SupportedStyles: space, no_space
-# SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceBeforeBlockBraces:
-  Exclude:
-    - 'spec/model/lunch_form_spec.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
 Layout/SpaceBeforeComma:
   Exclude:
     - 'lib/tasks/delete_db_data.rake'

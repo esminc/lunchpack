@@ -13,13 +13,13 @@ RSpec.describe LunchForm do
     subject { described_class.new(lunch_form_params) }
 
     context '日付が今日の場合' do
-      let(:date){ Date.current.to_s }
+      let(:date) { Date.current.to_s }
 
       it { is_expected.to be_valid }
     end
 
     context '日付が明日の場合' do
-      let(:date){ Date.tomorrow.to_s }
+      let(:date) { Date.tomorrow.to_s }
 
       it { is_expected.not_to be_valid }
 
