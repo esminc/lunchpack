@@ -8,6 +8,7 @@ namespace :delete_db_data do
       quarter.lunches.each do |lunch|
         finish_iterate_lunches.each do |finish_iterate_lunch|
           next unless (finish_iterate_lunch.date == lunch.date) && (finish_iterate_lunch.members == lunch.members)
+
           puts <<~EOS
           #{finish_iterate_lunch.inspect} #{finish_iterate_lunch.members.map(&:real_name).join(',')}のランチと
           #{lunch.inspect} #{lunch.members.map(&:real_name).join(',')}のランチが重複してます。

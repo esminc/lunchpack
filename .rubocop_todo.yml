@@ -8,13 +8,6 @@
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - 'app/models/lunch_form.rb'
-    - 'lib/tasks/delete_db_data.rake'
-
-# Offense count: 2
-# Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
     - 'Gemfile'
