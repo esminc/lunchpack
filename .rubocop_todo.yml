@@ -29,14 +29,6 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 19
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AutoCorrect, EnforcedStyle.
-# SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-
 # Offense count: 32
 Style/Documentation:
   Enabled: false
