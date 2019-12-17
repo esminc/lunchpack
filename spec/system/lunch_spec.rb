@@ -175,36 +175,45 @@ describe '3人組を探す機能' do
   end
 
   describe 'ランチに行ったことの登録機能' do
-    context '3人を選ぶ場合' do
-      it 'ランチに行ったことが登録できること' do
-        find('.member-name', text: '鈴木一郎').click
-        find('.member-name', text: '鈴木二郎').click
-        find('.member-name', text: '鈴木三郎').click
-        find('#submit-btn').click
+    context '正しい入力をする場合' do
+      context '今日の日付で登録する場合' do
+        let(:date) { Date.current }
 
-        expect(page).to have_content '鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました'
+        it '正しく登録されたことのメッセージが表示されること' do
+          find('.member-name', text: '鈴木一郎').click
+          find('.member-name', text: '鈴木二郎').click
+          find('.member-name', text: '鈴木三郎').click
+          fill_in '行った日', with: date
+          find('#submit-btn').click
+
+          expect(page).to have_content '鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました'
+        end
+      end
+
+      context '前の期の日付で登録する場合' do
+        let(:date) { Date.current.prev_month(3) }
+
+        it '正しく登録されたことのメッセージが表示されること' do
+          find('.member-name', text: '鈴木一郎').click
+          find('.member-name', text: '鈴木二郎').click
+          find('.member-name', text: '鈴木三郎').click
+          fill_in '行った日', with: date
+          find('#submit-btn').click
+
+          expect(page).to have_content "#{ Date.current.prev_month(3)} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
+        end
       end
     end
 
-    context '3人未満を選ぶ場合' do
-      it 'ランチに行ったことが登録できないこと' do
+    context '不正な入力をする場合' do
+      it 'エラーメッセージが表示されること' do
         find('.member-name', text: '鈴木一郎').click
         find('.member-name', text: '鈴木二郎').click
+        fill_in '行った日', with: nil
         find('#submit-btn').click
 
         expect(page).to have_content '3人のメンバーを入力してください'
-      end
-    end
-
-    describe '後日にランチに行った履歴を登録できる機能' do
-      it '昨日の日付で登録できること' do
-        find('.member-name', text: '鈴木一郎').click
-        find('.member-name', text: '鈴木二郎').click
-        find('.member-name', text: '鈴木三郎').click
-        fill_in '行った日', with: Date.yesterday
-        find('#submit-btn').click
-
-        expect(page).to have_content "#{Date.yesterday} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
+        expect(page).to have_content '日付を入力してください'
       end
     end
   end

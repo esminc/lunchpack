@@ -5,16 +5,18 @@ class LunchesController < ApplicationController
 
   def new
     set_variables_for_new_lunch_view
-    @lunch = Lunch.new
+    @lunch_form = LunchForm.new
   end
 
   def create
-    date = params[:lunch][:date]
-    members = Member.where(real_name: params[:lunch][:members])
-    quarter = Quarter.find_or_create_quarter(date)
-    @lunch = quarter.lunches.build(date: date, members: members, created_by: current_user)
-    if @lunch.save
-      flash[:success] = t('dictionary.message.create.complete', resource_name: @lunch.label_with_date_and_member_names)
+    @lunch_form = LunchForm.new(lunch_form_params)
+
+    if @lunch_form.valid?
+      members = Member.where(real_name: @lunch_form.members)
+      date = @lunch_form.date.to_date
+      quarter = Quarter.find_or_create_quarter(date)
+      lunch = quarter.lunches.create!(date: date, members: members, created_by: current_user)
+      flash[:success] = t('dictionary.message.create.complete', resource_name: lunch.label_with_date_and_member_names)
       redirect_to lunches_url
     else
       set_variables_for_new_lunch_view
@@ -37,6 +39,10 @@ class LunchesController < ApplicationController
   end
 
   private
+
+  def lunch_form_params
+    params.require(:lunch_form).permit(:date, members: [])
+  end
 
   def set_variables_for_new_lunch_view
     @members = Member.includes(:projects).where(retired: false).order(:created_at)
