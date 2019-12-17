@@ -29,17 +29,6 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 19
 
-# Offense count: 7
-# Configuration parameters: AllowedChars.
-Style/AsciiComments:
-  Exclude:
-    - 'app/models/lunch.rb'
-    - 'app/models/lunch_form.rb'
-    - 'app/models/quarter.rb'
-    - 'lib/tasks/associate_models.rake'
-    - 'spec/helpers/application_helper_spec.rb'
-    - 'spec/model/quarter_spec.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/BlockComments:

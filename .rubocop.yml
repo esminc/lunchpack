@@ -8,3 +8,6 @@ Layout/SpaceInsideHashLiteralBraces:
 
 Lint/AmbiguousBlockAssociation:
   Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
