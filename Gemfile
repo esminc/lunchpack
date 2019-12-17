@@ -35,7 +35,6 @@ gem 'turbolinks'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uglifier'
 
-
 group :development, :test do
   gem 'bullet'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
