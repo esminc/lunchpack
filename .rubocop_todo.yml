@@ -15,11 +15,6 @@ Layout/EmptyLinesAroundBlockBody:
     - 'db/schema.rb'
 
 # Offense count: 1
-Lint/AmbiguousBlockAssociation:
-  Exclude:
-    - 'spec/model/quarter_spec.rb'
-
-# Offense count: 1
 Lint/IneffectiveAccessModifier:
   Exclude:
     - 'app/models/user.rb'
