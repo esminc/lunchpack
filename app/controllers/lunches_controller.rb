@@ -1,6 +1,6 @@
 class LunchesController < ApplicationController
   def index
-    @quarters = Quarter.includes(lunches: [:lunches_members, :members, :created_by]).order("quarters.start_date", "lunches.date desc", "members.created_at")
+    @quarters = Quarter.includes(lunches: %i(lunches_members members created_by)).order("quarters.start_date", "lunches.date desc", "members.created_at")
   end
 
   def new

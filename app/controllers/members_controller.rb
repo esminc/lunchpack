@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:edit, :update, :destroy]
+  before_action :set_member, only: %i(edit update destroy)
 
   def index
     @members = Member.includes(:projects).order(:created_at)

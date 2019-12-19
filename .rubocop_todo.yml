@@ -50,20 +50,6 @@ Style/StringLiterals:
     - 'lib/tasks/delete_db_data.rake'
     - 'spec/rails_helper.rb'
 
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, MinSize.
-# SupportedStyles: percent, brackets
-Style/SymbolArray:
-  Exclude:
-    - 'Gemfile'
-    - 'app/controllers/lunches_controller.rb'
-    - 'app/controllers/members_controller.rb'
-    - 'app/controllers/projects_controller.rb'
-    - 'config/routes.rb'
-    - 'db/migrate/20190905044920_add_unique_index_to_quarters.rb'
-    - 'lib/tasks/delete_db_data.rake'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyleForMultiline.
