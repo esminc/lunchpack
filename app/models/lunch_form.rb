@@ -13,7 +13,7 @@ class LunchForm
   def date_must_be_in_the_past
     return if date.to_date <= Date.current
 
-    errors.add(:date, "今日までの日付を入力してください")
+    errors.add(:date, '今日までの日付を入力してください')
   end
 
   # 規定人数が満たされていること

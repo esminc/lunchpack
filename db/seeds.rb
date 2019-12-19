@@ -1,4 +1,4 @@
-require "csv"
+require 'csv'
 require 'yaml'
 
 User.create!(email: 'sample@esm.co.jp', password: 'password')

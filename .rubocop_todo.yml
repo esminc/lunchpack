@@ -28,24 +28,6 @@ Metrics/MethodLength:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Offense count: 28
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'app/controllers/lunches_controller.rb'
-    - 'app/models/lunch_form.rb'
-    - 'config/environments/production.rb'
-    - 'config/puma.rb'
-    - 'config/routes.rb'
-    - 'config/spring.rb'
-    - 'db/migrate/20190803213618_devise_create_users.rb'
-    - 'db/seeds.rb'
-    - 'lib/tasks/auto_generate_diagram.rake'
-    - 'lib/tasks/delete_db_data.rake'
-    - 'spec/rails_helper.rb'
-
 # Offense count: 90
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
