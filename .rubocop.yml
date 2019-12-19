@@ -15,6 +15,14 @@ Layout/SpaceInsideHashLiteralBraces:
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - 'lin/tasks/*.rake'
+    - 'spec/**/*.rb'
+    - 'Gemfile'
+    - 'config/environments/*.rb'
+    - 'config/routes.rb'
+
 Style/AsciiComments:
   Enabled: false
 
