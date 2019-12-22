@@ -48,6 +48,9 @@ Style/Documentation:
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/RedundantSelf:
   Enabled: false
 
