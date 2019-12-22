@@ -34,6 +34,10 @@ Metrics/MethodLength:
 Style/AsciiComments:
   Enabled: false
 
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+  AllowBracesOnProceduralOneLiners: true
+
 Style/Documentation:
   Enabled: false
 
