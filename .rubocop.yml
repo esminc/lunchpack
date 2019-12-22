@@ -27,6 +27,10 @@ Metrics/AbcSize:
   Exclude:
     - 'db/migrate/*'
 
+Metrics/LineLength:
+  Max: 120
+  IgnoredPatterns: ['\A\s*#']
+
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'

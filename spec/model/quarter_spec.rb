@@ -56,13 +56,17 @@ describe Quarter do
     subject { quarter.cover_today? }
 
     context '40期第2Qの場合' do
-      let(:quarter) { build(:quarter, period: 40, ordinal: 2, start_date: Date.new(2019, 11, 1), end_date: Date.new(2020, 1, 31)) }
+      let(:quarter) do
+        build(:quarter, period: 40, ordinal: 2, start_date: Date.new(2019, 11, 1), end_date: Date.new(2020, 1, 31))
+      end
 
       it { is_expected.to be true }
     end
 
     context '40期第1Qの場合' do
-      let(:quarter) { build(:quarter, period: 40, ordinal: 1, start_date: Date.new(2019, 8, 1), end_date: Date.new(2019, 10, 31)) }
+      let(:quarter) do
+        build(:quarter, period: 40, ordinal: 1, start_date: Date.new(2019, 8, 1), end_date: Date.new(2019, 10, 31))
+      end
 
       it { is_expected.to be false }
     end
