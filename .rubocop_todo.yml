@@ -10,11 +10,6 @@
 Metrics/AbcSize:
   Max: 20
 
-# Offense count: 2
-# Configuration parameters: CountComments, ExcludedMethods.
-Metrics/MethodLength:
-  Max: 19
-
 # Offense count: 75
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
