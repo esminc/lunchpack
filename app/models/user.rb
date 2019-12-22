@@ -8,8 +8,6 @@ class User < ApplicationRecord
   devise :trackable, :omniauthable, omniauth_providers: %i(google)
 
   class << self
-    protected
-
     def find_for_google(auth)
       user = User.find_by(email: auth.info.email)
 
