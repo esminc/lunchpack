@@ -13,14 +13,6 @@ Rails/CreateTableWithTimestamps:
   Exclude:
     - 'db/migrate/20190813053510_create_lunches_members.rb'
 
-# Offense count: 2
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: slashes, arguments
-Rails/FilePath:
-  Exclude:
-    - 'config/environments/development.rb'
-    - 'spec/rails_helper.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: Include.
