@@ -9,7 +9,7 @@ class Quarter < ApplicationRecord
     end
 
     def find_or_create_quarter(date)
-      quarter = Quarter.where('start_date <= ?', date).where('end_date >= ?', date).first
+      quarter = Quarter.where('start_date <= ?', date).find_by('end_date >= ?', date)
       if quarter.blank?
         quarter = Quarter.create!(
           period: current_period(date),
