@@ -37,10 +37,3 @@ Rails/HasManyOrHasOneDependent:
 Rails/InverseOf:
   Exclude:
     - 'app/models/lunch.rb'
-
-# Offense count: 1
-# Configuration parameters: Include.
-# Include: **/Rakefile, **/*.rake
-Rails/RakeEnvironment:
-  Exclude:
-    - 'lib/tasks/auto_generate_diagram.rake'

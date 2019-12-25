@@ -63,3 +63,6 @@ Style/PercentLiteralDelimiters:
     '%I': '()'
     '%w': '()'
     '%W': '()'
+
+Rails/RakeEnvironment:
+  Enabled: false
