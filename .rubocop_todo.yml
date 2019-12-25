@@ -39,12 +39,6 @@ Rails/InverseOf:
     - 'app/models/lunch.rb'
 
 # Offense count: 1
-# Cop supports --auto-correct.
-Rails/PluralizationGrammar:
-  Exclude:
-    - 'spec/system/lunch_spec.rb'
-
-# Offense count: 1
 # Configuration parameters: Include.
 # Include: **/Rakefile, **/*.rake
 Rails/RakeEnvironment:

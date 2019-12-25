@@ -156,7 +156,7 @@ describe '3人組を探す機能' do
 
       context 'ランチに行ったクウォーターと違う期間の場合' do
         before do
-          travel 3.month
+          travel 3.months
           visit root_path
         end
 
