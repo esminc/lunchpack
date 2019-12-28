@@ -37,14 +37,6 @@ RSpec/ExampleLength:
     - 'spec/system/lunch_spec.rb'
     - 'spec/system/members_spec.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: method_call, block
-RSpec/ExpectChange:
-  Exclude:
-    - 'spec/model/quarter_spec.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 RSpec/LeadingSubject:

@@ -76,3 +76,6 @@ Rails/InverseOf:
 
 Rails/RakeEnvironment:
   Enabled: false
+
+RSpec/ExpectChange:
+  EnforcedStyle: block
