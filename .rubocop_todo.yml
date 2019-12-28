@@ -37,11 +37,6 @@ RSpec/ExampleLength:
     - 'spec/system/lunch_spec.rb'
     - 'spec/system/members_spec.rb'
 
-# Offense count: 1
-RSpec/MultipleDescribes:
-  Exclude:
-    - 'spec/system/lunch_spec.rb'
-
 # Offense count: 12
 # Configuration parameters: AggregateFailuresByDefault.
 RSpec/MultipleExpectations:
