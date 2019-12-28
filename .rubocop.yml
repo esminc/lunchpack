@@ -64,5 +64,8 @@ Style/PercentLiteralDelimiters:
     '%w': '()'
     '%W': '()'
 
+Rails/InverseOf:
+  Enabled: false
+
 Rails/RakeEnvironment:
   Enabled: false
