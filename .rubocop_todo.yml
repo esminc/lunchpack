@@ -21,16 +21,6 @@ Rails/HasAndBelongsToMany:
     - 'app/models/lunch.rb'
     - 'app/models/member.rb'
 
-# Offense count: 4
-# Configuration parameters: Include.
-# Include: app/models/**/*.rb
-Rails/HasManyOrHasOneDependent:
-  Exclude:
-    - 'app/models/member.rb'
-    - 'app/models/project.rb'
-    - 'app/models/quarter.rb'
-    - 'app/models/user.rb'
-
 # Offense count: 1
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb

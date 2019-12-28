@@ -1,5 +1,5 @@
 class Quarter < ApplicationRecord
-  has_many :lunches
+  has_many :lunches, dependent: :nullify
 
   DIFF_BETWEEN_JANUARY_AND_TERM_START_MOMTH = 7
 
