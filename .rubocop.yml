@@ -64,6 +64,12 @@ Style/PercentLiteralDelimiters:
     '%w': '()'
     '%W': '()'
 
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
 Rails/InverseOf:
   Enabled: false
 

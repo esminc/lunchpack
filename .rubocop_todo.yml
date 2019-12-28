@@ -5,18 +5,3 @@
 # one by one as the offenses are removed from the code base.
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
-
-# Offense count: 1
-# Configuration parameters: Include.
-# Include: db/migrate/*.rb
-# Rails/CreateTableWithTimestamps:
-#   Exclude:
-#     - 'db/migrate/20190813053510_create_lunches_members.rb'
-
-# Offense count: 2
-# Configuration parameters: Include.
-# Include: app/models/**/*.rb
-Rails/HasAndBelongsToMany:
-  Exclude:
-    - 'app/models/lunch.rb'
-    - 'app/models/member.rb'
