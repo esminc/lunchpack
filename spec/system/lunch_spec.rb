@@ -58,7 +58,7 @@ describe 'ランチ履歴', type: :system do
 
       expect(page).to have_content('鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を削除しました')
       within('table') do
-        expect(page).to_not have_content('鈴木一郎,鈴木二郎,鈴木三郎')
+        expect(page).not_to have_content('鈴木一郎,鈴木二郎,鈴木三郎')
       end
     end
 
@@ -67,7 +67,7 @@ describe 'ランチ履歴', type: :system do
       visit lunches_path
 
       within('tr', text: '鈴木一郎,鈴木二郎,鈴木三郎') do
-        expect(page).to_not have_content('削除')
+        expect(page).not_to have_content('削除')
       end
     end
   end
@@ -116,7 +116,7 @@ describe 'ランチ履歴', type: :system do
           find('.member-row', text: '鈴木一郎').click
 
           within('.lunch-form') do
-            expect(page).to_not have_content('鈴木一郎')
+            expect(page).not_to have_content('鈴木一郎')
           end
         end
       end
@@ -144,13 +144,13 @@ describe 'ランチ履歴', type: :system do
             find('.member-row', text: '鈴木二郎').click
 
             within('.lunch-form') do
-              expect(page).to_not have_content('鈴木二郎')
+              expect(page).not_to have_content('鈴木二郎')
             end
 
             find('.member-row', text: '鈴木三郎').click
 
             within('.lunch-form') do
-              expect(page).to_not have_content('鈴木三郎')
+              expect(page).not_to have_content('鈴木三郎')
             end
           end
         end
@@ -165,10 +165,10 @@ describe 'ランチ履歴', type: :system do
             find('.member-name', text: '鈴木一郎').click
 
             within('.member-row', text: '鈴木二郎') do
-              expect(page).to_not have_content('鈴木一郎とランチ済み')
+              expect(page).not_to have_content('鈴木一郎とランチ済み')
             end
             within('.member-row', text: '鈴木三郎') do
-              expect(page).to_not have_content('鈴木一郎とランチ済み')
+              expect(page).not_to have_content('鈴木一郎とランチ済み')
             end
           end
         end

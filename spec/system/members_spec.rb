@@ -100,7 +100,7 @@ describe 'メンバー管理機能', type: :system do
     it '選択リストには退職メンバーの名前が無いこと' do
       visit root_path
       within('#members-list') do
-        expect(page).to_not have_content '退職太郎'
+        expect(page).not_to have_content '退職太郎'
       end
     end
   end

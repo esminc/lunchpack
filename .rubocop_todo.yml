@@ -53,15 +53,3 @@ RSpec/NamedSubject:
 # Offense count: 8
 RSpec/NestedGroups:
   Max: 5
-
-# Offense count: 13
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: not_to, to_not
-RSpec/NotToNot:
-  Exclude:
-    - 'spec/model/lunch_spec.rb'
-    - 'spec/model/member_spec.rb'
-    - 'spec/model/project_spec.rb'
-    - 'spec/system/lunch_spec.rb'
-    - 'spec/system/members_spec.rb'
