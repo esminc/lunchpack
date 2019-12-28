@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'プロジェクト管理機能' do
+describe 'プロジェクト管理機能', type: :system do
   before do
     create(:project)
     sign_in create(:user)

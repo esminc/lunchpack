@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'ランチ履歴の表示機能' do
+describe 'ランチ履歴の表示機能', type: :system do
   before do
     member1 = create(:member, real_name: '鈴木一郎')
     member2 = create(:member, real_name: '鈴木二郎')
@@ -30,7 +30,7 @@ describe 'ランチ履歴の表示機能' do
   end
 end
 
-describe 'ランチ履歴を登録したユーザーだけその履歴を削除できる機能' do
+describe 'ランチ履歴を登録したユーザーだけその履歴を削除できる機能', type: :system do
   before do
     create(:member, real_name: '鈴木一郎')
     create(:member, real_name: '鈴木二郎')
@@ -71,7 +71,7 @@ describe 'ランチ履歴を登録したユーザーだけその履歴を削除�
   end
 end
 
-describe '3人組を探す機能' do
+describe '3人組を探す機能', type: :system do
   let!(:project) { create(:project) }
   let!(:member1) { create(:member, real_name: '鈴木一郎', projects: [project]) }
   let!(:member2) { create(:member, real_name: '鈴木二郎') }
