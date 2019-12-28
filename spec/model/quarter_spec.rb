@@ -48,12 +48,12 @@ describe Quarter do
   end
 
   describe '#cover_today?' do
+    subject { quarter.cover_today? }
+
     before '40期第2Qのときに実行する' do
       # 現在日時を固定
       travel_to Date.new(2019, 11, 1)
     end
-
-    subject { quarter.cover_today? }
 
     context '40期第2Qの場合' do
       let(:quarter) do

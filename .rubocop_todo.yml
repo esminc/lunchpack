@@ -37,13 +37,6 @@ RSpec/ExampleLength:
     - 'spec/system/lunch_spec.rb'
     - 'spec/system/members_spec.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-RSpec/LeadingSubject:
-  Exclude:
-    - 'spec/model/lunch_form_spec.rb'
-    - 'spec/model/quarter_spec.rb'
-
 # Offense count: 1
 RSpec/MultipleDescribes:
   Exclude:

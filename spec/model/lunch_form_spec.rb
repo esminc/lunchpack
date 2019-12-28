@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe LunchForm do
   describe 'dateのバリデーション' do
+    subject { described_class.new(lunch_form_params) }
+
     let(:lunch_form_params) { {date: date, members: %w(鈴木一郎 鈴木二郎 鈴木三郎)} }
 
     before do
@@ -9,8 +11,6 @@ RSpec.describe LunchForm do
       create(:member, real_name: '鈴木二郎')
       create(:member, real_name: '鈴木三郎')
     end
-
-    subject { described_class.new(lunch_form_params) }
 
     context '日付が今日の場合' do
       let(:date) { Date.current.to_s }
@@ -31,6 +31,8 @@ RSpec.describe LunchForm do
   end
 
   describe 'membersのバリデーション' do
+    subject { described_class.new(lunch_form_params) }
+
     let(:lunch_form_params) { {date: '2019-11-21', members: members} }
 
     before do
@@ -38,8 +40,6 @@ RSpec.describe LunchForm do
       create(:member, real_name: '鈴木二郎')
       create(:member, real_name: '鈴木三郎')
     end
-
-    subject { described_class.new(lunch_form_params) }
 
     context '存在する３人がmembersに指定された場合' do
       let(:members) { %w(鈴木一郎 鈴木二郎 鈴木三郎) }
