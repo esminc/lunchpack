@@ -77,5 +77,8 @@ Rails/InverseOf:
 Rails/RakeEnvironment:
   Enabled: false
 
+RSpec/ContextWording:
+  Enabled: false
+
 RSpec/ExpectChange:
   EnforcedStyle: block

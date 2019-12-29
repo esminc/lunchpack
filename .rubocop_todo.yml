@@ -6,18 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 24
-# Configuration parameters: Prefixes.
-# Prefixes: when, with, without
-RSpec/ContextWording:
-  Exclude:
-    - 'spec/helpers/application_helper_spec.rb'
-    - 'spec/model/lunch_form_spec.rb'
-    - 'spec/model/quarter_spec.rb'
-    - 'spec/system/lunch_spec.rb'
-    - 'spec/system/members_spec.rb'
-    - 'spec/system/projects_spec.rb'
-
 # Offense count: 10
 # Cop supports --auto-correct.
 # Configuration parameters: SkipBlocks, EnforcedStyle.
