@@ -86,5 +86,8 @@ RSpec/ExampleLength:
 RSpec/ExpectChange:
   EnforcedStyle: block
 
+RSpec/MultipleExpectations:
+  Enabled: false
+
 RSpec/NamedSubject:
   Enabled: false
