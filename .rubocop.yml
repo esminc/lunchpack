@@ -7,9 +7,12 @@ require:
 
 AllCops:
   Exclude:
-    - 'node_modules/**/*'
     - 'bin/*'
     - 'db/schema.rb'
+    - 'log/**/*'
+    - 'node_modules/**/*'
+    - 'public/**/*'
+    - 'tmp/**/*'
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
