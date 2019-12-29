@@ -24,7 +24,7 @@ gem 'omniauth-google-oauth2'
 gem 'pg'
 gem 'puma'
 gem 'rails-i18n'
-gem 'rubocop', '~> 0.77.0', require: false
+gem 'rubocop', '~> 0.78.0', require: false
 gem 'rubocop-performance'
 gem 'rubocop-rails'
 gem 'rubocop-rspec'
