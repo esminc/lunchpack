@@ -11,14 +11,6 @@
 RSpec/MultipleExpectations:
   Max: 5
 
-# Offense count: 14
-# Configuration parameters: IgnoreSharedExamples.
-RSpec/NamedSubject:
-  Exclude:
-    - 'spec/helpers/application_helper_spec.rb'
-    - 'spec/model/lunch_form_spec.rb'
-    - 'spec/model/quarter_spec.rb'
-
 # Offense count: 8
 RSpec/NestedGroups:
   Max: 5
