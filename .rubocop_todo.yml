@@ -6,16 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 10
-# Cop supports --auto-correct.
-# Configuration parameters: SkipBlocks, EnforcedStyle.
-# SupportedStyles: described_class, explicit
-RSpec/DescribedClass:
-  Exclude:
-    - 'spec/model/member_spec.rb'
-    - 'spec/model/project_spec.rb'
-    - 'spec/model/quarter_spec.rb'
-
 # Offense count: 13
 # Configuration parameters: Max.
 RSpec/ExampleLength:

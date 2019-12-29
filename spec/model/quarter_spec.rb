@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Quarter do
   describe '.current_quarter' do
-    subject(:current_quarter) { Quarter.current_quarter }
+    subject(:current_quarter) { described_class.current_quarter }
 
     it '今日が含まれるクォーターが返されること' do
       expect(current_quarter.start_date..current_quarter.end_date).to cover(Date.current)
@@ -10,7 +10,7 @@ describe Quarter do
   end
 
   describe '.find_or_create_quarter' do
-    subject { Quarter.find_or_create_quarter(Date.new(2019, 11, 14)) }
+    subject { described_class.find_or_create_quarter(Date.new(2019, 11, 14)) }
 
     context 'すでにQuarterがある場合' do
       before do
@@ -23,11 +23,11 @@ describe Quarter do
           ordinal: 2,
           start_date: Date.new(2019, 11, 1),
           end_date: Date.new(2020, 1, 31)
-        ).and be_an_instance_of(Quarter)
+        ).and be_an_instance_of(described_class)
       end
 
       it 'Quarterのレコード数が増えないこと' do
-        expect { subject }.not_to change { Quarter.count }
+        expect { subject }.not_to change { described_class.count }
       end
     end
 
@@ -38,11 +38,11 @@ describe Quarter do
           ordinal: 2,
           start_date: Date.new(2019, 11, 1),
           end_date: Date.new(2020, 1, 31)
-        ).and be_an_instance_of(Quarter)
+        ).and be_an_instance_of(described_class)
       end
 
       it 'Quarterのレコード数が増えること' do
-        expect { subject }.to change { Quarter.count }.by(1)
+        expect { subject }.to change { described_class.count }.by(1)
       end
     end
   end
