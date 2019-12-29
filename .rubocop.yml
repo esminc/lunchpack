@@ -80,5 +80,8 @@ Rails/RakeEnvironment:
 RSpec/ContextWording:
   Enabled: false
 
+RSpec/ExampleLength:
+  Enabled: false
+
 RSpec/ExpectChange:
   EnforcedStyle: block

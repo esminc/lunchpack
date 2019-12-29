@@ -6,15 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 13
-# Configuration parameters: Max.
-RSpec/ExampleLength:
-  Exclude:
-    - 'spec/model/lunch_spec.rb'
-    - 'spec/model/quarter_spec.rb'
-    - 'spec/system/lunch_spec.rb'
-    - 'spec/system/members_spec.rb'
-
 # Offense count: 12
 # Configuration parameters: AggregateFailuresByDefault.
 RSpec/MultipleExpectations:
