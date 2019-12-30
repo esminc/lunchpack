@@ -28,7 +28,7 @@ Lint/AmbiguousBlockAssociation:
 
 Metrics/BlockLength:
   Exclude:
-    - 'lin/tasks/*.rake'
+    - 'lib/tasks/*.rake'
     - 'spec/**/*.rb'
     - 'Gemfile'
     - 'config/environments/*.rb'
