@@ -24,10 +24,6 @@ gem 'omniauth-google-oauth2'
 gem 'pg'
 gem 'puma'
 gem 'rails-i18n'
-gem 'rubocop', '~> 0.78.0', require: false
-gem 'rubocop-performance'
-gem 'rubocop-rails'
-gem 'rubocop-rspec'
 gem 'sass-rails'
 gem 'select2-rails'
 gem 'slim-rails'
@@ -44,6 +40,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
   gem 'rspec-rails'
+  gem 'rubocop', '~> 0.78.0', require: false
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
