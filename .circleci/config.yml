@@ -108,6 +108,6 @@ workflows:
   rubocop_and_test:
     jobs:
       - rubocop
-      - rspec:
+      - test:
           requires:
             - rubocop
