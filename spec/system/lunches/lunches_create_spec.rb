@@ -1,77 +1,6 @@
 require 'rails_helper'
 
-describe 'ランチ履歴の表示機能' do
-  before do
-    member1 = create(:member, real_name: '鈴木一郎')
-    member2 = create(:member, real_name: '鈴木二郎')
-    member3 = create(:member, real_name: '鈴木三郎')
-    member4 = create(:member, real_name: '鈴木四郎')
-    member5 = create(:member, real_name: '鈴木五郎')
-    trio1 = [member1, member2, member3]
-    trio2 = [member1, member4, member5]
-
-    login_user = create(:user)
-    create_lunch(trio1, login_user, date: Date.new(2019,9,15))
-    create_lunch(trio2, login_user, date: Date.new(2019,9,16))
-    create_lunch(trio1, login_user, date: Date.new(2019,12,15))
-
-    sign_in login_user
-    visit root_path
-  end
-
-  it 'クオーターごとに履歴が表示される' do
-    visit lunches_path
-    click_on('40期-1Q')
-    expect(page).to have_content('2019-09-15 鈴木一郎,鈴木二郎,鈴木三郎')
-    expect(page).to have_content('2019-09-16 鈴木一郎,鈴木四郎,鈴木五郎')
-
-    click_on('40期-2Q')
-    expect(page).to have_content('2019-12-15 鈴木一郎,鈴木二郎,鈴木三郎')
-  end
-end
-
-describe 'ランチ履歴を登録したユーザーだけその履歴を削除できる機能' do
-  before do
-    create(:member, real_name: '鈴木一郎')
-    create(:member, real_name: '鈴木二郎')
-    create(:member, real_name: '鈴木三郎')
-
-    sign_in create(:user)
-    visit root_path
-
-    find('.member-name', text: '鈴木一郎').click
-    find('.member-name', text: '鈴木二郎').click
-    find('.member-name', text: '鈴木三郎').click
-    within('.lunch-form') do
-      click_on('ランチに行く')
-    end
-
-    visit lunches_path
-  end
-
-  it '自分の登録した履歴は削除ボタンから削除できること' do
-    within('tr', text: '鈴木一郎,鈴木二郎,鈴木三郎') do
-      click_on('削除')
-    end
-    page.driver.browser.switch_to.alert.accept
-
-    expect(page).to have_content('鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を削除しました')
-    within('table') do
-      expect(page).to_not have_content('鈴木一郎,鈴木二郎,鈴木三郎')
-    end
-  end
-
-  it '他人が登録した履歴には削除ボタンが無いこと' do
-    sign_in create(:user, email: 'other@esm.co.jp')
-    visit lunches_path
-
-    within('tr', text: '鈴木一郎,鈴木二郎,鈴木三郎') do
-      expect(page).to_not have_content('削除')
-    end
-  end
-end
-
-describe '3人組を探す機能' do
+describe 'ランチ履歴の登録機能', type: :system do
   let!(:project) { create(:project) }
   let!(:member1) { create(:member, real_name: '鈴木一郎', projects: [project]) }
   let!(:member2) { create(:member, real_name: '鈴木二郎') }
@@ -115,7 +44,7 @@ describe '3人組を探す機能' do
         find('.member-row', text: '鈴木一郎').click
 
         within('.lunch-form') do
-          expect(page).to_not have_content('鈴木一郎')
+          expect(page).not_to have_content('鈴木一郎')
         end
       end
     end
@@ -143,20 +72,20 @@ describe '3人組を探す機能' do
           find('.member-row', text: '鈴木二郎').click
 
           within('.lunch-form') do
-            expect(page).to_not have_content('鈴木二郎')
+            expect(page).not_to have_content('鈴木二郎')
           end
 
           find('.member-row', text: '鈴木三郎').click
 
           within('.lunch-form') do
-            expect(page).to_not have_content('鈴木三郎')
+            expect(page).not_to have_content('鈴木三郎')
           end
         end
       end
 
       context 'ランチに行ったクウォーターと違う期間の場合' do
         before do
-          travel 3.month
+          travel 3.months
           visit root_path
         end
 
@@ -164,10 +93,10 @@ describe '3人組を探す機能' do
           find('.member-name', text: '鈴木一郎').click
 
           within('.member-row', text: '鈴木二郎') do
-            expect(page).to_not have_content('鈴木一郎とランチ済み')
+            expect(page).not_to have_content('鈴木一郎とランチ済み')
           end
           within('.member-row', text: '鈴木三郎') do
-            expect(page).to_not have_content('鈴木一郎とランチ済み')
+            expect(page).not_to have_content('鈴木一郎とランチ済み')
           end
         end
       end
@@ -200,7 +129,7 @@ describe '3人組を探す機能' do
           fill_in '行った日', with: date
           find('#submit-btn').click
 
-          expect(page).to have_content "#{ Date.current.prev_month(3)} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
+          expect(page).to have_content "#{Date.current.prev_month(3)} 鈴木一郎,鈴木二郎,鈴木三郎の給付金利用履歴を登録しました"
         end
       end
     end

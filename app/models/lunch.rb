@@ -1,5 +1,5 @@
 class Lunch < ApplicationRecord
-  belongs_to :created_by,  foreign_key: :user_id, class_name: 'User'
+  belongs_to :created_by, foreign_key: :user_id, class_name: 'User'
   belongs_to :quarter
   has_and_belongs_to_many :members
 
@@ -17,7 +17,8 @@ class Lunch < ApplicationRecord
     lunches_in_same_quarter.each do |lunch|
       members_who_went_to_lunch_together = lunch.members & self.members
       if members_who_went_to_lunch_together.size >= 2
-        errors.add(:went_to_lunch_with_same_members, "#{members_who_went_to_lunch_together.map(&:real_name).join(',')}は#{lunch.date}にランチ済みです")
+        message = "#{members_who_went_to_lunch_together.map(&:real_name).join(',')}は#{lunch.date}にランチ済みです"
+        errors.add(:went_to_lunch_with_same_members, message)
       end
     end
   end

@@ -17,8 +17,8 @@ gem 'high_voltage'
 gem 'html2slim'
 gem 'jbuilder'
 gem 'jquery-rails'
-gem 'materialize-sass'
 gem 'material_icons'
+gem 'materialize-sass'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'pg'
@@ -28,26 +28,29 @@ gem 'sass-rails'
 gem 'select2-rails'
 gem 'slim-rails'
 gem 'turbolinks'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
 gem 'uglifier'
-
 
 group :development, :test do
   gem 'bullet'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i(mri mingw x64_mingw)
   gem 'factory_bot_rails'
-  gem 'rspec-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
   gem 'pry-stack_explorer'
+  gem 'rspec-rails'
+  gem 'rubocop', '~> 0.78.0', require: false
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'rails-erd'
   gem 'listen'
+  gem 'rails-erd'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen'
@@ -60,4 +63,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-

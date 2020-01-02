@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:edit, :update, :destroy]
+  before_action :set_member, only: %i(edit update destroy)
 
   def index
     @members = Member.includes(:projects).order(:created_at)
@@ -39,11 +39,12 @@ class MembersController < ApplicationController
   end
 
   private
-    def set_member
-      @member = Member.find(params[:id])
-    end
 
-    def member_params
-      params.require(:member).permit(:handle_name, :real_name, :retired, :email, project_ids: [])
-    end
+  def set_member
+    @member = Member.find(params[:id])
+  end
+
+  def member_params
+    params.require(:member).permit(:handle_name, :real_name, :retired, :email, project_ids: [])
+  end
 end

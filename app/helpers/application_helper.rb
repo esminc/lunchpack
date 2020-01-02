@@ -1,6 +1,6 @@
 module ApplicationHelper
   def page_active(path)
-    request.path == path ? 'active': ''
+    request.path == path ? 'active' : ''
   end
 
   def project_list(member)
