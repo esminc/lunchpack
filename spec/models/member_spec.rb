@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Member do
+RSpec.describe Member, type: :model do
   subject { described_class.new(handle_name: handle_name, real_name: real_name, email: 'sample@esm.co.jp') }
 
   let(:handle_name) { 'yama' }

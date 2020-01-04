@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Quarter do
+RSpec.describe Quarter, type: :model do
   describe '.current_quarter' do
     subject(:current_quarter) { described_class.current_quarter }
 
