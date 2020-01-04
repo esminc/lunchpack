@@ -1,19 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Member do
-  it 'メールアドレスの重複は有効ではないこと' do
-    create(:member, email: 'sample@esm.co.jp')
-    member = described_class.new(handle_name: 'yama', real_name: '山本太郎', email: 'sample@esm.co.jp')
-    expect(member).not_to be_valid
+  subject { described_class.new(handle_name: handle_name, real_name: real_name, email: 'sample@esm.co.jp') }
+
+  let(:handle_name) { 'yama' }
+  let(:real_name) { '山本太郎' }
+
+  context 'メールアドレスが他のメンバーと重複する場合' do
+    before { create(:member, email: 'sample@esm.co.jp') }
+
+    it { is_expected.not_to be_valid }
   end
 
-  it 'ハンドルネームがないと有効ではないこと' do
-    member = described_class.new(handle_name: '', real_name: '山田太郎')
-    expect(member).not_to be_valid
+  context 'ハンドルネームがない場合' do
+    let(:handle_name) { '' }
+
+    it { is_expected.not_to be_valid }
   end
 
-  it '氏名がないと有効ではないこと' do
-    member = described_class.new(handle_name: 'yama', real_name: '')
-    expect(member).not_to be_valid
+  context '氏名がない場合' do
+    let(:real_name) { '' }
+
+    it { is_expected.not_to be_valid }
   end
 end
