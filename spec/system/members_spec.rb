@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'メンバー管理機能', type: :system do
+RSpec.describe 'メンバー管理機能', type: :system do
   before do
     create(:project)
     create(:member, handle_name: 'taro', real_name: '山田太郎')

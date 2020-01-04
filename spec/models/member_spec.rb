@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Member do
+RSpec.describe Member do
   it 'メールアドレスの重複は有効ではないこと' do
     create(:member, email: 'sample@esm.co.jp')
     member = described_class.new(handle_name: 'yama', real_name: '山本太郎', email: 'sample@esm.co.jp')

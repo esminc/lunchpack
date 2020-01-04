@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'ランチ履歴の登録機能', type: :system do
+RSpec.describe 'ランチ履歴の登録機能', type: :system do
   let!(:project) { create(:project) }
   let!(:member1) { create(:member, real_name: '鈴木一郎', projects: [project]) }
   let!(:member2) { create(:member, real_name: '鈴木二郎') }

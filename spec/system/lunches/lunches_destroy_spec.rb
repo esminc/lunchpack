@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'ランチ履歴を登録したユーザーだけその履歴を削除できる機能', type: :system do
+RSpec.describe 'ランチ履歴を登録したユーザーだけその履歴を削除できる機能', type: :system do
   before do
     create(:member, real_name: '鈴木一郎')
     create(:member, real_name: '鈴木二郎')

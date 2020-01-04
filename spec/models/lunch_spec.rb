@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Lunch do
+RSpec.describe Lunch do
   it '同じクォーターの中で同じ組み合わせがあると、有効ではないこと' do
     members = [
       create(:member, real_name: '鈴木一郎'),

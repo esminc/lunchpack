@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'ランチ履歴の表示機能', type: :system do
+RSpec.describe 'ランチ履歴の表示機能', type: :system do
   before do
     member1 = create(:member, real_name: '鈴木一郎')
     member2 = create(:member, real_name: '鈴木二郎')
