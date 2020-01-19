@@ -5,7 +5,7 @@ RSpec.describe 'ランチ履歴の登録機能', type: :system do
   let!(:member1) { create(:member, real_name: '鈴木一郎', projects: [project]) }
   let!(:member2) { create(:member, real_name: '鈴木二郎') }
   let!(:member3) { create(:member, real_name: '鈴木三郎') }
-  let!(:login_user) { create(:user) }
+  let!(:login_user) { create(:user, email: 'login@esm.co.jp') }
 
   before do
     create(:member, real_name: '山田太郎', projects: [project])
@@ -149,7 +149,7 @@ RSpec.describe 'ランチ履歴の登録機能', type: :system do
 
   describe 'ログインしているユーザーが自動でフォームの一人目に入力される機能' do
     before do
-      create(:member, real_name: 'ろぐいん', email: 'sample@esm.co.jp')
+      create(:member, real_name: 'ろぐいん', email: 'login@esm.co.jp')
 
       visit root_path
     end
