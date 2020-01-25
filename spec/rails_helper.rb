@@ -63,3 +63,8 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
   config.include LunchHelpers
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
+  Faker::Omniauth.google(email: Faker::Internet.unique.email(domain: 'esm.co.jp'))
+)

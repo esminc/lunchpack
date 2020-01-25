@@ -4,6 +4,7 @@ require 'ostruct'
 RSpec.describe User, type: :model do
   describe 'User.find_for_google' do
     subject { described_class.find_for_google(auth) }
+
     let(:auth) do
       OpenStruct.new(
         provider: :google,
@@ -24,7 +25,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'ユーザーのレコード数が増えないこと' do
-        expect { subject }.not_to change { User.count }
+        expect { subject }.not_to change { described_class.count }
       end
     end
 
@@ -40,7 +41,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'ユーザーのレコード数が増えること' do
-        expect { subject }.to change { User.count }.by(1)
+        expect { subject }.to change { described_class.count }.by(1)
       end
     end
   end
