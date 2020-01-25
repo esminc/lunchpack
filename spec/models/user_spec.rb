@@ -1,16 +1,15 @@
 require 'rails_helper'
-require 'ostruct'
 
 RSpec.describe User, type: :model do
   describe 'User.find_for_google' do
-    subject { described_class.find_for_google(auth) }
+    subject { described_class.find_for_google(auth_params) }
 
-    let(:auth) do
-      OpenStruct.new(
+    let(:auth_params) do
+      OmniAuth::AuthHash.new(
         provider: :google,
         uid: '012345678901234567890',
-        info: OpenStruct.new(email: 'user@esm.co.jp'),
-        credentials: OpenStruct.new(token: '123abc')
+        info: {email: 'user@esm.co.jp'},
+        credentials: {token: '123abc'}
       )
     end
 
@@ -36,7 +35,7 @@ RSpec.describe User, type: :model do
           provider: 'google',
           uid: '012345678901234567890',
           token: '123abc',
-          meta: auth.to_yaml
+          meta: auth_params.to_yaml
         )
       end
 
