@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
       )
     end
 
-    context '受け取ったemailと同じメールemailを持つ既存のユーザーがいる場合' do
+    context 'パラメータのemailを持つ既存のユーザーがいる場合' do
       let!(:user) { create(:user, email: 'user@esm.co.jp', password: 'password') }
 
       it '既存のユーザーを返すこと' do
@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context '受け取ったemailと同じメールemailを持つ既存のユーザーがいない場合' do
+    context 'パラメータのemailを持つ既存のユーザーがいない場合' do
       it '新しく作成したユーザーを返すこと' do
         expect(subject).to have_attributes(
           email: 'user@esm.co.jp',
