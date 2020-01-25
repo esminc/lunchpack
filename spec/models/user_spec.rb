@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'User.find_for_google' do
+  describe '.find_for_google' do
     subject { described_class.find_for_google(auth_params) }
 
     let(:auth_params) do
