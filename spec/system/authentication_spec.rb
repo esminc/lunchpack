@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザー認証機能', type: :system do
+  it 'ログインしていなければログイン画面へ遷移すること' do
+    visit root_path
+
+    expect(page).to have_current_path new_user_session_path
+  end
+
   it 'ログインとログアウトする' do
     visit new_user_session_path
     click_on 'signin-link'
