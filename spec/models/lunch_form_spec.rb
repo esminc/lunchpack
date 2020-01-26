@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe LunchForm do
+RSpec.describe LunchForm, type: :model do
   describe 'dateのバリデーション' do
     subject { described_class.new(lunch_form_params) }
 

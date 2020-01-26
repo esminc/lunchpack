@@ -15,12 +15,12 @@ table.table
   tbody
     - @members.each do |member|
       tr
-        td
+        td.status
           - if member.retired
             span.badge.badge-dark 退職済み
         td.handle_name = member.handle_name
         td.real_name = member.real_name
         td.email = member.email
-        td = project_list(member)
+        td.projects = project_list(member)
         td
           = link_to '編集', edit_member_path(member), class: 'btn btn-light'

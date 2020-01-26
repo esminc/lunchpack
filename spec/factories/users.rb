@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :user do
-    email { 'sample@esm.co.jp' }
-    password { 'password' }
-    encrypted_password { Devise::Encryptor.digest(User, 'password') }
+    email { Faker::Internet.unique.email(domain: 'esm.co.jp') }
+    password { Faker::Internet.password }
   end
 end
