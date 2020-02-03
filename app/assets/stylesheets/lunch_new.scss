@@ -3,19 +3,19 @@
   overflow: scroll;
 }
 
-.member-row{
+tr.member-row{
   cursor: pointer;
 }
 
-.selected-row{
+tr.selected-row{
   display: none;
 }
 
-.unselectable-row{
+tr.unselectable-row{
   background-color: gray;
   cursor: not-allowed;
 }
 
-.member-form{
+input.member-form{
   cursor: pointer;
 }
