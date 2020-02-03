@@ -1,0 +1,21 @@
+#members-list{
+  height: 450px;
+  overflow: scroll;
+}
+
+#member-table{
+  cursor: pointer;
+}
+
+.selected-member-box{
+  height: 100px;
+}
+
+.selected-row{
+  display: none;
+}
+
+.unselectable-row{
+  background-color: gray;
+  cursor: not-allowed;
+}
