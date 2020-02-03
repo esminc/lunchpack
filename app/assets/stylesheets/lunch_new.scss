@@ -11,6 +11,10 @@
   height: 100px;
 }
 
+.member-row{
+  cursor: pointer;
+}
+
 .selected-row{
   display: none;
 }
@@ -18,4 +22,8 @@
 .unselectable-row{
   background-color: gray;
   cursor: not-allowed;
+}
+
+.member-form{
+  cursor: pointer;
 }
