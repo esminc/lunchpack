@@ -10,11 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require lunch_new
- *= require help
- *= require countdown
- *= require login
  *= require_self
+ *= require_tree .
  *= require select2
  */
 @import 'bootstrap';
