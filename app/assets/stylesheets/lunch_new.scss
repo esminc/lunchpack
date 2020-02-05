@@ -9,7 +9,8 @@ $unselectable-bg-color: $danger;
 tr.member-row{
   cursor: pointer;
   &:hover{
-    background-color: $table-hover-bg;
+    background-color: $primary;
+    color: white;
   }
 }
 
