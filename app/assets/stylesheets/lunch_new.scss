@@ -1,5 +1,5 @@
 $unselectable-text-color: white;
-$unselectable-bg-color: #fe0000;
+$unselectable-bg-color: $danger;
 
 #members-list{
   height: 450px;
@@ -9,7 +9,7 @@ $unselectable-bg-color: #fe0000;
 tr.member-row{
   cursor: pointer;
   &:hover{
-    background-color: #dee2e6;
+    background-color: $table-hover-bg;
   }
 }
 
@@ -29,6 +29,7 @@ tr.unselectable-row{
 input.member-form{
   cursor: pointer;
   &:hover{
-    background-color: #adb5bd;
+    border-color: $input-focus-border-color;
+    box-shadow: $input-focus-box-shadow;
   }
 }
