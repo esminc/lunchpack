@@ -21,7 +21,7 @@ ul.nav.nav-tabs role="tablist"
             tr
               td = lunch.date
               td
-                button.mx-3.btn.border-0.btn-outline-secondary.clipboard-btn data-clipboard-text="#{lunch.members.pluck(:real_name).join(',')}"
+                button.mx-3.btn.btn-outline-secondary.clipboard-btn data-clipboard-text="#{lunch.members.pluck(:real_name).join(',')}"
                   = icon('far', 'copy')
                 .d-inline
                   = lunch.members.pluck(:real_name).join(',')
