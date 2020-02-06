@@ -25,4 +25,5 @@
   = f.submit id: 'submit-btn', class: 'btn btn-primary'
 
 - if @member.persisted?
-  = link_to '削除する' , @member, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: @member.real_name) }, method: :delete, class: 'btn btn-danger'
+  hr
+  = link_to '削除する' , @member, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: @member.real_name) }, method: :delete, class: 'btn btn-outline-danger'
