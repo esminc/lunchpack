@@ -1,44 +1,45 @@
 h3.my-3 ランチ履歴の登録
 
-.p-3.shadow-sm.border.rounded.bg-white
-  p.text-primary ランチに行く (行った) メンバーを下から3人選んで登録してください。
-  .row
-    .col-8
-      #members-list
-        table.table.border#members-table
-          thead.thead-dark
-            tr
-              th = Member.human_attribute_name(:real_name)
-              th = Member.human_attribute_name(:projects)
-              th 選べない理由
-          tbody
-            - @members.each do |member|
-              tr.member-row
-                td.member-name = member.real_name
-                td.member-project = member.projects.pluck(:name).join(',')
-                td.unselectable-reason
+.card
+  .card-body
+    p.text-primary ランチに行く (行った) メンバーを下から3人選んで登録してください。
+    .row
+      .col-8
+        #members-list
+          table.table.border#members-table
+            thead.thead-dark
+              tr
+                th = Member.human_attribute_name(:real_name)
+                th = Member.human_attribute_name(:projects)
+                th 選べない理由
+            tbody
+              - @members.each do |member|
+                tr.member-row
+                  td.member-name = member.real_name
+                  td.member-project = member.projects.pluck(:name).join(',')
+                  td.unselectable-reason
 
-    .col-4
-      = form_with model: @lunch_form, url: lunches_path, local: true, class: 'lunch-form' do |f|
-        - if @lunch_form.errors.any?
-          .text-danger
-            ul
-              - @lunch_form.errors.messages.each do |attr, messages|
-                li = messages.first
-        .form-group
-          = f.label :member, '１人目', value: 'first'
-          div data-toggle="tooltip" title="クリックで選択が戻ります"
-            = f.text_field :member, name: 'lunch_form[members][]', readonly: true, onfocus: "this.blur();", id: 'lunch_form_member_first', class: 'form-control form-control-lg member-form'
-        .form-group
-          = f.label :member, '２人目', value: 'second'
-          div data-toggle="tooltip" title="クリックで選択が戻ります"
-            = f.text_field :member, name: 'lunch_form[members][]', readonly: true, onfocus: "this.blur();", id: 'lunch_form_member_second', class: 'form-control form-control-lg member-form'
-        .form-group
-          = f.label :member, '３人目', value: 'third'
-          div data-toggle="tooltip" title="クリックで選択が戻ります"
-            = f.text_field :member, name: 'lunch_form[members][]', readonly: true, onfocus: "this.blur();", id: 'lunch_form_member_third', class: 'form-control form-control-lg member-form'
-        .form-group
-          = f.label :date, '行った日'
-          = f.date_field :date, value: Date.current, max: Date.current, class: 'form-control'
-        .text-center
-          = f.submit class: 'btn btn-primary btn-lg'
+      .col-4
+        = form_with model: @lunch_form, url: lunches_path, local: true, class: 'lunch-form' do |f|
+          - if @lunch_form.errors.any?
+            .text-danger
+              ul
+                - @lunch_form.errors.messages.each do |attr, messages|
+                  li = messages.first
+          .form-group
+            = f.label :member, '１人目', value: 'first'
+            div data-toggle="tooltip" title="クリックで選択が戻ります"
+              = f.text_field :member, name: 'lunch_form[members][]', readonly: true, onfocus: "this.blur();", id: 'lunch_form_member_first', class: 'form-control form-control-lg member-form'
+          .form-group
+            = f.label :member, '２人目', value: 'second'
+            div data-toggle="tooltip" title="クリックで選択が戻ります"
+              = f.text_field :member, name: 'lunch_form[members][]', readonly: true, onfocus: "this.blur();", id: 'lunch_form_member_second', class: 'form-control form-control-lg member-form'
+          .form-group
+            = f.label :member, '３人目', value: 'third'
+            div data-toggle="tooltip" title="クリックで選択が戻ります"
+              = f.text_field :member, name: 'lunch_form[members][]', readonly: true, onfocus: "this.blur();", id: 'lunch_form_member_third', class: 'form-control form-control-lg member-form'
+          .form-group
+            = f.label :date, '行った日'
+            = f.date_field :date, value: Date.current, max: Date.current, class: 'form-control'
+          .text-center
+            = f.submit class: 'btn btn-primary btn-lg'
