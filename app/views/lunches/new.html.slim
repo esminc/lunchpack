@@ -27,15 +27,15 @@ h3.my-3 ランチ履歴の登録
                 li = messages.first
         .form-group
           = f.label :member, '１人目', value: 'first'
-          div data-toggle="tooltip" title="クリックで選択を戻します"
+          div data-toggle="tooltip" title="クリックで選択が戻ります"
             = f.text_field :member, name: 'lunch_form[members][]', readonly: true, onfocus: "this.blur();", id: 'lunch_form_member_first', class: 'form-control form-control-lg member-form'
         .form-group
           = f.label :member, '２人目', value: 'second'
-          div data-toggle="tooltip" title="クリックで選択を戻します"
+          div data-toggle="tooltip" title="クリックで選択が戻ります"
             = f.text_field :member, name: 'lunch_form[members][]', readonly: true, onfocus: "this.blur();", id: 'lunch_form_member_second', class: 'form-control form-control-lg member-form'
         .form-group
           = f.label :member, '３人目', value: 'third'
-          div data-toggle="tooltip" title="クリックで選択を戻します"
+          div data-toggle="tooltip" title="クリックで選択が戻ります"
             = f.text_field :member, name: 'lunch_form[members][]', readonly: true, onfocus: "this.blur();", id: 'lunch_form_member_third', class: 'form-control form-control-lg member-form'
         .form-group
           = f.label :date, '行った日'
