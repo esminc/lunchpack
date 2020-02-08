@@ -21,6 +21,11 @@ nav.navbar.navbar-expand-sm.navbar-dark
         a.dropdown-item href="https://idobata.io/#/organization/esm/room/lunchpack" target="_blank" Idobata
         = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item'
   ul.navbar-nav.ml-auto
+    span.navbar-text
+      span#rest-text.badge.badge-warning
+        | 給付金リセットまで残り
+        span#rest-days.stext-danger= countdown_days
+        | 日
     li.nav-item.mx-3
       a.btn.btn-success href='https://esminc.esa.io/posts/687' target="_blank"
         = icon('fas', 'question-circle')

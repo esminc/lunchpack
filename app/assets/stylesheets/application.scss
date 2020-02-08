@@ -22,15 +22,11 @@ $primary-light: #ff745b;
 @import "font-awesome";
 @import "select2";
 
-@import "countdown";
+@import "navbar";
 @import "login";
 @import "help";
 @import "lunch_new";
 
 body{
   background-color: $gray-100;
-}
-
-nav{
-  background-color: $primary-dark;
 }
