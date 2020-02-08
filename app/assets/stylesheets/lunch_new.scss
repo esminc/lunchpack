@@ -1,0 +1,36 @@
+$unselectable-text-color: white;
+$unselectable-bg-color: $danger;
+
+#members-list{
+  height: 450px;
+  overflow: scroll;
+}
+
+tr.member-row{
+  cursor: pointer;
+  &:hover{
+    background-color: $primary-light;
+    color: white;
+  }
+}
+
+tr.selected-row{
+  display: none;
+}
+
+tr.unselectable-row{
+  color: $unselectable-text-color;
+  background-color: $unselectable-bg-color;
+  cursor: not-allowed;
+  &:hover{
+    background-color: $unselectable-bg-color;
+  }
+}
+
+input.member-form{
+  cursor: pointer;
+  &:hover{
+    border-color: $input-focus-border-color;
+    box-shadow: $input-focus-box-shadow;
+  }
+}

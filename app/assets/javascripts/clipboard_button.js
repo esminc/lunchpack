@@ -2,7 +2,7 @@ document.addEventListener('turbolinks:load', function(){
   // Tooltip
   $('.clipboard-btn').tooltip({
     trigger: 'click',
-    placement: 'bottom'
+    placement: 'top'
   });
 
   function setTooltip(btn, message) {

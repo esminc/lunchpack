@@ -1,16 +1,18 @@
 h3.my-3 プロジェクト
-= link_to new_project_path, id: 'new-btn', class: 'btn btn-success float-right'
-  | プロジェクト追加
+.card.my-3
+  .card-body
+    = link_to new_project_path, id: 'new-btn', class: 'btn btn-outline-primary'
+      | プロジェクト追加
 
-table.table
-  thead.thead-dark
-    tr
-      th = Project.human_attribute_name(:name)
-      th
+    table.table.border-bottom.my-3
+      thead.thead-light
+        tr
+          th = Project.human_attribute_name(:name)
+          th
 
-  tbody
-    - @projects.each do |project|
-      tr
-        td = project.name
-        td
-          = link_to '編集', edit_project_path(project), class: 'btn btn-light'
+      tbody
+        - @projects.each do |project|
+          tr
+            td = project.name
+            td
+              = link_to '編集', edit_project_path(project), class: 'btn btn-outline-primary'

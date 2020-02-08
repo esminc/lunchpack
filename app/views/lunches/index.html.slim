@@ -1,30 +1,32 @@
-h3.my-3 ランチ給付金利用履歴
+h3.my-3 ランチ履歴の一覧
 
-ul.nav.nav-tabs role="tablist"
-  - @quarters.each do |quarter|
-    li.nav-item
-      a.nav-link class=current_quarter_active(quarter) data-toggle="tab" href="#period#{quarter.period}-#{quarter.ordinal}"
-        div data-toggle="tooltip" title="#{quarter.start_date} ~ #{quarter.end_date}"
-          = "#{quarter.period}期-#{quarter.ordinal}Q"
+.card
+  .card-body
+    ul.nav.nav-pills role="tablist"
+      - @quarters.each do |quarter|
+        li.nav-item
+          a.nav-link class=current_quarter_active(quarter) data-toggle="pill" href="#period#{quarter.period}-#{quarter.ordinal}"
+            div data-toggle="tooltip" title="#{quarter.start_date} ~ #{quarter.end_date}"
+              = "#{quarter.period}期-#{quarter.ordinal}Q"
 
-.tab-content
-  - @quarters.each do |quarter|
-    .tab-pane class=current_quarter_active(quarter) id="period#{quarter.period}-#{quarter.ordinal}"
-      table.table
-        thead.thead-dark
-          tr
-            th = Lunch.human_attribute_name(:date)
-            th = Lunch.human_attribute_name(:members)
-            th
-        tbody
-          - quarter.lunches.each do |lunch|
-            tr
-              td = lunch.date
-              td
-                button.mx-3.btn.border-0.btn-outline-secondary.clipboard-btn data-clipboard-text="#{lunch.members.pluck(:real_name).join(',')}"
-                  = icon('far', 'copy')
-                .d-inline
-                  = lunch.members.pluck(:real_name).join(',')
-              td
-                - if lunch.created_by == current_user
-                  = link_to '削除', lunch, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: lunch.label_with_date_and_member_names) }, method: :delete, class: 'btn btn-danger'
+    .tab-content.mt-1
+      - @quarters.each do |quarter|
+        .tab-pane class=current_quarter_active(quarter) id="period#{quarter.period}-#{quarter.ordinal}"
+          table.table.border-bottom
+            thead.thead-light
+              tr
+                th = Lunch.human_attribute_name(:date)
+                th = Lunch.human_attribute_name(:members)
+                th
+            tbody
+              - quarter.lunches.each do |lunch|
+                tr
+                  td = lunch.date
+                  td
+                    button.mx-3.btn.btn-outline-secondary.clipboard-btn data-clipboard-text="#{lunch.members.pluck(:real_name).join(',')}"
+                      = icon('far', 'copy')
+                    .d-inline
+                      = lunch.members.pluck(:real_name).join(',')
+                  td
+                    - if lunch.created_by == current_user
+                      = link_to '削除', lunch, data: { confirm: t('dictionary.message.destroy.confirm', resource_name: lunch.label_with_date_and_member_names) }, method: :delete, class: 'btn btn-outline-danger'
