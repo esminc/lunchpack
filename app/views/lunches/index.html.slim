@@ -12,7 +12,7 @@ h3.my-3 ランチ履歴の一覧
     .tab-content.mt-1
       - @quarters.each do |quarter|
         .tab-pane class=current_quarter_active(quarter) id="period#{quarter.period}-#{quarter.ordinal}"
-          table.table
+          table.table.border-bottom
             thead.thead-dark
               tr
                 th = Lunch.human_attribute_name(:date)
