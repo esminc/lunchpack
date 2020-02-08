@@ -12,6 +12,11 @@
  *
  *= require_self
  */
+
+$primary-dark: #ff5233;
+$primary: tomato;
+$primary-light: #ff745b;
+
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -24,4 +29,8 @@
 
 body{
   background-color: $gray-100;
+}
+
+nav{
+  background-color: $primary-dark;
 }
