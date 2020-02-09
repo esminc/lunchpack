@@ -1,4 +1,5 @@
 # Lunchpack
+[![CircleCI](https://circleci.com/gh/esminc/lunchpack.svg?style=shield)](https://circleci.com/gh/esminc/lunchpack)
 ## エレベーターピッチ
 Lunchpack（ランチパック）というサービスは、
 
