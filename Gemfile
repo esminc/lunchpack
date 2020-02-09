@@ -5,6 +5,7 @@ ruby '2.6.5'
 
 gem 'rails', '6.0.0'
 
+gem 'active_decorator'
 gem 'bootsnap', require: false
 gem 'bootstrap'
 gem 'clipboard-rails'
