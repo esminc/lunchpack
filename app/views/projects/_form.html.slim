@@ -11,4 +11,4 @@
   = f.submit id: 'submit-btn', class: 'btn btn-primary'
 
 - if @project.persisted?
-  = link_to '削除する', @project, data: { confirm: "#{@project.name}には#{@project.members.pluck(:real_name).join('、')}が所属しています。#{@project.name}を削除しますか？" }, method: :delete, class: 'btn btn-outline-danger'
+  = link_to '削除する', @project, data: { confirm: @project.delete_confirm }, method: :delete, class: 'btn btn-outline-danger'
