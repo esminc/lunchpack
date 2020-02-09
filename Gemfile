@@ -63,5 +63,6 @@ group :test do
   gem 'capybara'
   gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
   gem 'webdrivers'
 end
