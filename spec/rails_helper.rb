@@ -2,7 +2,9 @@
 
 # Load and launch SimpleCov at the very top
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_group 'Decorators', 'app/decorators'
+end
 
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
