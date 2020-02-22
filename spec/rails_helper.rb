@@ -3,6 +3,7 @@
 # Load and launch SimpleCov at the very top
 require 'simplecov'
 SimpleCov.start 'rails' do
+  enable_coverage :branch
   add_group 'Decorators', 'app/decorators'
 end
 
