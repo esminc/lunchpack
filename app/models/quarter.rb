@@ -29,12 +29,9 @@ class Quarter < ApplicationRecord
     end
 
     def current_quarter_ordinal(date)
-      case date.prev_month(DIFF_BETWEEN_JANUARY_AND_TERM_START_MOMTH).beginning_of_quarter.month
-      when 1 then 1
-      when 4 then 2
-      when 7 then 3
-      when 10 then 4
-      end
+      convert_from_month_to_quarter_ordinal = {1 => 1, 4 => 2, 7 => 3, 10 => 4}
+      month = date.prev_month(DIFF_BETWEEN_JANUARY_AND_TERM_START_MOMTH).beginning_of_quarter.month
+      convert_from_month_to_quarter_ordinal[month]
     end
 
     def start_date_of_quarter(date)
