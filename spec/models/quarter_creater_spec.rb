@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe QuarterCreater, type: :model do
   describe '#create_quarter!' do
-    subject { QuarterCreater.new(date).create_quarter! }
+    subject { described_class.new(date).create_quarter! }
 
     context '2019/8/1の場合' do
       let(:date) { Date.new(2019, 8, 1) }
