@@ -15,10 +15,6 @@ module ApplicationHelper
     quarter.cover_today? ? 'active' : ''
   end
 
-  def form_active(form_value)
-    form_value.present? ? 'active' : ''
-  end
-
   def countdown_days
     (Quarter.current_quarter.end_date - Date.current).to_i + 1
   end

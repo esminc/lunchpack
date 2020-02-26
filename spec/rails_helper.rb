@@ -1,4 +1,12 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+
+# Load and launch SimpleCov at the very top
+require 'simplecov'
+SimpleCov.start 'rails' do
+  enable_coverage :branch
+  add_group 'Decorators', 'app/decorators'
+end
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
@@ -59,6 +67,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include FactoryBot::Syntax::Methods
   config.include ActiveSupport::Testing::TimeHelpers
   config.include LunchHelpers
