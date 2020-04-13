@@ -43,7 +43,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.78.0', require: false
+  gem 'rubocop', '~> 0.81.0', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
