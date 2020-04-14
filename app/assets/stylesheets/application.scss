@@ -22,10 +22,10 @@ $primary-light: #ff745b;
 @import "font-awesome";
 @import "select2";
 
-@import "navbar";
-@import "login";
-@import "help";
-@import "lunch_new";
+@import "page/navbar";
+@import "page/login";
+@import "page/help";
+@import "page/lunch_new";
 
 body{
   background-color: $gray-100;

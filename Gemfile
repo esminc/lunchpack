@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.6.6'
 
-gem 'rails', '6.0.0'
+gem 'rails', '6.0.2.2'
 
 gem 'active_decorator'
 gem 'bootsnap', require: false
@@ -43,7 +43,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.78.0', require: false
+  gem 'rubocop', '~> 0.81.0', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
