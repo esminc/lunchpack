@@ -1,27 +1,23 @@
-require 'csv'
-require 'yaml'
+member1 = Member.find_or_create_by!(real_name: '永和一郎', handle_name: 'one', email: 'one@esm.co.jp')
+member2 = Member.find_or_create_by!(real_name: '永和二郎', handle_name: 'two', email: 'two@esm.co.jp')
+member3 = Member.find_or_create_by!(real_name: '永和三郎', handle_name: 'three', email: 'three@esm.co.jp')
+member4 = Member.find_or_create_by!(real_name: '永和四郎', handle_name: 'four', email: 'four@esm.co.jp')
+member5 = Member.find_or_create_by!(real_name: '永和五郎', handle_name: 'five', email: 'five@esm.co.jp')
+member6 = Member.find_or_create_by!(real_name: '永和六郎', handle_name: 'six', email: 'six@esm.co.jp')
+member7 = Member.find_or_create_by!(real_name: '永和七郎', handle_name: 'seven', email: 'seven@esm.co.jp')
+member8 = Member.find_or_create_by!(real_name: '永和八郎', handle_name: 'eight', email: 'eight@esm.co.jp')
+Member.find_or_create_by!(real_name: '永和九郎', handle_name: 'nine', email: 'nine@esm.co.jp')
+Member.find_or_create_by!(real_name: '永和十郎', handle_name: 'ten', email: 'ten@esm.co.jp')
 
-User.create!(email: 'sample@esm.co.jp', password: 'password')
+project1 = Project.find_or_create_by!(name: 'idobata')
+project2 = Project.find_or_create_by!(name: 'linkup')
+project3 = Project.find_or_create_by!(name: 'Clipport')
 
-CSV.foreach('db/seed/member.csv', headers: true) do |row|
-  Member.create!(
-    handle_name: row['GitHub'],
-    real_name: row['氏名 (本名)'].tr(' ', ''),
-    email: row['会社メールアドレス']
-  )
-end
-
-YAML.load_file('db/seed/project.yml').each do |project_name|
-  Project.create!(name: project_name)
-end
-
-CSV.foreach('db/seed/lunch-40-1Q.csv') do |row|
-  date = Date.parse(row[0])
-  names = row[1].split('、')
-  quarter = Quarter.find_or_create_quarter(date)
-  quarter.lunches.create!(
-    date: date,
-    members: Member.where(real_name: names),
-    created_by: User.find_by(email: 'sample@esm.co.jp')
-  )
-end
+Assignment.find_or_create_by!(project: project1, member: member1)
+Assignment.find_or_create_by!(project: project1, member: member2)
+Assignment.find_or_create_by!(project: project2, member: member3)
+Assignment.find_or_create_by!(project: project2, member: member4)
+Assignment.find_or_create_by!(project: project2, member: member5)
+Assignment.find_or_create_by!(project: project3, member: member6)
+Assignment.find_or_create_by!(project: project3, member: member7)
+Assignment.find_or_create_by!(project: project3, member: member8)
