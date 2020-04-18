@@ -27,7 +27,6 @@
 /config/master.key
 
 /.env
-db/seed
 
 erd.*
 coverage
