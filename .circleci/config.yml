@@ -7,7 +7,7 @@ jobs:
   rubocop:
     docker: &ruby_and_postgres
       # specify the version you desire here
-      - image: circleci/ruby:2.6.6-node-browsers
+      - image: circleci/ruby:2.7.1-node-browsers
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
@@ -31,8 +31,6 @@ jobs:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
-      - run: gem install bundler -v "2.1.4"
 
       - run:
           name: install dependencies
@@ -66,8 +64,6 @@ jobs:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
-      - run: gem install bundler -v "2.1.4"
 
       - run:
           name: install dependencies
