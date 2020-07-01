@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
+ruby '2.7.1'
 
-gem 'rails', '6.0.2.2'
+gem 'rails', '6.0.3.2'
 
 gem 'active_decorator'
 gem 'bootsnap', require: false
