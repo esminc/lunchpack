@@ -18,6 +18,9 @@ jobs:
         image: postgres:9.4
 
     steps:
+      - name: Setup file system permissions
+        run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
+
       - uses: actions/checkout@v2
 
       - name: Cache bundler
