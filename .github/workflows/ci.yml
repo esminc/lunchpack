@@ -1,0 +1,44 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: circleci/ruby:2.7.1-node-browsers
+      env:
+        RAILS_ENV: test
+        PGHOST: 127.0.0.1
+        PGUSER: postgres
+
+    services:
+      postgres:
+        image: postgres:9.4
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache bundler
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+
+      - name: Bundle install
+        run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - name: Database setup
+        run: |
+          bin/rails db:create
+          bin/rails db:schema:load
+
+      - name: Run RuboCop
+        run : bundle exec rubocop
+
+      - name: Run test
+        run: |
+          bundle exec rspec --format progress --format RspecJunitFormatter
