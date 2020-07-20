@@ -11,11 +11,13 @@ jobs:
       env:
         RAILS_ENV: test
         PGHOST: postgres
-        PGUSER: postgres
+        PGUSER: test
 
     services:
       postgres:
         image: postgres:9.4
+        env:
+          POSTGRES_USER: test
 
     steps:
       - name: Setup file system permissions
