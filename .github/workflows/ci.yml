@@ -15,8 +15,6 @@ jobs:
     services:
       postgres:
         image: postgres:9.4
-        ports:
-          - 5432:5432
 
     steps:
       - name: Setup file system permissions
