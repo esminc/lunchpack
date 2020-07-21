@@ -9,7 +9,6 @@ jobs:
     container:
       image: circleci/ruby:2.7.1-node-browsers
       env:
-        RAILS_ENV: test
         PGHOST: postgres
         PGUSER: test
 
